@@ -10,8 +10,13 @@ Personal portfolio site for Yadan Taino (Made by Taino), a Creative Director & P
 ## Positioning
 - "I design and ship digital products for health & wellness, lifestyle, and fashion brands — from concept to live product."
 - Key differentiator line: "Industries I don't just design for — I live in them."
-- Extended focus line (About section): "My focus is health & wellness, lifestyle, and fashion — from fitness and recovery to skincare. Industries I don't just design for — I live in them. Everything I build has one goal: products that genuinely improve how people move, feel, and show up."
 - Do NOT use the title "Developer." Use **Creative Director & Product Designer**.
+
+### About section copy
+1. "I'm Yadan Taino — a Creative Director and Product Designer based in New York City."
+2. "I design and ship digital products and brands for health & wellness, lifestyle, and fashion — from first concept to live product. Founders and business owners come to me when they don't want a design file and a hand-off; they want the thing built, launched, and true to their brand."
+3. "Years of working as a commercial model — campaigns, runway, life in front of the camera — sharpened something most designers never develop: a lived understanding of aesthetics, culture, and how a brand actually feels to the people inside it. These aren't industries I study. They're industries I'm in."
+4. "Everything I build has one goal: products that genuinely improve how people move, feel, and show up. That's why my flagship project, Aligned, is a recovery and movement app built alongside a licensed physical therapist — clinical expertise, designed and shipped."
 
 ## Site structure
 One page, in this order:
