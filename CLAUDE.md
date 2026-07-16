@@ -8,15 +8,16 @@ Personal portfolio site for Yadan Taino (Made by Taino), a Creative Director & P
 - A real business asset (not just a class exercise) — should be presentable to clients/employers.
 
 ## Positioning
-- "I design and ship digital products for health, wellness, and fashion brands — from concept to live product."
+- "I design and ship digital products for health & wellness, lifestyle, and fashion brands — from concept to live product."
 - Key differentiator line: "Industries I don't just design for — I live in them."
+- Extended focus line (About section): "My focus is health & wellness, lifestyle, and fashion — from fitness and recovery to skincare. Industries I don't just design for — I live in them. Everything I build has one goal: products that genuinely improve how people move, feel, and show up."
 - Do NOT use the title "Developer." Use **Creative Director & Product Designer**.
 
 ## Site structure
 One page, in this order:
-1. Hero
-2. About
-3. Selected work (flagship project: **Aligned** — a recovery/movement app built with a licensed physical therapist)
+1. Hero (headline, subline, availability badge, scroll hint)
+2. Selected work (flagship project: **Aligned** — a recovery/movement app built with a licensed physical therapist)
+3. About
 4. Contact
 
 Simple HTML/CSS/JS. Mobile-friendly.
