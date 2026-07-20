@@ -21,9 +21,11 @@ Personal portfolio site for Yadan Taino (Made by Taino), a Creative Director & P
 ## Site structure
 One page, in this order:
 1. Hero (headline, subline, availability badge, scroll hint)
-2. Selected work (flagship project: **Aligned** — a recovery/movement app built with a licensed physical therapist)
-3. About
+2. About
+3. Projects (flagship project: **Aligned** — a recovery/movement app built with a licensed physical therapist)
 4. Contact
+
+Nav labels: About, Projects, Contact — no mobile hamburger menu; nav is always visible.
 
 Simple HTML/CSS/JS. Mobile-friendly.
 
