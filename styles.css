@@ -298,6 +298,14 @@ a {
   margin-bottom: 1rem;
 }
 
+.site-footer .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.75rem;
+  text-decoration: underline;
+}
+
 .site-footer .copyright {
   margin-top: 2rem;
   font-size: 0.85rem;
