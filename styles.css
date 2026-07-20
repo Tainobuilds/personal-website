@@ -84,7 +84,7 @@ a {
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  min-height: 70vh;
+  min-height: 100vh;
 }
 
 .hero-image {
@@ -107,7 +107,7 @@ a {
   z-index: 1;
   color: #fff;
   padding: 3rem 2rem;
-  min-height: 70vh;
+  min-height: 100vh;
   max-width: 600px;
   display: flex;
   flex-direction: column;
