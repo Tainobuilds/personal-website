@@ -181,11 +181,13 @@ a {
   border-radius: 8px;
   margin-bottom: 0.75rem;
   width: 100%;
+  background: #d8d6cf;
   object-fit: cover;
 }
 
-.work-image--bottom {
-  object-position: center bottom;
+.work-image--contain {
+  object-fit: contain;
+  padding: 1.5rem;
 }
 
 .work-card h3 {
