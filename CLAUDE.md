@@ -15,9 +15,20 @@ Personal portfolio site for Yadan Taino (Made by Taino), a Creative Director & P
 - Do NOT use the title "Developer." Use **Creative Director & Product Designer**. This is a deliberate decision (confirmed 2026-07-27), not an oversight — see "Full-stack / dev work" below before changing it.
 
 ### Full-stack / dev work
-- Yadan wants to show full-stack (front + back end) technical thinking alongside creative/UX thinking, but **not** as a title or positioning change — the title stays Creative Director & Product Designer.
-- The right place for this is inside individual project case studies: show both the creative/branding decisions (especially brand feel) and the technical/full-stack build decisions for that specific project.
-- Do not add a standalone "Developer" section, title, or separate identity for this — it lives inside project storytelling, not the header/hero/meta.
+The primary title remains "Creative Director & Product Designer." Do not use
+"Developer" as a top-level title or rewrite the homepage positioning around
+development.
+
+Relevant case studies may demonstrate:
+- frontend and backend implementation
+- technical architecture
+- AI-assisted development
+- prototyping
+- technical constraints and tradeoffs
+- how design decisions were translated into working products
+
+These capabilities should appear as evidence inside project narratives, not
+as a replacement for the primary identity.
 
 ### About section copy
 1. "I'm Yadan Taino — a Creative Director and Product Designer based in New York City."
