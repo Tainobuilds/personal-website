@@ -12,7 +12,12 @@ Personal portfolio site for Yadan Taino (Made by Taino), a Creative Director & P
 - "I design and ship digital products for health & wellness, lifestyle, and tech brands — from concept to live product."
 - Key differentiator line: "Industries I don't just design for — I live in them."
 - Selected Work intro line: "My focus is health & wellness, lifestyle, and tech — from fitness and recovery to skincare to the tools I build. Industries I don't just design for — I live in them."
-- Do NOT use the title "Developer." Use **Creative Director & Product Designer**.
+- Do NOT use the title "Developer." Use **Creative Director & Product Designer**. This is a deliberate decision (confirmed 2026-07-27), not an oversight — see "Full-stack / dev work" below before changing it.
+
+### Full-stack / dev work
+- Yadan wants to show full-stack (front + back end) technical thinking alongside creative/UX thinking, but **not** as a title or positioning change — the title stays Creative Director & Product Designer.
+- The right place for this is inside individual project case studies: show both the creative/branding decisions (especially brand feel) and the technical/full-stack build decisions for that specific project.
+- Do not add a standalone "Developer" section, title, or separate identity for this — it lives inside project storytelling, not the header/hero/meta.
 
 ### About section copy
 1. "I'm Yadan Taino — a Creative Director and Product Designer based in New York City."
@@ -30,6 +35,13 @@ One page, in this order:
 Nav labels: About, Projects, Contact — no mobile hamburger menu; nav is always visible.
 
 Simple HTML/CSS/JS. Mobile-friendly.
+
+## Known gaps (as of 2026-07-27)
+- Work cards (Selected work) aren't clickable — no case-study detail view exists yet. Need a pattern that can hold both the creative/brand narrative and the technical/full-stack narrative per project (see "Full-stack / dev work" above).
+- A real 24-slide Kippo case-study deck exists at `Kippo App Case Study PNG/` in the project root (untracked) — not yet wired into the site. This is the next concrete content piece to build the case-study pattern around.
+- Work cards Kippo, Anna Museo, and Campaign work still show gray placeholder boxes — no images yet.
+- Testimonial section quote is placeholder copy, not a real testimonial.
+- Services section: only "Branding" has real copy/image; Development, Motion, and UI/UX Design are still placeholders.
 
 ## Working style
 - Yadan is learning to code — explain changes in plain language, including *why*, not just *what*.
