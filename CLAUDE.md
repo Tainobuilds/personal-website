@@ -49,15 +49,40 @@ Order: Branding, Digital Products, Development, Generative AI, UI/UX Design.
 One page, in this order (updated 2026-08-06 — leads with capabilities
 before the personal story, inspired by clay.global):
 1. Hero (headline, subline, availability badge, scroll hint)
-2. Services ("what I offer" — tagline + accordion list)
-3. Selected work / Projects (flagship project: **Aligned** — a recovery/movement app built with a licensed physical therapist)
-4. Testimonial
-5. About
-6. Contact
+2. Trust strip (placeholder brand wordmarks)
+3. Services ("what I offer" — tagline + accordion list)
+4. Selected work / Projects (flagship project: **Aligned** — a recovery/movement app built with a licensed physical therapist)
+5. Testimonial
+6. About (with a lightweight "Currently" tag strip near the top)
+7. FAQ
+8. Contact
 
 Nav labels: About, Projects, Contact — no mobile hamburger menu; nav is always visible.
 
 Simple HTML/CSS/JS. Mobile-friendly.
+
+### Trust strip copy (locked 2026-08-06)
+Text-based placeholder wordmarks (not real logo assets — avoids
+trademark/copyright issues until real client permission/assets exist):
+Adidas, SoundCloud, Kiehl's, Jose Cuervo, NYFW, Swim Week, Vida Y Moss,
+Trends Dispensary. Understated styling — muted color, low opacity, wraps
+on narrow viewports. Swap in real logos only with actual client permission.
+
+### "Currently" tags (locked 2026-08-06)
+Small pill tags near the top of the About section, not a full section:
+"Pursuit AI-Native cohort" and "Nonexclusive with FFT Models." Update
+these as circumstances change — they're meant to stay current, unlike
+the rest of the locked copy in this file.
+
+### FAQ copy (locked 2026-08-06)
+1. **How do you use AI in your process?**
+2. **Are you open to full-time roles, contract, or both?**
+3. **What does "shipping" mean for you day to day?**
+4. **Are you a designer or a developer?** (reinforces the Full-stack /
+   dev work stance above — both, evidence lives in case studies)
+
+Keep answers to 2-3 sentences each — scannable, not Clay's long-form
+paragraphs.
 
 ### Visual design direction (locked 2026-08-06)
 Reference: clay.global (UX/branding agency site) — the user explicitly wants
@@ -77,12 +102,12 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-08-06)
-- Work cards (Selected work) aren't clickable — no case-study detail view exists yet. Need a pattern that can hold both the creative/brand narrative and the technical/full-stack narrative per project (see "Full-stack / dev work" above).
-- Work cards need skill/service tag chips (e.g. "UX/UI · Branding · Development", clay.global-style) plus a brief one-line description under each — requested 2026-08-06, not yet built.
+- Work cards (Aligned, Kippo, 311 Insights, Ticket Triage — MVP) now have outcome copy, tags, and a "View case study" CTA, but no actual case-study detail view exists yet to link to. Kippo's CTA points to its Figma prototype and Ticket Triage's CTA points to the live Vercel app as interim real destinations; Aligned and 311 Insights show a muted "coming soon" state since they have no public destination yet. Need a pattern that can hold both the creative/brand narrative and the technical/full-stack narrative per project (see "Full-stack / dev work" above).
+- Kippo and 311 Insights work cards still show gray placeholder image boxes — no images wired in yet (Aligned has a real image; Ticket Triage still needs one too).
 - A real 24-slide Kippo case-study deck exists at `Kippo App Case Study PNG/` in the project root (untracked) — not yet wired into the site. This is the next concrete content piece to build the case-study pattern around.
-- Work cards Kippo, Anna Museo, and Campaign work still show gray placeholder boxes — no images yet.
 - Testimonial section quote is placeholder copy, not a real testimonial.
 - A set of 4 enhanced Kippo screens (Home, Category, Product Detail, Confirmation) exist as Claude Design exports at `~/Downloads/Kippo Mobile App Enhancement.zip` — real "after" visuals for the Kippo case study, not yet pulled into the project.
+- Trust strip uses text-only placeholder wordmarks, not real logos — needs real logo assets and confirmed client permission before launch.
 
 ## Case study evidence (for Development / Generative AI / UI-UX case studies)
 Concrete proof points to draw on when writing case studies — confirmed 2026-08-06:
