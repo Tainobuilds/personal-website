@@ -46,22 +46,42 @@ Order: Branding, Digital Products, Development, Generative AI, UI/UX Design.
 5. **UI/UX Design** — "Every screen is designed around how people actually think and move through a product — clear, intuitive, and built on research, not guesswork."
 
 ## Site structure
-One page, in this order:
+One page, in this order (updated 2026-08-06 — leads with capabilities
+before the personal story, inspired by clay.global):
 1. Hero (headline, subline, availability badge, scroll hint)
-2. About
-3. Projects (flagship project: **Aligned** — a recovery/movement app built with a licensed physical therapist)
-4. Contact
+2. Services ("what I offer" — tagline + accordion list)
+3. Selected work / Projects (flagship project: **Aligned** — a recovery/movement app built with a licensed physical therapist)
+4. Testimonial
+5. About
+6. Contact
 
 Nav labels: About, Projects, Contact — no mobile hamburger menu; nav is always visible.
 
 Simple HTML/CSS/JS. Mobile-friendly.
 
-## Known gaps (as of 2026-07-27)
+### Visual design direction (locked 2026-08-06)
+Reference: clay.global (UX/branding agency site) — the user explicitly wants
+this look and feel, not just its "Digital Products / Development /
+Generative AI" service naming.
+- **Palette**: warm-light, not stark white — keep the existing cream body
+  background (`#f2f1ed`). Black, bold headlines. No dark/black full-bleed
+  sections anymore (the Services section used to be `#111` — now light,
+  matching the rest of the page).
+- **Accent color**: muted clay/terracotta (`#b5652f`), replacing the old
+  bright orange-red (`#e2542b`). Used sparingly (e.g. service numbers),
+  not as a dominant color.
+- **Placeholders**: soft bordered neutral (`#ece6d8` bg, `#ddd4bf` border),
+  not a flat solid gray block.
+- **Services section**: text-only accordion (name + one-paragraph
+  description), no image box per service — matches clay.global's pattern.
+  Visual/case-study proof lives in the Selected work cards, not here.
+
+## Known gaps (as of 2026-08-06)
 - Work cards (Selected work) aren't clickable — no case-study detail view exists yet. Need a pattern that can hold both the creative/brand narrative and the technical/full-stack narrative per project (see "Full-stack / dev work" above).
+- Work cards need skill/service tag chips (e.g. "UX/UI · Branding · Development", clay.global-style) plus a brief one-line description under each — requested 2026-08-06, not yet built.
 - A real 24-slide Kippo case-study deck exists at `Kippo App Case Study PNG/` in the project root (untracked) — not yet wired into the site. This is the next concrete content piece to build the case-study pattern around.
 - Work cards Kippo, Anna Museo, and Campaign work still show gray placeholder boxes — no images yet.
 - Testimonial section quote is placeholder copy, not a real testimonial.
-- Services section copy is real for all 5 services now, but every service still shows a gray placeholder image — no real images wired in yet.
 - A set of 4 enhanced Kippo screens (Home, Category, Product Detail, Confirmation) exist as Claude Design exports at `~/Downloads/Kippo Mobile App Enhancement.zip` — real "after" visuals for the Kippo case study, not yet pulled into the project.
 
 ## Case study evidence (for Development / Generative AI / UI-UX case studies)
