@@ -193,6 +193,36 @@ a {
 
 .work-card h3 {
   font-size: 1.25rem;
+  margin-bottom: 0.4rem;
+}
+
+.work-outcome {
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
+}
+
+.work-tags {
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #a39d8c;
+  margin-bottom: 0.75rem;
+}
+
+.work-cta {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #b5652f;
+  text-decoration: underline;
+}
+
+.work-cta.is-disabled {
+  color: #b5ab93;
+  text-decoration: none;
+  cursor: default;
 }
 
 /* ---------- Testimonial ---------- */
