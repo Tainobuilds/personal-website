@@ -64,6 +64,29 @@ Simple HTML/CSS/JS. Mobile-friendly.
 - Services section copy is real for all 5 services now, but every service still shows a gray placeholder image — no real images wired in yet.
 - A set of 4 enhanced Kippo screens (Home, Category, Product Detail, Confirmation) exist as Claude Design exports at `~/Downloads/Kippo Mobile App Enhancement.zip` — real "after" visuals for the Kippo case study, not yet pulled into the project.
 
+## Case study evidence (for Development / Generative AI / UI-UX case studies)
+Concrete proof points to draw on when writing case studies — confirmed 2026-08-06:
+- **Kippo**: full Google-style UX process exists in the 24-slide deck — problem
+  statement, persona ("Sarah"), user research summary, pain points, paper
+  wireframes → digital wireframes → low-fi prototype → usability study (4
+  participants, round 1 + round 2 findings) → mockups with explicit
+  before/after reasoning (e.g. added Boys/Girls/Infants category icons after
+  users showed navigation hesitation). Figma prototype links are in the deck.
+  Also involved actual mobile app development (not just static comps) using
+  HTML/CSS/JS.
+- **Aligned**: also involved actual mobile app development using HTML/CSS/JS,
+  not just design comps — same "designed AND built" story as Kippo.
+- **`~/pursuit-311-insights`**: real open-source live data (NYC 311 Socrata
+  API), used to surface actual insights — concrete evidence for Development
+  and Generative AI (AI-assisted build process).
+- **`~/support-ticket-sorter`** ("Ticket Triage — MVP"): a real deployed
+  (Vercel) product — automatically categorizes support tickets, scores
+  urgency, flags SLA risk, enforces a "critical floor" priority rule modeled
+  on a real incident. Logic lives in `sorting.js`, kept separate from the UI
+  — good evidence of real engineering practice, not just a demo. Strong
+  Development/Generative AI case study candidate; not yet linked from the
+  portfolio site.
+
 ## Working style
 - Yadan is learning to code — explain changes in plain language, including *why*, not just *what*.
 - Make small, incremental changes. Never make giant multi-file changes in one step.
