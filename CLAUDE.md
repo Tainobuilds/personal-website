@@ -36,6 +36,15 @@ as a replacement for the primary identity.
 3. "Years of working as a commercial model — campaigns, runway, life in front of the camera — sharpened something most designers never develop: a lived understanding of aesthetics, culture, and how a brand actually feels to the people inside it. These aren't industries I study. They're industries I'm in."
 4. "Everything I build has one goal: products that genuinely improve how people move, feel, and show up. That's why my flagship project, Aligned, is a recovery and movement app built alongside a licensed physical therapist — clinical expertise, designed and shipped."
 
+### Services section copy (locked 2026-08-06)
+Order: Branding, Digital Products, Development, Generative AI, UI/UX Design.
+"Motion" was intentionally dropped — do not re-add it.
+1. **Branding** — "Strong branding sets you apart in a crowded market and turns first impressions into lasting loyalty."
+2. **Digital Products** — "I design and build digital products that feel as good as they look — combining thoughtful UX with the technical execution to actually ship them."
+3. **Development** — "Front-end to back-end, I build fast, reliable products that work great on every device. Performance and user experience matter just as much to me as the code underneath."
+4. **Generative AI** — "AI is part of how I build, not just how I sketch ideas — I use AI-native tools for engineering, data, prototyping, and shipping to move faster without cutting corners." (Deliberately broader than "prototyping only" — Yadan uses AI across engineering, data, and shipping too.)
+5. **UI/UX Design** — "Every screen is designed around how people actually think and move through a product — clear, intuitive, and built on research, not guesswork."
+
 ## Site structure
 One page, in this order:
 1. Hero (headline, subline, availability badge, scroll hint)
@@ -52,7 +61,8 @@ Simple HTML/CSS/JS. Mobile-friendly.
 - A real 24-slide Kippo case-study deck exists at `Kippo App Case Study PNG/` in the project root (untracked) — not yet wired into the site. This is the next concrete content piece to build the case-study pattern around.
 - Work cards Kippo, Anna Museo, and Campaign work still show gray placeholder boxes — no images yet.
 - Testimonial section quote is placeholder copy, not a real testimonial.
-- Services section: only "Branding" has real copy/image; Development, Motion, and UI/UX Design are still placeholders.
+- Services section copy is real for all 5 services now, but every service still shows a gray placeholder image — no real images wired in yet.
+- A set of 4 enhanced Kippo screens (Home, Category, Product Detail, Confirmation) exist as Claude Design exports at `~/Downloads/Kippo Mobile App Enhancement.zip` — real "after" visuals for the Kippo case study, not yet pulled into the project.
 
 ## Working style
 - Yadan is learning to code — explain changes in plain language, including *why*, not just *what*.
