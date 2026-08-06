@@ -345,6 +345,36 @@ a {
   display: block;
 }
 
+/* ---------- FAQ ---------- */
+.faq {
+  padding: 4rem 2rem;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.faq h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.faq-item dt {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.faq-item dd {
+  color: #444;
+  line-height: 1.5;
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   padding: 4rem 2rem;
