@@ -76,6 +76,29 @@ a {
   font-weight: 800;
 }
 
+.currently {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+}
+
+.currently-label {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a39d8c;
+}
+
+.currently-tag {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid #ddd4bf;
+  border-radius: 999px;
+  color: #444;
+}
+
 .intro-copy {
   font-style: italic;
   color: #444;
