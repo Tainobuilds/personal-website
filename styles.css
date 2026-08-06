@@ -155,6 +155,30 @@ a {
   color: #ccc;
 }
 
+/* ---------- Trust strip ---------- */
+.trust-strip {
+  padding: 2.5rem 2rem;
+  background: #f2f1ed;
+}
+
+.trust-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.75rem 2.75rem;
+}
+
+.trust-list li {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #a39d8c;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
 /* ---------- Work grid ---------- */
 .work {
   padding: 4rem 2rem;
