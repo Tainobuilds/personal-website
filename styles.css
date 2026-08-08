@@ -442,3 +442,63 @@ a {
     margin-top: 0.5rem;
   }
 }
+
+/* ---------- Case study pages ---------- */
+.cs-hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+}
+
+.cs-back {
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #a39d8c;
+}
+
+.cs-back a:hover {
+  color: #b5652f;
+}
+
+.cs-hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.cs-subline {
+  font-size: 1.15rem;
+  color: #444;
+  max-width: 560px;
+  margin-bottom: 2rem;
+}
+
+.cs-hero-video-wrap {
+  background: #efece6;
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.cs-hero-video {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  display: block;
+}
+
+.cs-body {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.cs-note {
+  font-style: italic;
+  color: #444;
+}
+
+.cs-note a {
+  color: #b5652f;
+  text-decoration: underline;
+}
