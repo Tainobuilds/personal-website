@@ -8,27 +8,34 @@ Personal portfolio site for Yadan Taino (Made by Taino), a Creative Director & P
 - A real business asset (not just a class exercise) — should be presentable to clients/employers.
 
 ## Positioning
+- **SUPERSEDED 2026-08-21:** the title changed from "Creative Director &
+  Product Designer" to **"AI-Native Product Designer & Frontend
+  Developer."** This reverses the 2026-07-27 "do not use Developer"
+  decision below — that reversal was confirmed explicitly by the user,
+  not an accident. Do not revert to "Creative Director" and do not use
+  the phrase "formerly Creative Director" anywhere.
+- **Title (locked 2026-08-21): "AI-Native Product Designer & Frontend Developer."**
+- **Hero bio (locked 2026-08-21):** "Product Designer & Frontend Engineer
+  building AI-native tools, frictionless workflows, and high-craft
+  digital experiences that people trust and love to use."
 - **Final niche wording (locked): "health & wellness, lifestyle, and tech."** Always use this exact phrase everywhere the niche is mentioned (hero, About, Selected work, meta/SEO tags). Do not revert to earlier variations like "fashion" or "wellness, lifestyle, and fashion."
-- "I design and ship digital products for health & wellness, lifestyle, and tech brands — from concept to live product."
 - Key differentiator line: "Industries I don't just design for — I live in them."
 - Selected Work intro line: "My focus is health & wellness, lifestyle, and tech — from fitness and recovery to skincare to the tools I build. Industries I don't just design for — I live in them."
-- Do NOT use the title "Developer." Use **Creative Director & Product Designer**. This is a deliberate decision (confirmed 2026-07-27), not an oversight — see "Full-stack / dev work" below before changing it.
 
-### Full-stack / dev work
-The primary title remains "Creative Director & Product Designer." Do not use
-"Developer" as a top-level title or rewrite the homepage positioning around
-development.
+### Full-stack / dev work (historical — see Positioning above for current title)
+Old stance (2026-07-27 to 2026-08-21): title stayed "Creative Director &
+Product Designer," and frontend/backend/AI-native work only showed up as
+evidence inside case studies, never as a title change. **This is no
+longer the rule** — the title itself now says "Frontend Developer." Kept
+here for history; don't apply the old constraint.
 
-Relevant case studies may demonstrate:
+Case studies should still demonstrate, concretely:
 - frontend and backend implementation
 - technical architecture
 - AI-assisted development
 - prototyping
 - technical constraints and tradeoffs
 - how design decisions were translated into working products
-
-These capabilities should appear as evidence inside project narratives, not
-as a replacement for the primary identity.
 
 ### About section copy
 1. "I'm Yadan Taino — a Creative Director and Product Designer based in New York City."
@@ -131,6 +138,16 @@ Concrete proof points to draw on when writing case studies — confirmed 2026-08
   — good evidence of real engineering practice, not just a demo. Strong
   Development/Generative AI case study candidate; not yet linked from the
   portfolio site.
+- **`~/tasklocal-provider-chatbot`** ("TaskLocal AI Matcher," added
+  2026-08-21, still in progress — confirmed real via repo inspection, not
+  from user description alone): Next.js 16 + Tailwind + React 19 app with
+  a `MatchingChatbot` (intent + synonym matching logic) and a
+  `ProviderDashboard` (SLA trust badges, booking ledger, quick-filters,
+  real-time event sync). Commit history shows a Thumbtack-style guided
+  intake flow. Companion repo `~/tasklocal-shared-data` holds JSON
+  fixtures (listings, bookings, providers, reports). Not deployed
+  anywhere public yet — confirm a live URL or screenshots before writing
+  the case study card.
 
 ## Working style
 - Yadan is learning to code — explain changes in plain language, including *why*, not just *what*.
