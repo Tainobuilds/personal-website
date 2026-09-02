@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #f5f0e8;
+  --color-sand: #ede8df;
+  --color-dark: #2c2a24;
+  --color-muted: #7a7468;
+  --color-border: #e8e3da;
+  --color-accent: #b5652f;
+  --font-sans: "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-dark);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
