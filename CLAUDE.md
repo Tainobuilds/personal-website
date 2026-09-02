@@ -8,16 +8,34 @@ Personal portfolio site for Yadan Taino (Made by Taino), a Creative Director & P
 - A real business asset (not just a class exercise) — should be presentable to clients/employers.
 
 ## Positioning
-- **SUPERSEDED 2026-08-21:** the title changed from "Creative Director &
-  Product Designer" to **"AI-Native Product Designer & Frontend
-  Developer."** This reverses the 2026-07-27 "do not use Developer"
-  decision below — that reversal was confirmed explicitly by the user,
-  not an accident. Do not revert to "Creative Director" and do not use
-  the phrase "formerly Creative Director" anywhere.
-- **Title (locked 2026-08-21): "AI-Native Product Designer & Frontend Developer."**
-- **Hero bio (locked 2026-08-21):** "Product Designer & Frontend Engineer
-  building AI-native tools, frictionless workflows, and high-craft
-  digital experiences that people trust and love to use."
+- **SUPERSEDED 2026-08-24:** title changed again, from "AI-Native
+  Product Designer & Frontend Developer" (2026-08-21) to **"Front-End
+  Developer & Product Designer."** Confirmed explicitly by the user as
+  part of a larger site-wide brief, not an accident. History: title
+  was "Creative Director & Product Designer" until 2026-07-27→2026-08-21
+  reversal to "Developer" wording, then this 2026-08-24 reorder/rename.
+  Don't revert to either earlier version.
+- **Title (locked 2026-08-24): "Front-End Developer & Product Designer."**
+- **Hero tagline (locked 2026-08-24):** "Bridging front-end engineering
+  and product design. I build clean design systems and leverage AI
+  tools to create frictionless workflows that solve everyday problems."
+- **AI positioning guardrail (locked 2026-08-24):** AI is framed
+  strictly as an assistive tool and workflow accelerator that enhances
+  human judgment — never as a replacement for core design/engineering
+  fundamentals, and never as the headline identity itself (contrast
+  with the superseded "AI-Native" framing above, which put AI in the
+  title). Apply this framing everywhere AI is mentioned (Services,
+  FAQ, case studies).
+- **About bio intro (locked 2026-08-24):** "I'm Yadan Taino — a
+  Front-End Developer and Product Designer based in New York City. I
+  bridge the gap between human-centered design and modern front-end
+  execution. From building robust design systems in Figma and React
+  to leveraging AI tools for workflow optimization, I focus on
+  crafting intuitive digital experiences that solve real human
+  problems." Replaces About paragraph 1 (and supersedes paragraph 2's
+  "Creative Director and Product Designer" phrasing wherever it
+  repeats the title) — the other About paragraphs (commercial-model
+  background, Aligned flagship line) are unaffected and still apply.
 - **Final niche wording (locked): "health & wellness, lifestyle, and tech."** Always use this exact phrase everywhere the niche is mentioned (hero, About, Selected work, meta/SEO tags). Do not revert to earlier variations like "fashion" or "wellness, lifestyle, and fashion."
 - Key differentiator line: "Industries I don't just design for — I live in them."
 - Selected Work intro line: "My focus is health & wellness, lifestyle, and tech — from fitness and recovery to skincare to the tools I build. Industries I don't just design for — I live in them."
@@ -25,20 +43,21 @@ Personal portfolio site for Yadan Taino (Made by Taino), a Creative Director & P
 ### Full-stack / dev work (historical — see Positioning above for current title)
 Old stance (2026-07-27 to 2026-08-21): title stayed "Creative Director &
 Product Designer," and frontend/backend/AI-native work only showed up as
-evidence inside case studies, never as a title change. **This is no
-longer the rule** — the title itself now says "Frontend Developer." Kept
-here for history; don't apply the old constraint.
+evidence inside case studies, never as a title change. Superseded
+2026-08-21 by putting "Developer" in the title, then refined 2026-08-24
+to the current "Front-End Developer & Product Designer" + AI-as-tool
+guardrail above. Kept here for history; don't apply the old constraint.
 
 Case studies should still demonstrate, concretely:
 - frontend and backend implementation
 - technical architecture
-- AI-assisted development
+- AI-assisted development (framed as assistive, per the guardrail above)
 - prototyping
 - technical constraints and tradeoffs
 - how design decisions were translated into working products
 
 ### About section copy
-1. "I'm Yadan Taino — a Creative Director and Product Designer based in New York City."
+1. **SUPERSEDED 2026-08-24** — see "About bio intro (locked 2026-08-24)" under Positioning above; use that instead of this line: "I'm Yadan Taino — a Creative Director and Product Designer based in New York City."
 2. "I design and ship digital products and brands for health & wellness, lifestyle, and tech — from first concept to live product. Founders and business owners come to me when they don't want a design file and a hand-off; they want the thing built, launched, and true to their brand."
 3. "Years of working as a commercial model — campaigns, runway, life in front of the camera — sharpened something most designers never develop: a lived understanding of aesthetics, culture, and how a brand actually feels to the people inside it. These aren't industries I study. They're industries I'm in."
 4. "Everything I build has one goal: products that genuinely improve how people move, feel, and show up. That's why my flagship project, Aligned, is a recovery and movement app built alongside a licensed physical therapist — clinical expertise, designed and shipped."
@@ -91,19 +110,26 @@ the rest of the locked copy in this file.
 Keep answers to 2-3 sentences each — scannable, not Clay's long-form
 paragraphs.
 
-### Visual design direction (locked 2026-08-06)
+### Visual design direction (locked 2026-08-06, palette refined 2026-08-24)
 Reference: clay.global (UX/branding agency site) — the user explicitly wants
 this look and feel, not just its "Digital Products / Development /
 Generative AI" service naming.
-- **Palette**: warm-light, not stark white — keep the existing cream body
-  background (`#f2f1ed`). Black, bold headlines. No dark/black full-bleed
-  sections anymore (the Services section used to be `#111` — now light,
-  matching the rest of the page).
-- **Accent color**: muted clay/terracotta (`#b5652f`), replacing the old
-  bright orange-red (`#e2542b`). Used sparingly (e.g. service numbers),
-  not as a dominant color.
-- **Placeholders**: soft bordered neutral (`#ece6d8` bg, `#ddd4bf` border),
-  not a flat solid gray block.
+- **Palette (refined 2026-08-24)**: warm neutral, named tokens —
+  Cream `#F5F0E8` (page background, replaces the earlier `#f2f1ed`),
+  Sand `#EDE8DF` (secondary surface), Dark `#2C2A24` (headline/body
+  text, replaces pure `#111111`), Muted `#7A7468` (secondary text,
+  replaces `#a39d8c`), Border `#E8E3DA` (replaces `#ddd4bf`). Still
+  warm-light, not stark white; still black-feeling but warmer than
+  pure black.
+- **Accent color**: muted clay/terracotta (`#b5652f`) — unchanged,
+  still used sparingly (service numbers, CTA links), not as a
+  dominant color.
+- **Typography (added 2026-08-24)**: editorial serif for case-study
+  headlines/titles, clean sans-serif for body copy — a pairing, not
+  the single system-sans stack used elsewhere on the site. Confirm
+  exact serif choice before implementing (not yet specified).
+- **Placeholders**: soft bordered neutral using the Sand/Border tokens
+  above, not a flat solid gray block.
 - **Services section**: text-only accordion (name + one-paragraph
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
