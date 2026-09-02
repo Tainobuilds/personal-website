@@ -8,6 +8,7 @@
   --color-border: #e8e3da;
   --color-accent: #b5652f;
   --font-sans: "Helvetica Neue", Arial, sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, serif;
 }
 
 body {
