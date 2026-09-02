@@ -72,20 +72,51 @@ Order: Branding, Digital Products, Development, Generative AI, UI/UX Design.
 5. **UI/UX Design** — "Every screen is designed around how people actually think and move through a product — clear, intuitive, and built on research, not guesswork."
 
 ## Site structure
-One page, in this order (updated 2026-08-06 — leads with capabilities
-before the personal story, inspired by clay.global):
+**Migrated to Next.js (App Router) + TypeScript + Tailwind CSS v4,
+2026-09-02.** No longer plain HTML/CSS/JS — see "Tech stack" in
+README.md. Homepage order unchanged from the pre-migration site
+(updated 2026-08-06 — leads with capabilities before the personal
+story, inspired by clay.global):
 1. Hero (headline, subline, availability badge, scroll hint)
 2. Trust strip (placeholder brand wordmarks)
 3. Services ("what I offer" — tagline + accordion list)
-4. Selected work / Projects (flagship project: **Aligned** — a recovery/movement app built with a licensed physical therapist)
+4. Selected work — now 3 pillars instead of a flat grid:
+   - **High-Craft Visual Design & Prototyping**: Kippo, Aligned
+   - **AI Workflows & Interactive Systems**: Spruce, Ticket Triage — MVP
+   - **Data-Driven MVPs & Product Engineering**: 311 Insights
 5. Testimonial
 6. About (with a lightweight "Currently" tag strip near the top)
 7. FAQ
 8. Contact
 
-Nav labels: About, Projects, Contact — no mobile hamburger menu; nav is always visible.
+Nav labels: About, Projects, Contact — desktop nav always visible;
+mobile (<768px) uses a hamburger that opens a full-screen drawer
+(`src/components/MobileDrawer.tsx`) — this replaced the earlier
+"no mobile hamburger menu" rule during the migration.
 
-Simple HTML/CSS/JS. Mobile-friendly.
+### Case-study pages (added 2026-09-02)
+Live at `/work/[slug]`, one reusable Bento Grid template
+(`src/components/CaseStudyBento.tsx`) driven by typed content files in
+`src/content/work/*.ts`. Structure: editorial header (tag pills, serif
+title, 4-column Role/Timeline/Tech Stack/Links metadata), then an
+asymmetrical 3-column grid — full-bleed hero media, 01/The Problem,
+02/Human Insight (dark accent card), 03/Technical Architecture *or*
+Design Process (code snippet for projects with real code to show;
+process steps for design-only projects — never a fabricated snippet),
+04/Design System Tokens (only rendered when a project has its own
+documented design system — Aligned and Spruce do, Kippo and Ticket
+Triage don't, so that card is simply omitted for them), and a 3-up Key
+Mechanics & Impact row. Every homepage `WorkCard` is a single clickable
+link straight to its case-study page (`hover:scale-[1.01]`) — no more
+disabled/muted cards or mixed external-link CTAs; external links
+(Figma prototype, live app) now live inside the case-study page itself
+via each project's `links` field.
+
+All 5 case studies (Kippo, Aligned, Spruce, Ticket Triage, 311
+Insights) ship with real content sourced from "Case study evidence"
+below — 311 Insights is the one still marked lighter/in-progress since
+its full write-up isn't built yet, same honest-placeholder principle
+used everywhere else on this site.
 
 ### Trust strip copy (locked 2026-08-06)
 Text-based placeholder wordmarks (not real logo assets — avoids
@@ -124,23 +155,29 @@ Generative AI" service naming.
 - **Accent color**: muted clay/terracotta (`#b5652f`) — unchanged,
   still used sparingly (service numbers, CTA links), not as a
   dominant color.
-- **Typography (added 2026-08-24)**: editorial serif for case-study
-  headlines/titles, clean sans-serif for body copy — a pairing, not
-  the single system-sans stack used elsewhere on the site. Confirm
-  exact serif choice before implementing (not yet specified).
+- **Typography (added 2026-08-24, serif chosen 2026-09-02)**: editorial
+  serif for case-study headlines/titles, clean sans-serif for body
+  copy — a pairing, not the single system-sans stack used elsewhere on
+  the site. Implemented as **Fraunces** (via `next/font/google`,
+  registered as the `font-serif` Tailwind token in `globals.css`) for
+  case-study `<h1>` titles — chosen because it's the real serif already
+  used in the Aligned case study's own product design system (paired
+  there with DM Sans), not an arbitrary pick. Body copy stays the
+  existing system-sans stack.
 - **Placeholders**: soft bordered neutral using the Sand/Border tokens
   above, not a flat solid gray block.
 - **Services section**: text-only accordion (name + one-paragraph
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-08-06)
-- Work cards (Aligned, Kippo, 311 Insights, Ticket Triage — MVP) now have outcome copy, tags, and a "View case study" CTA, but no actual case-study detail view exists yet to link to. Kippo's CTA points to its Figma prototype and Ticket Triage's CTA points to the live Vercel app as interim real destinations; Aligned and 311 Insights show a muted "coming soon" state since they have no public destination yet. Need a pattern that can hold both the creative/brand narrative and the technical/full-stack narrative per project (see "Full-stack / dev work" above).
-- Kippo and 311 Insights work cards still show gray placeholder image boxes — no images wired in yet (Aligned has a real image; Ticket Triage still needs one too).
-- A real 24-slide Kippo case-study deck exists at `Kippo App Case Study PNG/` in the project root (untracked) — not yet wired into the site. This is the next concrete content piece to build the case-study pattern around.
-- Testimonial section quote is placeholder copy, not a real testimonial.
-- A set of 4 enhanced Kippo screens (Home, Category, Product Detail, Confirmation) exist as Claude Design exports at `~/Downloads/Kippo Mobile App Enhancement.zip` — real "after" visuals for the Kippo case study, not yet pulled into the project.
+## Known gaps (as of 2026-09-02)
+- **Resolved by the 2026-09-02 migration**: every work card now links to a real `/work/[slug]` case-study page (Kippo, Aligned, Spruce, Ticket Triage all ship real content; 311 Insights is an honest lighter/in-progress stub). No more disabled cards or mixed external-link CTAs.
+- Kippo and Ticket Triage work cards still show a bordered placeholder box on the homepage grid (no `bannerImage` set in their content files yet) — Aligned has a real image; Kippo has a real image too via its case-study banner but the *homepage card* itself doesn't reuse it yet; Spruce and 311 Insights have no image at all. Worth wiring `bannerImage` into more of the content files.
+- 311 Insights' case-study page has real problem/mechanics content but no `architecture` or `designSystem` card yet, and no hero image — it's the one project still clearly reading as "in progress."
+- Testimonial section quote is still placeholder copy, not a real testimonial.
 - Trust strip uses text-only placeholder wordmarks, not real logos — needs real logo assets and confirmed client permission before launch.
+- Vercel build settings should be confirmed to pick up the Next.js framework automatically after this migration's push — not yet verified against the live deployment.
+- The `Kippo App Case Study PNG/` deck and the 4 enhanced Kippo screens zip (`~/Downloads/Kippo Mobile App Enhancement.zip`) have now been drawn from for the Kippo case-study content, but individual slide images themselves aren't embedded in the page — only the synthesized text/mechanics and the existing hero photo/video.
 
 ## Case study evidence (for Development / Generative AI / UI-UX case studies)
 Concrete proof points to draw on when writing case studies — confirmed 2026-08-06:
