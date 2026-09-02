@@ -1,4 +1,5 @@
 import { CredentialTimeline } from "./CredentialTimeline";
+import { IdentityToggle } from "./IdentityToggle";
 
 const CURRENTLY_TAGS = ["Pursuit AI-Native cohort", "Nonexclusive with FFT Models"];
 
@@ -51,6 +52,7 @@ export function About() {
         physical therapist—clinical expertise, designed and shipped.
       </p>
 
+      <IdentityToggle />
       <CredentialTimeline />
     </section>
   );
