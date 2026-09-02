@@ -193,16 +193,51 @@ Concrete proof points to draw on when writing case studies — confirmed 2026-08
   — good evidence of real engineering practice, not just a demo. Strong
   Development/Generative AI case study candidate; not yet linked from the
   portfolio site.
-- **`~/tasklocal-provider-chatbot`** ("TaskLocal AI Matcher," added
-  2026-08-21, still in progress — confirmed real via repo inspection, not
-  from user description alone): Next.js 16 + Tailwind + React 19 app with
-  a `MatchingChatbot` (intent + synonym matching logic) and a
-  `ProviderDashboard` (SLA trust badges, booking ledger, quick-filters,
-  real-time event sync). Commit history shows a Thumbtack-style guided
-  intake flow. Companion repo `~/tasklocal-shared-data` holds JSON
-  fixtures (listings, bookings, providers, reports). Not deployed
-  anywhere public yet — confirm a live URL or screenshots before writing
-  the case study card.
+- **`~/tasklocal-provider-chatbot`** — **real product name is "Spruce,"**
+  not "TaskLocal AI Matcher" (TaskLocal was just the repo/working name;
+  confirmed by the user 2026-08-25). Re-verified 2026-08-25 — the repo
+  has grown substantially since the 2026-08-21 check, now a genuine
+  two-sided home-services marketplace:
+  - **Design system**: documented in the repo's own `DESIGN.md` —
+    "Spruce Design System — Japandi-Bento." Warm-neutral palette with
+    one confident accent, bento-style modular rounded card containers.
+    Real tokens (`src/app/globals.css`): `--brand-primary` Deep Forest
+    Emerald `#0B2B22`, `--brand-accent` Warm Amber `#D97706`,
+    `--brand-background` Warm Linen/Cream `#FAF8F5`, plus sage/soft/
+    slate/ink-muted/line/amber-tint supporting tokens. Brand mark is
+    "Bough" (`src/components/SpruceLogo.tsx`) — two open chevrons under
+    an amber crown. This is the app's OWN design system, separate from
+    the portfolio site's palette — don't conflate the two.
+  - **Stripe payment integration is real**: `stripe`,
+    `@stripe/stripe-js`, `@stripe/react-stripe-js` are actual
+    dependencies; real files `src/lib/stripe.ts`,
+    `src/app/api/stripe/payment-intent/route.ts`,
+    `src/components/customer/PaymentStep.tsx`,
+    `src/components/customer/BookingFlow.tsx`.
+  - **AI matching is real and responsibly architected**: the natural-
+    language chat (`/chat`, `src/lib/chat/`) uses the real
+    `@anthropic-ai/sdk` (model `claude-sonnet-4-6`) in `intent.ts` to
+    turn a user's message into structured search terms — deliberately
+    with NO access to the listings dataset, so the model literally
+    cannot invent a match. `match.ts` then runs deterministic scoring
+    against real listings using only those extracted terms. This
+    intent/match separation is a genuine, documented architectural
+    safeguard against AI hallucination — strong, concrete evidence for
+    the "AI as assistive tool, human/deterministic logic stays in
+    control" positioning guardrail (see Positioning above).
+  - **Supabase backend** (`@supabase/supabase-js`) — real persistence,
+    not just static JSON fixtures (though `~/tasklocal-shared-data`
+    still holds companion JSON fixtures for listings/bookings/
+    providers/reports).
+  - **Real surface area**: customer browse/listings/reviews/bookings,
+    a provider dashboard, an internal trust-safety page, login, and
+    the AI matching chat — not a single-screen demo.
+  - **Deployment**: live at
+    `tasklocal-workspace-w6rbjox8h-yadan-taino.vercel.app`, but that
+    URL is behind Vercel's SSO/deployment-protection gate — Claude
+    could not fetch it to verify visually; confirm with the user
+    directly or get a public URL/screenshots before treating the live
+    site (as opposed to the code) as verified.
 
 ## Working style
 - Yadan is learning to code — explain changes in plain language, including *why*, not just *what*.
