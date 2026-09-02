@@ -152,8 +152,37 @@ Concrete proof points to draw on when writing case studies — confirmed 2026-08
   users showed navigation hesitation). Figma prototype links are in the deck.
   Also involved actual mobile app development (not just static comps) using
   HTML/CSS/JS.
-- **Aligned**: also involved actual mobile app development using HTML/CSS/JS,
-  not just design comps — same "designed AND built" story as Kippo.
+- **Aligned** (verified 2026-08-25 via the real deck at
+  `~/Desktop/Website Assets/Aligned — A Case Study by Yadan Taino.pdf`,
+  15 pages, built in Claude Design): a genuine, detailed design case
+  study — NOT a claim of a shipped React/Framer Motion app; the deck's
+  own final page labels it "Case study format · Product design
+  portfolio," a passion project. Persona is **Alex Rivera** (marketing
+  manager, 34, NYC — chronic lower-back/hip pain from 8-10hr desk
+  days), not "Sarah" (that's Kippo's persona — don't mix them up).
+  Collaborator: **Juny**, a licensed physical therapist. Platform: iOS
+  companion app. Real named mechanics (use these exact names, not
+  invented ones):
+  - **"The Forgiving Streak"** — a 30-day streak that survives one
+    missed day (the flame dims to a soft amber "rest day" instead of
+    resetting; returning the next day fully restores it).
+  - **"A Body That Cools"** — a tappable body-map visualization on the
+    home screen; pain areas glow saturated orange on day 1 and
+    desaturate toward green as the user stays consistent (shown at
+    Day 1 / Day 14 / Day 30).
+  Three design principles: "Soft, not strict," "15 minutes, no
+  negotiation," "Show it working." Product's own design system (for
+  the case study's mockups, NOT the portfolio site's palette): Primary
+  `#FF6B35`, Accent `#F9A826`, Success `#22C55E`, Ink `#1A1814`, Page
+  `#FAF7F1`; typography pairing Fraunces (display/editorial) + DM Sans
+  (UI/body) — this is a real precedent for the "confirm exact serif"
+  open item in Visual design direction above, if an editorial serif is
+  wanted for the portfolio's own case-study template. A full tap-through
+  prototype exists (onboarding → body-tension check-in → personalize →
+  home → session flow → exercise detail → session complete) — real
+  screens to reference for the case-study "Interactive UI Showcase."
+  This deck is a strong candidate to export screens/copy from directly,
+  same pattern as the Kippo PNG deck.
 - **`~/pursuit-311-insights`**: real open-source live data (NYC 311 Socrata
   API), used to surface actual insights — concrete evidence for Development
   and Generative AI (AI-assisted build process).
