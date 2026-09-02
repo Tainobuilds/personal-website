@@ -190,9 +190,16 @@ Concrete proof points to draw on when writing case studies — confirmed 2026-08
   (Vercel) product — automatically categorizes support tickets, scores
   urgency, flags SLA risk, enforces a "critical floor" priority rule modeled
   on a real incident. Logic lives in `sorting.js`, kept separate from the UI
-  — good evidence of real engineering practice, not just a demo. Strong
-  Development/Generative AI case study candidate; not yet linked from the
-  portfolio site.
+  — good evidence of real engineering practice, not just a demo. Live URL
+  confirmed 2026-08-25: `https://support-ticket-sorter.vercel.app/`, title
+  "Ticket Triage — MVP," matches the code exactly. The page itself makes no
+  AI/OpenAI claims — it's honestly rule-based automation, not an LLM
+  integration. Represent it as what it is (real, solid rule-based
+  engineering — categorization, urgency scoring, SLA-risk flagging, a
+  "critical floor" rule modeled on a real incident) rather than the
+  OpenAI-copilot framing from the 2026-08-24 brief, which doesn't match
+  this codebase. Strong Development case study candidate; not yet linked
+  from the portfolio site.
 - **`~/tasklocal-provider-chatbot`** — **real product name is "Spruce,"**
   not "TaskLocal AI Matcher" (TaskLocal was just the repo/working name;
   confirmed by the user 2026-08-25). Re-verified 2026-08-25 — the repo
