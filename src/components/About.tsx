@@ -1,3 +1,5 @@
+import { CredentialTimeline } from "./CredentialTimeline";
+
 const CURRENTLY_TAGS = ["Pursuit AI-Native cohort", "Nonexclusive with FFT Models"];
 
 export function About() {
@@ -48,6 +50,8 @@ export function About() {
         Aligned, is a recovery and movement app built alongside a licensed
         physical therapist—clinical expertise, designed and shipped.
       </p>
+
+      <CredentialTimeline />
     </section>
   );
 }
