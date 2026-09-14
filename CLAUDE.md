@@ -170,7 +170,12 @@ Generative AI" service naming.
   pure black.
 - **Accent color**: muted clay/terracotta (`#b5652f`) — unchanged,
   still used sparingly (service numbers, CTA links), not as a
-  dominant color.
+  dominant color. **Reaffirmed 2026-09-14**: a Clay.global-style
+  refactor brief asked for "orange accent numbering" on the Services
+  list; deliberately kept the existing locked terracotta instead of
+  switching to a brighter orange, since the brief's two explicit
+  clarifying questions were about the hero treatment and the project
+  roster, not this color. Revisit only if the user asks directly.
 - **Typography (added 2026-08-24, serif chosen 2026-09-02)**: editorial
   serif for case-study headlines/titles, clean sans-serif for body
   copy — a pairing, not the single system-sans stack used elsewhere on
@@ -186,7 +191,22 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-02)
+## Known gaps (as of 2026-09-14)
+- **Resolved (Clay.global-style refactor, 2026-09-14)**: Hero is now
+  the full light-bg/dark-text redesign (not just a lightened photo
+  overlay) — portrait photo dropped from the hero, replaced with a
+  black "Available for select projects" pill and a massive bold
+  headline; Header gained a black "Contact" pill CTA; three Services
+  entries renamed (Front-End Development, Generative AI & Workflows,
+  UI/UX & Design Systems — body copy unchanged); WorkCard now uses
+  `rounded-2xl` bordered images and monospace tag pills; Trends
+  (verified against `~/trends-label-studio`) replaced 311 Insights in
+  Pillar 3 — `insights-311.ts` stays on disk, just removed from
+  `workIndex.ts`, restore it if asked. Two brief inaccuracies were
+  caught and corrected during this work: the live menu source is
+  **Sweed**, not "Carrot," and the claimed "80% faster intake" has no
+  support anywhere in the Trends repo, so it was excluded rather than
+  published unverified.
 - **Resolved by the 2026-09-02 migration**: every work card now links to a real `/work/[slug]` case-study page (Kippo, Aligned, Spruce, Ticket Triage all ship real content; 311 Insights is an honest lighter/in-progress stub). No more disabled cards or mixed external-link CTAs.
 - **Resolved (feature brief, 2026-09-02)**: About page now has an Overview + Skills credential timeline (`CredentialTimeline.tsx`) and a Designer/Builder/Fashion identity toggle (`IdentityToggle.tsx`), per `madebytainofeaturebrief.md`. Designer tab reuses existing Aligned/Kippo images (no dedicated designer photos yet — explicit user call, not a placeholder). Real photo assets live in `public/images/identity/`. **Not yet built from that brief**: item 3 (per-project `<InteractiveMockup>` hover component) — still waiting on a screen recording; brief suggests prototyping on Ticket Triage first since it has a live demo. Item 4 (chatbot) is explicitly parked for later.
 - **Known bug worth remembering**: `AnimatePresence` (from the `motion` package) never completed its exit animation in this dev environment — confirmed across a server restart, `.next` cache clear, and fresh tabs, so it wasn't stale HMR state. If a future feature needs an exit-then-enter crossfade, don't assume `AnimatePresence` "just works" here without testing the unmount actually happens; `IdentityToggle` was rewritten to a plain fade-in (no exit tracking) to route around it.
