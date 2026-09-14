@@ -83,7 +83,13 @@ story, inspired by clay.global):
 4. Selected work — now 3 pillars instead of a flat grid:
    - **High-Craft Visual Design & Prototyping**: Kippo, Aligned
    - **AI Workflows & Interactive Systems**: Spruce, Ticket Triage — MVP
-   - **Data-Driven MVPs & Product Engineering**: 311 Insights
+   - **Data-Driven MVPs & Product Engineering**: Trends (label-printing
+     workflow tool) — **replaced 311 Insights here 2026-09-14**, per
+     explicit user decision. 311 Insights' content file
+     (`src/content/work/insights-311.ts`) is NOT deleted, just removed
+     from `workIndex.ts` — it's real, verified work, just not on the
+     current homepage roster. Restore it (add back to `workIndex.ts`)
+     if asked, rather than rewriting it from scratch.
 5. Testimonial
 6. About (with a lightweight "Currently" tag strip near the top)
 7. FAQ
@@ -141,10 +147,20 @@ the rest of the locked copy in this file.
 Keep answers to 2-3 sentences each — scannable, not Clay's long-form
 paragraphs.
 
-### Visual design direction (locked 2026-08-06, palette refined 2026-08-24)
+### Visual design direction (locked 2026-08-06, palette refined 2026-08-24, hero redesigned 2026-09-14)
 Reference: clay.global (UX/branding agency site) — the user explicitly wants
 this look and feel, not just its "Digital Products / Development /
 Generative AI" service naming.
+- **Hero (SUPERSEDED 2026-09-14):** the portrait-photo hero (full-bleed
+  night photo + dark gradient overlay + white text) is retired. Explicit
+  user decision, not an inference: "Full Clay-style redesign: drop the
+  photo, light bg + dark text." New hero is bright/light (Cream
+  background), dark (`#2C2A24`/`#111111`) massive bold headline, a
+  black pill "Available for select projects" badge, matching
+  clay.global's own hero treatment. The portrait photo itself
+  (`public/images/hero-portrait.jpg`) is NOT deleted — still referenced
+  elsewhere (About/identity toggle context) — just no longer the hero
+  background.
 - **Palette (refined 2026-08-24)**: warm neutral, named tokens —
   Cream `#F5F0E8` (page background, replaces the earlier `#f2f1ed`),
   Sand `#EDE8DF` (secondary surface), Dark `#2C2A24` (headline/body
@@ -183,6 +199,35 @@ Generative AI" service naming.
 
 ## Case study evidence (for Development / Generative AI / UI-UX case studies)
 Concrete proof points to draw on when writing case studies — confirmed 2026-08-06:
+- **Trends** (verified 2026-09-14 via `~/trends-label-studio`'s actual
+  source/README, not the user's brief alone — the brief had 2 factual
+  errors, corrected below): an internal label-printing web app for
+  Yadan's day job at Trends LIC (Long Island City dispensary). Real
+  product name on the site should be **"Trends"** (or "Trends Label
+  Studio"), not the repo's internal working name. Two real flows:
+  - **Front Stock**: searches the **live Sweed menu** (SweedPos, the
+    dispensary's actual POS) for brand/product name/category/THC%
+    (`potencyThc`)/price, then prints a shelf tag. **Correction**: the
+    user's brief didn't name a source; it is NOT "Carrot" (an earlier,
+    stale memory note said Sweed was deliberately unintegrated — the
+    project clearly moved past that since).
+  - **Back Stock**: 4 label types (Single 4×2, 2-Product 4×2, Big 4×6,
+    Bin 4×2). Entries come from menu search, a phone-camera photo, or
+    by hand. The phone flow (`/back` shows a QR → `/m/[pairId]` opens a
+    live camera viewfinder) tries a client-side QR decode of the
+    sticker first (`jsqr`, free, exact) and only falls back to AI
+    vision (`google/gemini-2.5-flash` via the Vercel `ai` SDK) if that
+    fails — a real cost/accuracy-conscious architecture decision, good
+    "AI as assistive layer" evidence. A "Lock Batch" toggle keeps
+    Lot #/Exp/Metrc Tag filled in across entries from the same
+    shipment. Prints via Zebra Browser Print to a physical Zebra
+    label printer.
+  - **Correction**: the brief's "cutting intake processing times by
+    80%" is **not substantiated anywhere** in the repo's README or
+    docs — don't use this figure. No verified time-savings metric
+    exists; if one gets measured later, add it then.
+  - Real test suite (Vitest, `tests/`), real Next.js 16 + React 19 +
+    TypeScript + Tailwind v4 stack, deployed on Vercel.
 - **Kippo**: full Google-style UX process exists in the 24-slide deck — problem
   statement, persona ("Sarah"), user research summary, pain points, paper
   wireframes → digital wireframes → low-fi prototype → usability study (4
