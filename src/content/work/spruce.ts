@@ -50,7 +50,8 @@ export function matchListings(intent: Intent, listings: Listing[]) {
       { name: "Soft", hex: "#F4F1EA" },
       { name: "Line", hex: "#E7E5E4" },
     ],
-    typography: "Warm-neutral palette, one confident accent, modular bento card containers",
+    typography:
+      "Warm-neutral palette, one confident accent, modular bento card containers — applied consistently across every surface: customer browse, provider dashboard, booking modal, payment flow, and the internal admin tool.",
   },
   mechanics: [
     {
@@ -60,16 +61,34 @@ export function matchListings(intent: Intent, listings: Listing[]) {
         "Claude extracts structured search terms from natural language; a separate deterministic module scores real listings. The model never sees the dataset it could invent a match from.",
     },
     {
-      label: "Real payments",
+      label: "Real payments, real bug fixes",
       value: "Stripe",
       description:
-        "Live payment-intent flow (src/lib/stripe.ts, api/stripe/payment-intent) powers the customer booking checkout.",
+        "Live payment-intent flow. Fixed a real UX bug where the Pay button was clickable before card details were actually valid, and built graceful fallback states (e.g. dev/demo environments preview the flow without a live Stripe config) so nothing hits a dead end.",
     },
     {
       label: "Two-sided surfaces",
       value: "Customer + Provider",
       description:
         "Browse/listings/reviews/bookings for customers, a provider dashboard, and an internal trust-and-safety page — not a single-screen demo.",
+    },
+    {
+      label: "Scheduling logic rework",
+      value: "4 weeks → 60 days",
+      description:
+        "Extended the booking calendar's availability window — a real scheduling-logic change, not just a UI tweak.",
+    },
+    {
+      label: "Theme system, applied with judgment",
+      value: "Light + Dark",
+      description:
+        "Retrofitted a light/dark theme across pages that were originally hardcoded dark-only — including the internal Trust & Safety dashboard — while deliberately leaving its red/orange/amber severity color-coding untouched, since that's a reserved status palette, not a branding choice.",
+    },
+    {
+      label: "AI chat redesign",
+      value: "Panel → Drawer",
+      description:
+        "Rebuilt the matching chat from a blocking floating panel into a slide-over drawer with quick-prompt suggestion pills and rich in-chat provider match cards (avatar, rating, rate, one-tap book) — shortening the path from \"describe the problem\" to \"book.\"",
     },
   ],
   outcomeSummary:

@@ -29,8 +29,8 @@ export type WorkContent = {
   architecture?: ArchitectureBlock;
   /** 04 / Design System Tokens — omitted when the project has no documented product design system */
   designSystem?: { name: string; tokens: DesignToken[]; typography?: string };
-  /** Key Mechanics & Impact, 3-up */
-  mechanics: [Mechanic, Mechanic, Mechanic];
+  /** Key Mechanics & Impact, 3-up grid (wraps to additional rows past 3) */
+  mechanics: Mechanic[];
   /** Homepage WorkCard outcome sentence */
   outcomeSummary: string;
 };

@@ -278,12 +278,39 @@ Concrete proof points to draw on when writing case studies — confirmed 2026-08
   - **Real surface area**: customer browse/listings/reviews/bookings,
     a provider dashboard, an internal trust-safety page, login, and
     the AI matching chat — not a single-screen demo.
-  - **Deployment**: live at
-    `tasklocal-workspace-w6rbjox8h-yadan-taino.vercel.app`, but that
-    URL is behind Vercel's SSO/deployment-protection gate — Claude
-    could not fetch it to verify visually; confirm with the user
-    directly or get a public URL/screenshots before treating the live
-    site (as opposed to the code) as verified.
+  - **Deployment**: live at `tasklocal-workspace.vercel.app` (the user's
+    2026-09-14 briefing gives this as the clean production URL; an
+    earlier check found a longer preview-deployment URL
+    `tasklocal-workspace-w6rbjox8h-yadan-taino.vercel.app` — both are
+    SSO/deployment-protection gated, so this doesn't change the
+    "Private / not yet public" `links` handling on the case-study page).
+  - **Product/UX work, confirmed by the user 2026-09-14** (already
+    folded into `src/content/work/spruce.ts`'s `mechanics`, this is
+    the backing detail): the design-token system is applied
+    consistently across every surface (customer browse, provider
+    dashboard, booking modal, payment flow, internal admin tool); the
+    booking calendar's availability window was extended from 4 weeks
+    to 60 days (a real scheduling-logic rework); a light/dark theme
+    system was retrofitted across pages that were originally
+    hardcoded dark-only, including the internal Trust & Safety
+    moderation dashboard — while *deliberately leaving that tool's
+    red/orange/amber severity color-coding untouched*, since it's a
+    reserved status palette, not a branding choice (good example of
+    design judgment, not just consistency for its own sake); the AI
+    matching chat was redesigned from a blocking floating panel into
+    a slide-over drawer with quick-prompt suggestion pills and rich
+    in-chat provider match cards (avatar, rating, rate, one-tap book);
+    a real UX bug was fixed where the Stripe "Pay" button was
+    clickable before card details were valid; graceful fallback
+    states exist throughout (e.g. "Stripe not configured — continue
+    without paying to preview the flow") so demo/dev environments
+    never hit a dead end.
+  - **Operational heads-up, NOT site copy** — as of the user's
+    2026-09-14 briefing, the Supabase database backing this app had
+    gone to sleep (free-tier auto-pause after inactivity) and was
+    mid-restore. Do a live check before pointing anyone at a "click
+    around this" demo link; this is a live-service caveat, not
+    something to put on the case-study page itself.
 
 ## Working style
 - Yadan is learning to code — explain changes in plain language, including *why*, not just *what*.
