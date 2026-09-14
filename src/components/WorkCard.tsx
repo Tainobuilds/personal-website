@@ -10,13 +10,13 @@ export function WorkCard({ work }: { work: WorkContent }) {
     >
       <article>
         {work.bannerImage ? (
-          <div className="relative mb-3 aspect-[4/5] w-full overflow-hidden rounded-lg bg-sand">
+          <div className="relative mb-3 aspect-[4/5] w-full overflow-hidden rounded-2xl border border-border bg-sand">
             <Image src={work.bannerImage} alt={work.title} fill className="object-cover" />
           </div>
         ) : (
           <div
             aria-hidden
-            className="mb-3 flex aspect-[4/5] w-full items-center justify-center rounded-lg border border-border bg-sand text-sm uppercase tracking-wide text-muted"
+            className="mb-3 flex aspect-[4/5] w-full items-center justify-center rounded-2xl border border-border bg-sand text-sm uppercase tracking-wide text-muted"
           >
             IMAGE: {work.title}
           </div>
@@ -27,7 +27,7 @@ export function WorkCard({ work }: { work: WorkContent }) {
           {work.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-border bg-sand px-2.5 py-1 text-xs uppercase tracking-wide text-muted"
+              className="rounded-full border border-border bg-sand px-2.5 py-1 font-mono text-xs uppercase tracking-wide text-muted"
             >
               {tag}
             </span>

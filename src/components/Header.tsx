@@ -11,12 +11,18 @@ export function Header() {
           <sup className="text-xs align-super">™</sup>
         </Link>
       </div>
-      <nav className="hidden gap-10 text-lg md:flex">
-        {NAV_LINKS.map((link) => (
+      <nav className="hidden items-center gap-10 text-lg md:flex">
+        {NAV_LINKS.filter((link) => link.label !== "Contact").map((link) => (
           <Link key={link.href} href={link.href}>
             {link.label}
           </Link>
         ))}
+        <Link
+          href="/#contact"
+          className="rounded-full bg-dark px-5 py-2.5 text-sm font-semibold text-cream transition-colors hover:bg-black"
+        >
+          Contact
+        </Link>
       </nav>
       <MobileDrawer />
     </header>

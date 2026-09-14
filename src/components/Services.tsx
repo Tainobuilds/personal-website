@@ -12,15 +12,15 @@ const SERVICES = [
     body: "I design and build digital products that feel as good as they look—combining thoughtful UX with the technical execution to actually ship them.",
   },
   {
-    name: "Development",
+    name: "Front-End Development",
     body: "Front-end to back-end, I build fast, reliable products that work great on every device. Performance and user experience matter just as much to me as the code underneath.",
   },
   {
-    name: "Generative AI",
+    name: "Generative AI & Workflows",
     body: "AI is part of how I build, not just how I sketch ideas—I use AI-native tools for engineering, data, prototyping, and shipping to move faster without cutting corners.",
   },
   {
-    name: "UI/UX Design",
+    name: "UI/UX & Design Systems",
     body: "Every screen is designed around how people actually think and move through a product—clear, intuitive, and built on research, not guesswork.",
   },
 ];

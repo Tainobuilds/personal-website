@@ -14,7 +14,7 @@ export default function Home() {
       <TrustStrip />
       <Services />
       <section id="projects" className="px-8 py-16">
-        <h2 className="mb-2 text-4xl font-extrabold">Selected work</h2>
+        <h2 className="mb-2 text-4xl font-extrabold md:text-5xl">Selected work</h2>
         <p className="mb-12 max-w-[640px] italic text-dark/80">
           My focus is health &amp; wellness, lifestyle, and tech—from
           fitness and recovery to skincare to the tools I build. Industries I
