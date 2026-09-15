@@ -6,13 +6,13 @@ export const trends: WorkContent = {
   status: "full",
   title: "Trends",
   tagline:
-    "An internal label-printing workflow for a dispensary — live menu data in, a printed Zebra label out, no hand-typing.",
+    "Automated Dispensary Label & Product Engine — live menu data in, a state-compliant Zebra label out, no hand-typing.",
   tags: ["Retail Automation", "Real-Time Data", "Workflow UX"],
   role: "Product Designer & Developer",
   timeline: "2026",
   techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel AI SDK", "Redis"],
   problem:
-    "Back-of-house staff at a Long Island City dispensary were hand-typing every label into ZebraDesigner Essentials — slow, error-prone, and disconnected from the live menu and compliance data (Lot #, expiration, Metrc tag) staff were already holding in their hands.",
+    "Back-of-house staff at a Long Island City dispensary sat at an old backroom laptop hand-typing every label into ZebraDesigner Essentials — product name, strain, tier pricing, THC% — item by item, disconnected from the live menu and compliance data (Lot #, expiration, Metrc tag) they were already holding in their hands. A single intake batch took roughly 10-12 minutes, with real risk of a mistyped price or potency number.",
   insight: {
     text: "A phone in the back room already has a camera — but AI vision costs money and isn't instant. The right first move is a plain client-side QR decode; AI vision only runs when that fails.",
     attribution: "Architecture decision — cost/accuracy-conscious, not AI-first by default",
@@ -35,6 +35,27 @@ if (qrText && looksLikeStickerData(qrText)) {
   });
   await sendToLaptop({ ...result.json(), source: "vision" });
 }`,
+  },
+  beforeAfter: {
+    metricBadge: "~10-12 min → <60 sec per batch",
+    before: {
+      heading: "Legacy Workflow — Backroom Laptop",
+      points: [
+        "Hand-typed into ZebraDesigner Essentials, field by field",
+        "No connection to the live menu — prices and potency copied off a printed sheet",
+        "~10-12 minutes per intake batch",
+        "A mistyped price or THC% ships straight to the shelf",
+      ],
+    },
+    after: {
+      heading: "Trends — Automated Label Engine",
+      points: [
+        "Pulls live product, pricing, and potency data from the Sweed POS API",
+        "QR-first phone capture for back-stock, AI vision only as a fallback",
+        "Under 60 seconds per batch",
+        "Data comes from the source system, not a re-typed copy",
+      ],
+    },
   },
   mechanics: [
     {

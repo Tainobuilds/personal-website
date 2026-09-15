@@ -53,6 +53,12 @@ export function matchListings(intent: Intent, listings: Listing[]) {
     typography:
       "Warm-neutral palette, one confident accent, modular bento card containers — applied consistently across every surface: customer browse, provider dashboard, booking modal, payment flow, and the internal admin tool.",
   },
+  videoEmbed: {
+    url: "https://www.loom.com/embed/60250457bd5342b282367b40aa1177a0",
+    heading: "Interactive Product Walkthrough",
+    subtext:
+      "A 3-minute video breakdown walking through the two-sided marketplace, AI natural-language intent parser, and live Stripe payment flow.",
+  },
   mechanics: [
     {
       label: "Zero-hallucination matching",

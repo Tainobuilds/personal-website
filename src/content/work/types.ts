@@ -21,6 +21,14 @@ export type WorkContent = {
   links?: { label: string; href: string }[];
   bannerImage?: string;
   bannerVideo?: string;
+  /** Before/After operational comparison — omit image to render the standard honest placeholder */
+  beforeAfter?: {
+    metricBadge: string;
+    before: { heading: string; image?: string; points: string[] };
+    after: { heading: string; image?: string; points: string[] };
+  };
+  /** Embedded video walkthrough (e.g. Loom) */
+  videoEmbed?: { url: string; heading: string; subtext: string };
   /** 01 / The Problem */
   problem: string;
   /** 02 / Human Insight */

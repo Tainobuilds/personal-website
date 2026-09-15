@@ -147,20 +147,30 @@ the rest of the locked copy in this file.
 Keep answers to 2-3 sentences each — scannable, not Clay's long-form
 paragraphs.
 
-### Visual design direction (locked 2026-08-06, palette refined 2026-08-24, hero redesigned 2026-09-14)
+### Visual design direction (locked 2026-08-06, palette refined 2026-08-24, hero redesigned twice — 2026-09-14 and 2026-09-15)
 Reference: clay.global (UX/branding agency site) — the user explicitly wants
 this look and feel, not just its "Digital Products / Development /
 Generative AI" service naming.
+- **Hero (SUPERSEDED AGAIN 2026-09-15):** the 2026-09-14 light-bg
+  text-only hero is itself now superseded by an asymmetrical split
+  layout — left column: availability pill, headline, bio, black
+  "Contact" pill CTA; right column: the personal portrait photo
+  (`rounded-2xl`, `aspect-[4/5]`). Explicit user decision: present as
+  a solo Design Engineer / Product Developer, photo back in the hero.
+  **Correction**: the brief asked for a new file
+  `public/images/yadan-hero.jpg`, which does not exist on disk — used
+  the real, existing `public/images/hero-portrait.jpg` instead (same
+  photo already used in meta tags/identity toggle). Swap the `src` in
+  `Hero.tsx` if a different/updated photo is dropped in at that path
+  later.
 - **Hero (SUPERSEDED 2026-09-14):** the portrait-photo hero (full-bleed
   night photo + dark gradient overlay + white text) is retired. Explicit
   user decision, not an inference: "Full Clay-style redesign: drop the
   photo, light bg + dark text." New hero is bright/light (Cream
   background), dark (`#2C2A24`/`#111111`) massive bold headline, a
   black pill "Available for select projects" badge, matching
-  clay.global's own hero treatment. The portrait photo itself
-  (`public/images/hero-portrait.jpg`) is NOT deleted — still referenced
-  elsewhere (About/identity toggle context) — just no longer the hero
-  background.
+  clay.global's own hero treatment. Superseded again the next day, see
+  above.
 - **Palette (refined 2026-08-24)**: warm neutral, named tokens —
   Cream `#F5F0E8` (page background, replaces the earlier `#f2f1ed`),
   Sand `#EDE8DF` (secondary surface), Dark `#2C2A24` (headline/body
@@ -168,14 +178,17 @@ Generative AI" service naming.
   replaces `#a39d8c`), Border `#E8E3DA` (replaces `#ddd4bf`). Still
   warm-light, not stark white; still black-feeling but warmer than
   pure black.
-- **Accent color**: muted clay/terracotta (`#b5652f`) — unchanged,
-  still used sparingly (service numbers, CTA links), not as a
-  dominant color. **Reaffirmed 2026-09-14**: a Clay.global-style
-  refactor brief asked for "orange accent numbering" on the Services
-  list; deliberately kept the existing locked terracotta instead of
-  switching to a brighter orange, since the brief's two explicit
-  clarifying questions were about the hero treatment and the project
-  roster, not this color. Revisit only if the user asks directly.
+- **Accent color (CHANGED 2026-09-15): vibrant orange `#FF5C00`.**
+  Replaces the muted clay/terracotta `#b5652f` that had been locked
+  since 2026-08-06 and explicitly reaffirmed on 2026-09-14. This time
+  the user's brief was unambiguous and gave two options (`#FF5C00` or
+  `#D97706`) — picked `#FF5C00` since `#D97706` is already Spruce's
+  own case-study brand-accent color (see Case study evidence below)
+  and reusing it as the site-wide accent would blur that project's own
+  palette into the portfolio chrome. Single CSS variable
+  (`--color-accent` in `globals.css`), so every `text-accent`/
+  `border-accent`/etc. usage site-wide updated automatically — no
+  further "revisit if asked" caveat; this one is settled.
 - **Typography (added 2026-08-24, serif chosen 2026-09-02)**: editorial
   serif for case-study headlines/titles, clean sans-serif for body
   copy — a pairing, not the single system-sans stack used elsewhere on
@@ -191,7 +204,46 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-14)
+## Known gaps (as of 2026-09-15)
+- **Resolved (media/content refactor, 2026-09-15)**: Hero is now the
+  photo-back split layout (see Visual design direction above). Trends
+  gained a "Before & After" operational comparison (legacy
+  hand-typed backroom workflow vs. the live Sweed-API-driven label
+  engine) with a `~10-12 min → <60 sec per batch` metric badge — that
+  range is Yadan's own firsthand account of the job, not a number
+  pulled from repo docs (unlike the earlier "80% faster" claim, which
+  *was* an unverifiable third-party-sounding stat and got excluded).
+  Spruce now embeds a Loom walkthrough
+  (`https://www.loom.com/embed/60250457bd5342b282367b40aa1177a0`,
+  trusted as given directly by the user) via a new `videoEmbed` field.
+  Site-wide accent color changed to vibrant orange `#FF5C00`. New
+  reusable `CaseStudyBento` sections: Before/After grid (`beforeAfter`
+  field) and video embed (`videoEmbed` field), both on `WorkContent`
+  in `src/content/work/types.ts`.
+  **Not done / corrected rather than done**:
+  (1) the brief asked for `public/images/trends-before.jpg` and an
+  "after" screenshot of the label-maker app — neither file exists, so
+  both Before/After columns render the site's standard honest bordered
+  placeholder (`IMAGE: <heading>`) instead of a fabricated image; drop
+  real photos/screenshots in and wire them into `trends.ts`'s
+  `beforeAfter.before.image` / `.after.image` fields whenever they're
+  ready.
+  (2) the brief asked for `public/images/kippo-hero.png` — doesn't
+  exist; Kippo's real banner image (`/assets/images/kippo/iphone-17-pro-photo.png`)
+  was left as-is rather than pointed at a broken path.
+  (3) the brief asked for a Tailwind "Mobile Device Frame" component
+  to wrap Aligned's "raw app screenshots" — but `work-aligned.jpg` is
+  already a pre-framed device mockup (a real iPhone photographed/
+  composited in, not a flat screenshot), so wrapping it in a second
+  CSS phone frame would double-frame it. Didn't build the component
+  since it would have no real consumer yet; build it once actual raw
+  (unframed) Aligned screenshots exist.
+  (4) the brief asked to "maintain the dynamic interactive preview /
+  motion transition when navigating into the case study" for Kippo —
+  no such page-transition system exists anywhere on the site today
+  (only the existing `hover:scale-[1.01]` card hover); nothing built
+  here since there's nothing pre-existing to "maintain," and adding a
+  new page-transition system wasn't asked for explicitly.
 - **Resolved (Clay.global-style refactor, 2026-09-14)**: Hero is now
   the full light-bg/dark-text redesign (not just a lightened photo
   overlay) — portrait photo dropped from the hero, replaced with a

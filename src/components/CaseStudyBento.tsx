@@ -86,6 +86,68 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
           </div>
         )}
 
+        {/* Before / After operational comparison — spans 3 */}
+        {work.beforeAfter && (
+          <div className="col-span-1 sm:col-span-3">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+              <p className="text-xs font-bold uppercase tracking-wide text-accent">
+                Before &amp; After
+              </p>
+              <span className="rounded-full bg-dark px-4 py-1.5 text-sm font-semibold text-cream">
+                {work.beforeAfter.metricBadge}
+              </span>
+            </div>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {[work.beforeAfter.before, work.beforeAfter.after].map((side) => (
+                <div
+                  key={side.heading}
+                  className="overflow-hidden rounded-2xl border border-border bg-sand"
+                >
+                  {side.image ? (
+                    <div className="relative aspect-[4/3] w-full">
+                      <Image src={side.image} alt={side.heading} fill className="object-cover" />
+                    </div>
+                  ) : (
+                    <div
+                      aria-hidden
+                      className="flex aspect-[4/3] w-full items-center justify-center text-sm uppercase tracking-wide text-muted"
+                    >
+                      IMAGE: {side.heading}
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <p className="mb-3 font-semibold">{side.heading}</p>
+                    <ul className="flex flex-col gap-2 text-sm text-dark/70">
+                      {side.points.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Embedded video walkthrough — spans 3 */}
+        {work.videoEmbed && (
+          <div className="col-span-1 rounded-2xl border border-border bg-sand p-7 sm:col-span-3">
+            <p className="mb-3 text-xs font-bold uppercase tracking-wide text-accent">
+              {work.videoEmbed.heading}
+            </p>
+            <p className="mb-5 max-w-2xl text-sm text-dark/70">{work.videoEmbed.subtext}</p>
+            <div className="aspect-video overflow-hidden rounded-2xl border border-border shadow-sm">
+              <iframe
+                src={work.videoEmbed.url}
+                title={work.videoEmbed.heading}
+                allow="fullscreen"
+                allowFullScreen
+                className="h-full w-full"
+              />
+            </div>
+          </div>
+        )}
+
         {/* 01 / The Problem — spans 2 */}
         <div className="col-span-1 rounded-2xl border border-border bg-sand p-7 sm:col-span-2">
           <p className="mb-3 text-xs font-bold uppercase tracking-wide text-accent">
