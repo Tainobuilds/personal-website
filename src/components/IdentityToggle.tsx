@@ -5,13 +5,21 @@ import Image from "next/image";
 import { motion } from "motion/react";
 
 type IdentityPhoto = { src: string; alt: string; caption: string };
-type Identity = { key: string; label: string; tagline: string; photos: IdentityPhoto[] };
+type Identity = {
+  key: string;
+  label: string;
+  tagline: string;
+  photos: IdentityPhoto[];
+  columns: 2 | 3;
+  badge?: string;
+};
 
 const IDENTITIES: Identity[] = [
   {
     key: "designer",
     label: "Designer",
     tagline: "Designing systems, not just screens.",
+    columns: 2,
     photos: [
       {
         src: "/images/work-aligned.jpg",
@@ -29,6 +37,8 @@ const IDENTITIES: Identity[] = [
     key: "builder",
     label: "Builder",
     tagline: "Learning in public, shipping in public.",
+    columns: 2,
+    badge: "Pursuit AI-Native Cohort — Building & Shipping in Public",
     photos: [
       {
         src: "/images/identity/builder-cohort.jpg",
@@ -46,6 +56,7 @@ const IDENTITIES: Identity[] = [
     key: "fashion",
     label: "Fashion",
     tagline: "Runway, campaigns, and a lived sense of culture.",
+    columns: 3,
     photos: [
       {
         src: "/images/identity/fashion-streetwear.jpg",
@@ -96,7 +107,16 @@ export function IdentityToggle() {
         transition={{ duration: 0.25 }}
       >
         <p className="mb-5 max-w-[480px] text-sm not-italic text-dark/70">{active.tagline}</p>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        {active.badge && (
+          <p className="mb-4 inline-block rounded-full border border-border bg-sand px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-dark/70 not-italic">
+            {active.badge}
+          </p>
+        )}
+        <div
+          className={`grid gap-3 rounded-2xl border border-border p-4 ${
+            active.columns === 2 ? "grid-cols-2" : "grid-cols-2 sm:grid-cols-3"
+          }`}
+        >
           {active.photos.map((photo) => (
             <figure key={photo.src}>
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-sand">

@@ -2,9 +2,7 @@ export type WorkStatus = "full" | "coming-soon";
 
 export type DesignToken = { name: string; hex: string };
 
-export type ArchitectureBlock =
-  | { kind: "code"; heading: string; language: string; snippet: string }
-  | { kind: "process"; heading: string; steps: string[] };
+export type ArchitectureBlock = { heading: string; steps: string[] };
 
 export type Mechanic = { label: string; value: string; description: string };
 

@@ -26,34 +26,42 @@ const SERVICES = [
 ];
 
 export function Services() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(-1);
 
   return (
-    <section className="bg-cream px-8 py-16 text-dark">
-      <p className="mb-10 max-w-[640px] text-2xl font-bold leading-tight">
+    <section className="bg-cream px-8 py-10 text-dark">
+      <p className="mb-6 max-w-[640px] text-lg font-bold leading-snug">
         I build transformative digital experiences for health &amp; wellness,
         lifestyle, and tech brands by blending AI, design, and technology.
       </p>
-      <ul className="list-none">
+      <ul className="flex flex-col divide-y divide-border border-t border-border">
         {SERVICES.map((service, index) => {
           const isOpen = openIndex === index;
           return (
-            <li key={service.name} className="border-b border-border">
+            <li key={service.name}>
               <button
                 onClick={() => setOpenIndex(isOpen ? -1 : index)}
                 aria-expanded={isOpen}
-                className={`w-full py-5 text-left text-4xl font-bold ${
-                  isOpen ? "text-dark" : "text-muted"
-                }`}
+                className="flex w-full items-center justify-between gap-4 py-3 text-left"
               >
-                {service.name}{" "}
-                <span className="text-2xl font-normal text-accent">
-                  ({String(index + 1).padStart(2, "0")})
+                <span
+                  className={`text-lg font-semibold ${isOpen ? "text-dark" : "text-dark/70"}`}
+                >
+                  <span className="mr-2 text-sm font-normal text-accent">
+                    ({String(index + 1).padStart(2, "0")})
+                  </span>
+                  {service.name}
+                </span>
+                <span
+                  className={`text-lg text-muted transition-transform ${isOpen ? "rotate-180" : ""}`}
+                  aria-hidden
+                >
+                  ⌄
                 </span>
               </button>
               {isOpen && (
-                <div className="pb-8">
-                  <p className="max-w-[640px] text-lg text-dark/80">{service.body}</p>
+                <div className="pb-4 pl-[3.75rem]">
+                  <p className="max-w-lg text-sm text-dark/70">{service.body}</p>
                 </div>
               )}
             </li>

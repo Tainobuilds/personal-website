@@ -31,8 +31,8 @@ export default function Home() {
           items={getWorkByPillar(2)}
         />
         <Pillar
-          title="Data-Driven MVPs & Product Engineering"
-          description="Real API data, functional logic, and full-stack execution — not just a demo."
+          title="Retail Automation & Workflow Engineering"
+          description="Replaced manual 12-minute hand-typed dispensary label entry with a real-time API-connected thermal print engine that executes batching in under 60 seconds."
           items={getWorkByPillar(3)}
         />
       </section>

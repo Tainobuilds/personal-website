@@ -100,23 +100,33 @@ mobile (<768px) uses a hamburger that opens a full-screen drawer
 (`src/components/MobileDrawer.tsx`) — this replaced the earlier
 "no mobile hamburger menu" rule during the migration.
 
-### Case-study pages (added 2026-09-02)
+### Case-study pages (added 2026-09-02, headers/architecture revised 2026-09-15)
 Live at `/work/[slug]`, one reusable Bento Grid template
 (`src/components/CaseStudyBento.tsx`) driven by typed content files in
 `src/content/work/*.ts`. Structure: editorial header (tag pills, serif
 title, 4-column Role/Timeline/Tech Stack/Links metadata), then an
-asymmetrical 3-column grid — full-bleed hero media, 01/The Problem,
-02/Human Insight (dark accent card), 03/Technical Architecture *or*
-Design Process (code snippet for projects with real code to show;
-process steps for design-only projects — never a fabricated snippet),
-04/Design System Tokens (only rendered when a project has its own
-documented design system — Aligned and Spruce do, Kippo and Ticket
-Triage don't, so that card is simply omitted for them), and a 3-up Key
-Mechanics & Impact row. Every homepage `WorkCard` is a single clickable
-link straight to its case-study page (`hover:scale-[1.01]`) — no more
-disabled/muted cards or mixed external-link CTAs; external links
-(Figma prototype, live app) now live inside the case-study page itself
-via each project's `links` field.
+asymmetrical 3-column grid — full-bleed hero media, an optional video
+embed (Spruce's Loom walkthrough) or Before/After operational grid
+(Trends) right below the header, **The Challenge** (was "01/The
+Problem"), **The Insight** (was "02/Human Insight", dark accent card),
+**The Solution** (was "03/Technical Architecture or Design Process"),
+**Design System** (was "04/Design System Tokens" — only rendered when
+a project has its own documented design system: Aligned and Spruce do,
+Kippo and Ticket Triage don't, so the card is simply omitted for
+them), and an **Impact** 3-up mechanics row (was "Key Mechanics &
+Impact"). **2026-09-15: raw code snippets removed sitewide** — the
+brief's rationale was keeping the portfolio focused on product
+design/user impact/high-level engineering rather than literal code;
+`ArchitectureBlock` (`src/content/work/types.ts`) is now just
+`{ heading, steps: string[] }`, no more `kind: "code" | "process"`
+union. Trends, Spruce, and Ticket Triage all had their code snippets
+rewritten as plain-English numbered steps describing the same real
+architecture decisions — nothing was fabricated, just de-coded. Every
+homepage `WorkCard` is a single clickable link straight to its
+case-study page (`hover:scale-[1.01]`) — no more disabled/muted cards
+or mixed external-link CTAs; external links (Figma prototype, live
+app) now live inside the case-study page itself via each project's
+`links` field.
 
 All 5 case studies (Kippo, Aligned, Spruce, Ticket Triage, 311
 Insights) ship with real content sourced from "Case study evidence"
@@ -147,30 +157,40 @@ the rest of the locked copy in this file.
 Keep answers to 2-3 sentences each — scannable, not Clay's long-form
 paragraphs.
 
-### Visual design direction (locked 2026-08-06, palette refined 2026-08-24, hero redesigned twice — 2026-09-14 and 2026-09-15)
+### Visual design direction (locked 2026-08-06, palette refined 2026-08-24, hero redesigned three times — twice on 2026-09-15 alone)
 Reference: clay.global (UX/branding agency site) — the user explicitly wants
 this look and feel, not just its "Digital Products / Development /
 Generative AI" service naming.
-- **Hero (SUPERSEDED AGAIN 2026-09-15):** the 2026-09-14 light-bg
-  text-only hero is itself now superseded by an asymmetrical split
-  layout — left column: availability pill, headline, bio, black
-  "Contact" pill CTA; right column: the personal portrait photo
-  (`rounded-2xl`, `aspect-[4/5]`). Explicit user decision: present as
-  a solo Design Engineer / Product Developer, photo back in the hero.
-  **Correction**: the brief asked for a new file
-  `public/images/yadan-hero.jpg`, which does not exist on disk — used
-  the real, existing `public/images/hero-portrait.jpg` instead (same
-  photo already used in meta tags/identity toggle). Swap the `src` in
-  `Hero.tsx` if a different/updated photo is dropped in at that path
-  later.
-- **Hero (SUPERSEDED 2026-09-14):** the portrait-photo hero (full-bleed
-  night photo + dark gradient overlay + white text) is retired. Explicit
-  user decision, not an inference: "Full Clay-style redesign: drop the
-  photo, light bg + dark text." New hero is bright/light (Cream
-  background), dark (`#2C2A24`/`#111111`) massive bold headline, a
-  black pill "Available for select projects" badge, matching
-  clay.global's own hero treatment. Superseded again the next day, see
-  above.
+- **Hero (CURRENT, 2026-09-15, second revision that day):**
+  full-bleed personal portrait as the section background
+  (`min-h-screen`, `object-cover`), dark gradient overlay
+  (`from-black/80 via-black/30 to-black/10`), crisp white overlay
+  typography, white "Contact" pill. This is functionally the same
+  visual pattern as the very first hero (photo background + dark
+  overlay + white text, superseded 2026-09-14) — the user asked for it
+  back the next day. **Locked-copy conflict caught and resolved by
+  asking**: this brief's requested headline ("Creative Director.
+  Product Designer. Developer.") and subheadline ("I create digital
+  experiences.") are word-for-word the superseded pre-2026-08-24
+  positioning that CLAUDE.md explicitly says not to revert to. Asked
+  the user directly rather than guessing; they confirmed **keep the
+  locked title/tagline, visual-only change** — so the current hero
+  still reads "Front-End Developer & Product Designer" with the
+  locked tagline, just on the new full-bleed photo treatment.
+  **Correction, still open**: the brief asked for
+  `public/images/yadan-hero.jpg`, which still does not exist on disk
+  as of this pass — using the real, existing
+  `public/images/hero-portrait.jpg` (same photo used in meta tags/
+  identity toggle). Swap the `src` in `Hero.tsx` once that file
+  exists.
+- **Hero (superseded 2026-09-15, first revision that day):** an
+  asymmetrical split layout (bio/CTA left, `rounded-2xl` portrait
+  right) — lasted about one day before being replaced by the
+  full-bleed version above.
+- **Hero (superseded 2026-09-14):** bright/light (Cream background),
+  dark massive bold headline, no photo at all — "Full Clay-style
+  redesign: drop the photo, light bg + dark text," per explicit user
+  decision at the time. Lasted about one day too.
 - **Palette (refined 2026-08-24)**: warm neutral, named tokens —
   Cream `#F5F0E8` (page background, replaces the earlier `#f2f1ed`),
   Sand `#EDE8DF` (secondary surface), Dark `#2C2A24` (headline/body
@@ -204,7 +224,25 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-15)
+## Known gaps (as of 2026-09-15, second pass)
+- **Resolved (layout/typography refactor, 2026-09-15 pm)**: Hero moved
+  to the full-bleed photo-background treatment (see Visual design
+  direction above; locked title/tagline confirmed unchanged after
+  asking). Services accordion restyled into a compact horizontal
+  dropdown (tighter padding/type, closed by default) — same 5 real
+  services, brief's "Websites" swap-in was confirmed-declined after
+  asking. Case-study template renamed its numbered eyebrow labels to
+  plain Clay-style headers (The Challenge / The Insight / The Solution
+  / Design System / Impact) and dropped all raw code snippets
+  sitewide in favor of plain-English steps (see Case-study pages
+  above). Trends' homepage pillar heading changed from "Data-Driven
+  MVPs & Product Engineering" to "Retail Automation & Workflow
+  Engineering" with a matching subtext, since Trends is now the only
+  project in that pillar. About page's Builder identity tab is now a
+  bordered 2-column editorial bento card with a "Pursuit AI-Native
+  Cohort — Building & Shipping in Public" badge, using the real
+  cohort/classroom photos that already existed at
+  `public/images/identity/builder-*.jpg`.
 - **Resolved (media/content refactor, 2026-09-15)**: Hero is now the
   photo-back split layout (see Visual design direction above). Trends
   gained a "Before & After" operational comparison (legacy

@@ -18,27 +18,13 @@ export const spruce: WorkContent = {
     attribution: "Architecture decision, documented in the app's own DESIGN.md",
   },
   architecture: {
-    kind: "code",
     heading: "Intent / Match separation",
-    language: "ts",
-    snippet: `// src/lib/chat/intent.ts — the ONLY Anthropic call in the matching flow.
-// This module has no access to the listings dataset, so it can only
-// choose search terms — never a result.
-export async function extractIntent(message: string): Promise<Intent> {
-  const response = await anthropic.messages.create({
-    model: INTENT_MODEL, // "claude-sonnet-4-6"
-    system: INTENT_SYSTEM_PROMPT,
-    messages: [...history, { role: "user", content: message }],
-  });
-  return parseStructuredIntent(response);
-}
-
-// src/lib/chat/match.ts — deterministic. No model access here.
-export function matchListings(intent: Intent, listings: Listing[]) {
-  return listings
-    .filter((l) => l.serviceType === intent.serviceType)
-    .sort((a, b) => scoreListing(b, intent) - scoreListing(a, intent));
-}`,
+    steps: [
+      "A customer message like \"my sink won't stop dripping\" goes through a dedicated intent-extraction step — the only place in the entire matching flow that calls the model.",
+      "That step has zero access to the actual listings dataset, so structurally it can only choose search terms — it can never invent or return a match on its own.",
+      "A separate, fully deterministic module takes those extracted terms and scores real listings — no AI involved in the ranking itself.",
+      "Net effect: the model can propose language, but it can never hallucinate a provider that doesn't exist.",
+    ],
   },
   designSystem: {
     name: "Spruce Design System — Japandi-Bento",

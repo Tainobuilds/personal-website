@@ -18,23 +18,13 @@ export const trends: WorkContent = {
     attribution: "Architecture decision — cost/accuracy-conscious, not AI-first by default",
   },
   architecture: {
-    kind: "code",
     heading: "QR-first, AI-vision fallback",
-    language: "ts",
-    snippet: `// Phone captures a sticker photo. Try the free, exact path first.
-const qrText = decodeQrClientSide(capturedFrame); // jsQR, on-device
-
-if (qrText && looksLikeStickerData(qrText)) {
-  // Free and exact — no AI call at all.
-  await sendToLaptop({ lot, exp, metrcTag, source: "qr" });
-} else {
-  // Only now does the frame leave the phone for AI vision.
-  const result = await fetch(\`/api/pair/\${pairId}/frame\`, {
-    method: "POST",
-    body: frameBlob,
-  });
-  await sendToLaptop({ ...result.json(), source: "vision" });
-}`,
+    steps: [
+      "The phone camera captures a photo of the sticker on a back-stock item.",
+      "A plain client-side QR decode runs first — free, instant, and exact whenever it works.",
+      "Only when that decode fails does the frame ever leave the phone, falling back to AI vision to read the label.",
+      "Cost- and accuracy-conscious by design: the paid, slower path is the fallback, never the default.",
+    ],
   },
   beforeAfter: {
     metricBadge: "~10-12 min → <60 sec per batch",

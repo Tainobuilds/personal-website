@@ -86,13 +86,28 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
           </div>
         )}
 
+        {/* Embedded video walkthrough — spans 3, right below the hero overview */}
+        {work.videoEmbed && (
+          <div className="col-span-1 rounded-2xl border border-border bg-sand p-8 sm:col-span-3">
+            <p className="mb-2 text-2xl font-bold tracking-tight">{work.videoEmbed.heading}</p>
+            <p className="mb-5 max-w-2xl leading-relaxed text-dark/70">{work.videoEmbed.subtext}</p>
+            <div className="aspect-video overflow-hidden rounded-2xl border border-border shadow-sm">
+              <iframe
+                src={work.videoEmbed.url}
+                title={work.videoEmbed.heading}
+                allow="fullscreen"
+                allowFullScreen
+                className="h-full w-full"
+              />
+            </div>
+          </div>
+        )}
+
         {/* Before / After operational comparison — spans 3 */}
         {work.beforeAfter && (
           <div className="col-span-1 sm:col-span-3">
             <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-              <p className="text-xs font-bold uppercase tracking-wide text-accent">
-                Before &amp; After
-              </p>
+              <p className="text-2xl font-bold tracking-tight">Before &amp; After</p>
               <span className="rounded-full bg-dark px-4 py-1.5 text-sm font-semibold text-cream">
                 {work.beforeAfter.metricBadge}
               </span>
@@ -117,7 +132,7 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
                   )}
                   <div className="p-6">
                     <p className="mb-3 font-semibold">{side.heading}</p>
-                    <ul className="flex flex-col gap-2 text-sm text-dark/70">
+                    <ul className="flex flex-col gap-2 text-sm leading-relaxed text-dark/70">
                       {side.points.map((point) => (
                         <li key={point}>{point}</li>
                       ))}
@@ -129,78 +144,45 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
           </div>
         )}
 
-        {/* Embedded video walkthrough — spans 3 */}
-        {work.videoEmbed && (
-          <div className="col-span-1 rounded-2xl border border-border bg-sand p-7 sm:col-span-3">
-            <p className="mb-3 text-xs font-bold uppercase tracking-wide text-accent">
-              {work.videoEmbed.heading}
-            </p>
-            <p className="mb-5 max-w-2xl text-sm text-dark/70">{work.videoEmbed.subtext}</p>
-            <div className="aspect-video overflow-hidden rounded-2xl border border-border shadow-sm">
-              <iframe
-                src={work.videoEmbed.url}
-                title={work.videoEmbed.heading}
-                allow="fullscreen"
-                allowFullScreen
-                className="h-full w-full"
-              />
-            </div>
-          </div>
-        )}
-
-        {/* 01 / The Problem — spans 2 */}
-        <div className="col-span-1 rounded-2xl border border-border bg-sand p-7 sm:col-span-2">
-          <p className="mb-3 text-xs font-bold uppercase tracking-wide text-accent">
-            01 / The Problem
-          </p>
-          <p className="text-dark/80">{work.problem}</p>
+        {/* The Challenge — spans 2 */}
+        <div className="col-span-1 rounded-2xl border border-border bg-sand p-8 sm:col-span-2">
+          <p className="mb-4 text-2xl font-bold tracking-tight">The Challenge</p>
+          <p className="leading-relaxed text-dark/80">{work.problem}</p>
         </div>
 
-        {/* 02 / Human Insight — dark accent, spans 1 */}
-        <div className="col-span-1 rounded-2xl bg-dark p-7 text-cream">
-          <p className="mb-3 text-xs font-bold uppercase tracking-wide text-[#F9A826]">
-            02 / Human Insight
-          </p>
-          <p className="italic leading-snug">{work.insight.text}</p>
+        {/* The Insight — dark accent, spans 1 */}
+        <div className="col-span-1 rounded-2xl bg-dark p-8 text-cream">
+          <p className="mb-4 text-2xl font-bold tracking-tight text-[#F9A826]">The Insight</p>
+          <p className="italic leading-relaxed">{work.insight.text}</p>
           {work.insight.attribution && (
             <p className="mt-4 text-sm text-cream/60">{work.insight.attribution}</p>
           )}
         </div>
 
-        {/* 03 / Technical Architecture — dark code box */}
+        {/* The Solution — dark card, process steps only (no raw code) */}
         {hasArchitecture && work.architecture && (
           <div
-            className={`col-span-1 rounded-2xl bg-[#1a1814] p-7 text-cream ${
+            className={`col-span-1 rounded-2xl bg-[#1a1814] p-8 text-cream ${
               hasDesignSystem ? "" : "sm:col-span-3"
             }`}
           >
-            <p className="mb-3 text-xs font-bold uppercase tracking-wide text-[#4ade80]">
-              03 / {work.architecture.kind === "code" ? "Technical Architecture" : "Design Process"}
-            </p>
+            <p className="mb-4 text-2xl font-bold tracking-tight text-[#4ade80]">The Solution</p>
             <p className="mb-4 font-semibold">{work.architecture.heading}</p>
-            {work.architecture.kind === "code" ? (
-              <pre className="overflow-x-auto rounded-lg bg-black/30 p-4 text-xs leading-relaxed">
-                <code>{work.architecture.snippet}</code>
-              </pre>
-            ) : (
-              <ol className="flex flex-col gap-3 text-sm text-cream/80">
-                {work.architecture.steps.map((step, i) => (
-                  <li key={i}>
-                    <span className="mr-2 text-[#4ade80]">{i + 1}.</span>
-                    {step}
-                  </li>
-                ))}
-              </ol>
-            )}
+            <ol className="flex flex-col gap-3 leading-relaxed text-cream/80">
+              {work.architecture.steps.map((step, i) => (
+                <li key={i}>
+                  <span className="mr-2 text-[#4ade80]">{i + 1}.</span>
+                  {step}
+                </li>
+              ))}
+            </ol>
           </div>
         )}
 
-        {/* 04 / Design System Tokens — spans 2 */}
+        {/* Design System — spans 2 */}
         {hasDesignSystem && work.designSystem && (
-          <div className="col-span-1 rounded-2xl border border-border bg-sand p-7 sm:col-span-2">
-            <p className="mb-3 text-xs font-bold uppercase tracking-wide text-accent">
-              04 / Design System Tokens
-            </p>
+          <div className="col-span-1 rounded-2xl border border-border bg-sand p-8 sm:col-span-2">
+            <p className="mb-4 text-2xl font-bold tracking-tight">Design System</p>
             <p className="mb-4 text-sm text-dark/80">{work.designSystem.name}</p>
             <div className="mb-4 flex flex-wrap gap-3">
               {work.designSystem.tokens.map((token) => (
@@ -217,20 +199,23 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
               ))}
             </div>
             {work.designSystem.typography && (
-              <p className="text-sm text-dark/70">{work.designSystem.typography}</p>
+              <p className="text-sm leading-relaxed text-dark/70">{work.designSystem.typography}</p>
             )}
           </div>
         )}
 
-        {/* Key Mechanics & Impact — 3-up, spans 3 */}
-        <div className="col-span-1 grid grid-cols-1 gap-4 sm:col-span-3 sm:grid-cols-3">
-          {work.mechanics.map((mechanic) => (
-            <div key={mechanic.label} className="rounded-2xl border border-border bg-cream p-6">
-              <p className="mb-1 text-2xl font-bold text-accent">{mechanic.value}</p>
-              <p className="mb-2 text-sm font-semibold">{mechanic.label}</p>
-              <p className="text-sm text-dark/70">{mechanic.description}</p>
-            </div>
-          ))}
+        {/* Impact — 3-up, spans 3 */}
+        <div className="col-span-1 sm:col-span-3">
+          <p className="mb-4 text-2xl font-bold tracking-tight">Impact</p>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {work.mechanics.map((mechanic) => (
+              <div key={mechanic.label} className="rounded-2xl border border-border bg-cream p-6">
+                <p className="mb-1 text-2xl font-bold text-accent">{mechanic.value}</p>
+                <p className="mb-2 text-sm font-semibold">{mechanic.label}</p>
+                <p className="text-sm leading-relaxed text-dark/70">{mechanic.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>

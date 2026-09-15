@@ -26,7 +26,6 @@ export const kippo: WorkContent = {
     attribution: "Sarah, 34, single mother of two — primary research persona",
   },
   architecture: {
-    kind: "process",
     heading: "UX Process",
     steps: [
       "Persona and pain-point research",

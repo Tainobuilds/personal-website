@@ -19,24 +19,13 @@ export const ticketTriage: WorkContent = {
     attribution: "Design rationale, modeled on a real incident",
   },
   architecture: {
-    kind: "code",
     heading: "Critical floor rule",
-    language: "js",
-    snippet: `// sorting.js — categorization/scoring logic, kept separate from the UI
-// so it can be tested or swapped independently.
-
-function urgencyScore(ticket) {
-  let score = baseScore(ticket.category, ticket.tier);
-
-  // A ticket whose CONTENT reads as critical (outage language, or
-  // financial-impact phrases like "charged twice") is always at least
-  // P2 — even if its subject looked routine and it had a lenient SLA.
-  if (isCriticalSeverity(ticket.body)) {
-    score = Math.max(score, CRITICAL_FLOOR);
-  }
-
-  return applySlaRisk(score, ticket.deadline);
-}`,
+    steps: [
+      "Categorization and scoring logic (`sorting.js`) is kept fully separate from the UI, so it can be tested or swapped independently.",
+      "A base urgency score comes from the ticket's category and support tier.",
+      "If the ticket's CONTENT reads as critical — outage language, or a financial-impact phrase like \"charged twice\" — the score is raised to at least P2, even when the subject line looked routine.",
+      "SLA risk is applied on top, so a ticket close to breaching its deadline still surfaces even if its category isn't otherwise severe.",
+    ],
   },
   mechanics: [
     {

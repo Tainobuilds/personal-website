@@ -19,7 +19,6 @@ export const aligned: WorkContent = {
     attribution: "Alex Rivera, 34 — Marketing Manager, NYC, primary persona",
   },
   architecture: {
-    kind: "process",
     heading: "Three Design Principles",
     steps: [
       "Soft, not strict — grace days and encouraging language; the app never joins in the user's guilt spiral, and never compares today to \"yesterday's better self.\"",
