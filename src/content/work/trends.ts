@@ -27,9 +27,18 @@ export const trends: WorkContent = {
     ],
   },
   gallery: [
-    { caption: "Trends Studio home — Back Stock and Front Stock" },
-    { caption: "Front Stock — live menu search, ready to print" },
-    { caption: "Back Stock — fields auto-filled, label ready to print" },
+    {
+      image: "/images/trends/home.png",
+      caption: "Trends Studio home — Back Stock and Front Stock",
+    },
+    {
+      image: "/images/trends/front-stock-search.png",
+      caption: "Front Stock — live menu search, ready to print",
+    },
+    {
+      image: "/images/trends/back-stock-label.png",
+      caption: "Back Stock — fields auto-filled, label ready to print",
+    },
   ],
   mechanicsHeading: "Features",
   mechanics: [

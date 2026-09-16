@@ -237,10 +237,10 @@ Generative AI" service naming.
   elsewhere, just unused here now). `problem`/`insight` rewritten in
   the user's own dictated voice (fast-paced dispensary floor,
   constant shipments, manual labeling as a real time sink) rather
-  than the earlier "10-12 min" stat framing. New `gallery` field
-  shows 3 real product screenshots right after The Challenge (see
-  Case study evidence below for what they show and why they're still
-  placeholders). The mechanics grid is relabeled "Features" (via the
+  than the earlier "10-12 min" stat framing. New `gallery` field shows
+  3 real product screenshots right after The Challenge — real images
+  now (see Case study evidence below), not placeholders; the user
+  saved them in the same day. The mechanics grid is relabeled "Features" (via the
   new `mechanicsHeading` field) and re-led by the two things the user
   named explicitly: Front Stock's live-menu API autofill, and Back
   Stock's QR-first/AI-vision camera capture — Lock Batch and
@@ -372,16 +372,18 @@ Concrete proof points to draw on when writing case studies — confirmed 2026-08
     each tagged "auto" (visually confirms the API-autofill claim) plus
     a live label preview and a genuine graceful-degradation banner:
     "Zebra Browser Print isn't running on this computer — labels will
-    use the system print dialog instead." Could not save these 3
-    images as actual site assets — no accessible file path for
-    chat-pasted images was found (checked `~/.claude/uploads`,
-    scratchpad, system clipboard). `trends.ts`'s new `gallery` field
-    has 3 honest placeholder entries with the exact captions below;
-    save the real files and wire them into `gallery[].image` to
-    replace the placeholders:
-    1. `"Trends Studio home — Back Stock and Front Stock"`
-    2. `"Front Stock — live menu search, ready to print"`
-    3. `"Back Stock — fields auto-filled, label ready to print"`
+    use the system print dialog instead." **Resolved 2026-09-16, same
+    day**: the user saved the 3 screenshots into a `Trends/` folder at
+    the repo root; moved into `public/images/trends/` as `home.png`,
+    `front-stock-search.png`, and `back-stock-label.png`, and wired
+    into `trends.ts`'s `gallery[].image` — gallery now shows the real
+    screenshots, not placeholders. **Gotcha worth remembering**: macOS
+    screenshot filenames use a narrow no-break space (U+202F, not a
+    regular space) before "AM"/"PM" — a typed `mv "...4.58.54 PM.png"`
+    silently fails with "No such file or directory" even though `ls`
+    shows the file; use `find <dir> -name "*<unique-fragment>*" -exec
+    mv {} <dest> \;` to match by a substring instead of retyping the
+    full name.
 - **Kippo**: full Google-style UX process exists in the 24-slide deck — problem
   statement, persona ("Sarah"), user research summary, pain points, paper
   wireframes → digital wireframes → low-fi prototype → usability study (4
