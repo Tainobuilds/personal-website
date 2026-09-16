@@ -150,6 +150,32 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
           <p className="leading-relaxed text-dark/80">{work.problem}</p>
         </div>
 
+        {/* Product gallery — real screenshots, spans 3 */}
+        {work.gallery && work.gallery.length > 0 && (
+          <div className="col-span-1 grid grid-cols-1 gap-4 sm:col-span-3 sm:grid-cols-3">
+            {work.gallery.map((shot) => (
+              <div
+                key={shot.caption}
+                className="overflow-hidden rounded-2xl border border-border bg-sand"
+              >
+                {shot.image ? (
+                  <div className="relative aspect-[4/3] w-full">
+                    <Image src={shot.image} alt={shot.caption} fill className="object-cover" />
+                  </div>
+                ) : (
+                  <div
+                    aria-hidden
+                    className="flex aspect-[4/3] w-full items-center justify-center px-4 text-center text-sm uppercase tracking-wide text-muted"
+                  >
+                    IMAGE: {shot.caption}
+                  </div>
+                )}
+                <p className="p-4 text-sm text-dark/70">{shot.caption}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
         {/* The Insight — dark accent, spans 1 */}
         <div className="col-span-1 rounded-2xl bg-dark p-8 text-cream">
           <p className="mb-4 text-2xl font-bold tracking-tight text-[#F9A826]">The Insight</p>
@@ -204,9 +230,11 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
           </div>
         )}
 
-        {/* Impact — 3-up, spans 3 */}
+        {/* Impact / Features — 3-up, spans 3 */}
         <div className="col-span-1 sm:col-span-3">
-          <p className="mb-4 text-2xl font-bold tracking-tight">Impact</p>
+          <p className="mb-4 text-2xl font-bold tracking-tight">
+            {work.mechanicsHeading ?? "Impact"}
+          </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {work.mechanics.map((mechanic) => (
               <div key={mechanic.label} className="rounded-2xl border border-border bg-cream p-6">

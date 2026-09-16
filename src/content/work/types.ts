@@ -27,6 +27,8 @@ export type WorkContent = {
   };
   /** Embedded video walkthrough (e.g. Loom) */
   videoEmbed?: { url: string; heading: string; subtext: string };
+  /** Real product screenshots — omit image to render the standard honest placeholder */
+  gallery?: { image?: string; caption: string }[];
   /** 01 / The Problem */
   problem: string;
   /** 02 / Human Insight */
@@ -37,6 +39,8 @@ export type WorkContent = {
   designSystem?: { name: string; tokens: DesignToken[]; typography?: string };
   /** Key Mechanics & Impact, 3-up grid (wraps to additional rows past 3) */
   mechanics: Mechanic[];
+  /** Overrides the default "Impact" heading above the mechanics grid */
+  mechanicsHeading?: string;
   /** Homepage WorkCard outcome sentence */
   outcomeSummary: string;
 };

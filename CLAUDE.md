@@ -114,7 +114,12 @@ Problem"), **The Insight** (was "02/Human Insight", dark accent card),
 a project has its own documented design system: Aligned and Spruce do,
 Kippo and Ticket Triage don't, so the card is simply omitted for
 them), and an **Impact** 3-up mechanics row (was "Key Mechanics &
-Impact"). **2026-09-15: raw code snippets removed sitewide** — the
+Impact") — the heading is overridable per project via
+`mechanicsHeading` (Trends uses "Features"; everything else keeps the
+"Impact" default). An optional `gallery` field (array of
+`{ image?, caption }`) renders a 3-up grid of real product screenshots
+right after The Challenge card — same honest-placeholder pattern as
+everywhere else when `image` is omitted. **2026-09-15: raw code snippets removed sitewide** — the
 brief's rationale was keeping the portfolio focused on product
 design/user impact/high-level engineering rather than literal code;
 `ArchitectureBlock` (`src/content/work/types.ts`) is now just
@@ -224,7 +229,23 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-15, second pass)
+## Known gaps (as of 2026-09-16)
+- **Resolved (Trends narrative rewrite, 2026-09-16)**: at the user's
+  request, Trends' Before/After grid is gone entirely (`beforeAfter`
+  field removed from `trends.ts` — the `beforeAfter` type/rendering
+  itself stays in `CaseStudyBento`/`types.ts` for potential reuse
+  elsewhere, just unused here now). `problem`/`insight` rewritten in
+  the user's own dictated voice (fast-paced dispensary floor,
+  constant shipments, manual labeling as a real time sink) rather
+  than the earlier "10-12 min" stat framing. New `gallery` field
+  shows 3 real product screenshots right after The Challenge (see
+  Case study evidence below for what they show and why they're still
+  placeholders). The mechanics grid is relabeled "Features" (via the
+  new `mechanicsHeading` field) and re-led by the two things the user
+  named explicitly: Front Stock's live-menu API autofill, and Back
+  Stock's QR-first/AI-vision camera capture — Lock Batch and
+  Hold-steady capture kept as supporting features, nothing removed,
+  just reordered and re-emphasized.
 - **Resolved (layout/typography refactor, 2026-09-15 pm)**: Hero moved
   to the full-bleed photo-background treatment (see Visual design
   direction above; locked title/tagline confirmed unchanged after
@@ -338,6 +359,29 @@ Concrete proof points to draw on when writing case studies — confirmed 2026-08
     exists; if one gets measured later, add it then.
   - Real test suite (Vitest, `tests/`), real Next.js 16 + React 19 +
     TypeScript + Tailwind v4 stack, deployed on Vercel.
+  - **Confirmed 2026-09-16 via 3 real screenshots the user shared
+    directly in chat** (dark teal/navy UI): the app's actual in-product
+    branding reads **"Trends Studio"** (nav wordmark), not "Trends
+    Label Studio." Home screen has two cards — "Back Stock" (BACK
+    ROOM, "Mobile Sync Ready" badge, "snap the LOT/EXP sticker from
+    your phone, or build by hand") and "Front Stock" (SALES FLOOR,
+    "search the live menu or enter details by hand"). The Front Stock
+    search view shows real live-menu results grouped by brand (Dank,
+    Ayrloom, Wyld) with product/category/size. The label editor view
+    shows Category/Brand/Size-Type/Strain/Class/Potency/Price fields
+    each tagged "auto" (visually confirms the API-autofill claim) plus
+    a live label preview and a genuine graceful-degradation banner:
+    "Zebra Browser Print isn't running on this computer — labels will
+    use the system print dialog instead." Could not save these 3
+    images as actual site assets — no accessible file path for
+    chat-pasted images was found (checked `~/.claude/uploads`,
+    scratchpad, system clipboard). `trends.ts`'s new `gallery` field
+    has 3 honest placeholder entries with the exact captions below;
+    save the real files and wire them into `gallery[].image` to
+    replace the placeholders:
+    1. `"Trends Studio home — Back Stock and Front Stock"`
+    2. `"Front Stock — live menu search, ready to print"`
+    3. `"Back Stock — fields auto-filled, label ready to print"`
 - **Kippo**: full Google-style UX process exists in the 24-slide deck — problem
   statement, persona ("Sarah"), user research summary, pain points, paper
   wireframes → digital wireframes → low-fi prototype → usability study (4
