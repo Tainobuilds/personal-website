@@ -344,7 +344,22 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-17, 4th pass)
+## Known gaps (as of 2026-09-17, 5th pass)
+- **Resolved (Trends homepage card image, 2026-09-17 night)**: the
+  real Trends dispensary logo (`Trends Logo pic.png`, found in
+  `~/trends-label-studio` again — same lesson as before, "the trends
+  folder" means that repo, not `public/images/trends/`) is now
+  `trends.ts`'s `bannerImage`, so the "Selected work" homepage card no
+  longer shows the bordered "IMAGE: Trends" placeholder. The raw
+  logo's white background was keyed to transparent and composited
+  (via Python Pillow) onto a canvas in the site's own Sand color
+  (`#EDE8DF`), sized to `WorkCard`'s `aspect-[4/5]` — pasting the raw
+  file directly would have let `object-cover` crop into the wordmark,
+  since the source logo is roughly square, not portrait. Saved as
+  `public/images/trends/logo-mockup.jpg`. Only affects the homepage
+  card — `TrendsCaseStudy.tsx` never reads `bannerImage`, it builds
+  its own hero from `gallery[0]`, so the case-study page is unchanged.
+
 - **Resolved (real Back Stock photos, 2026-09-17 late evening)**: all
   of Trends' remaining honest placeholders are now real photos — see
   "Case-study pages" above for the full list of 5. Trends is now

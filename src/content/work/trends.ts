@@ -5,6 +5,7 @@ export const trends: WorkContent = {
   pillar: 3,
   status: "full",
   title: "Trends",
+  bannerImage: "/images/trends/logo-mockup.jpg",
   tagline:
     "Automating retail compliance at the point of intake — turning a 12-minute manual typing bottleneck into a single scan.",
   tags: ["Retail Automation", "Real-Time Data", "Workflow UX"],
