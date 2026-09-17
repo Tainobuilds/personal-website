@@ -6,7 +6,7 @@ export const trends: WorkContent = {
   status: "full",
   title: "Trends",
   tagline:
-    "Trends Studio — live menu data in, a state-compliant Zebra label out, no hand-typing.",
+    "Automating retail compliance at the point of intake — turning a 12-minute manual typing bottleneck into a single scan.",
   tags: ["Retail Automation", "Real-Time Data", "Workflow UX"],
   role: "Product Designer & Developer",
   timeline: "2026",
