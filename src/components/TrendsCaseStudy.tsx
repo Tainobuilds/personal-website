@@ -60,8 +60,29 @@ function BrowserFrame({ src, alt, path }: { src: string; alt: string; path: stri
   );
 }
 
+function LabelPreviewBox({ image, caption }: { image?: string; caption: string }) {
+  return (
+    <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#111111] p-3">
+      {image ? (
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+          <Image src={image} alt={caption} fill className="object-contain" />
+        </div>
+      ) : (
+        <div
+          aria-hidden
+          className="flex aspect-[4/3] w-full items-center justify-center rounded-xl px-3 text-center text-xs uppercase tracking-wide text-white/40"
+        >
+          IMAGE: {caption}
+        </div>
+      )}
+      <p className="p-3 text-xs leading-relaxed text-white/60">{caption}</p>
+    </div>
+  );
+}
+
 export function TrendsCaseStudy({ work }: { work: WorkContent }) {
-  const [home, frontStockSearch] = work.gallery ?? [];
+  const [home, frontStockSearch, frontStockLabel] = work.gallery ?? [];
+  const secondary = work.secondarySolution;
 
   return (
     <>
@@ -128,54 +149,84 @@ export function TrendsCaseStudy({ work }: { work: WorkContent }) {
           )}
         </div>
 
-        {/* 6. Section 03: The Solution — interactive UI screens + label preview */}
+        {/* 6a. Section 03: The Solution — Front Stock */}
         <div className="rounded-2xl border border-border bg-sand p-8">
-          <p className="mb-1 text-2xl font-bold tracking-tight">03 / The Solution</p>
-          {work.architecture && (
-            <p className="mb-6 text-sm text-dark/70">{work.architecture.heading}</p>
-          )}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-[3fr_2fr]">
-            <div className="flex flex-col gap-4">
-              {frontStockSearch?.image && (
-                <BrowserFrame src={frontStockSearch.image} alt={frontStockSearch.caption} path="trends.studio/front" />
-              )}
-              {work.architecture && (
-                <ol className="grid grid-cols-1 gap-2 text-sm leading-relaxed text-dark/70 sm:grid-cols-2">
-                  {work.architecture.steps.map((step, i) => (
-                    <li key={step}>
-                      <span className="mr-1.5 font-bold text-accent">{i + 1}.</span>
-                      {step}
-                    </li>
-                  ))}
-                </ol>
-              )}
-            </div>
-            {work.labelPreview && (
-              <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#111111] p-3">
-                {work.labelPreview.image ? (
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
-                    <Image
-                      src={work.labelPreview.image}
-                      alt={work.labelPreview.caption}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                ) : (
-                  <div
-                    aria-hidden
-                    className="flex aspect-[4/3] w-full items-center justify-center rounded-xl text-center text-xs uppercase tracking-wide text-white/40"
-                  >
-                    IMAGE: Printed label preview
-                  </div>
-                )}
-                <p className="p-3 text-xs leading-relaxed text-white/60">{work.labelPreview.caption}</p>
-              </div>
+          <p className="mb-1 text-2xl font-bold tracking-tight">03 / The Solution — Front Stock</p>
+          <p className="mb-6 text-sm text-dark/70">
+            Search the live menu, everything else fills itself in.
+          </p>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {frontStockSearch?.image && (
+              <BrowserFrame
+                src={frontStockSearch.image}
+                alt={frontStockSearch.caption}
+                path="trends.studio/front"
+              />
+            )}
+            {frontStockLabel?.image && (
+              <BrowserFrame
+                src={frontStockLabel.image}
+                alt={frontStockLabel.caption}
+                path="trends.studio/front"
+              />
             )}
           </div>
         </div>
 
-        {/* 7. Section 04: Engineering Features — 4-card bento grid */}
+        {/* 6b. Section 03 continued: The Solution — Back Stock */}
+        {secondary && (
+          <div className="rounded-2xl border border-border bg-sand p-8">
+            <p className="mb-1 text-2xl font-bold tracking-tight">03 / The Solution — {secondary.heading}</p>
+            <p className="mb-6 leading-relaxed text-dark/80">{secondary.narrative}</p>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-[3fr_2fr]">
+              <div className="flex flex-col gap-4">
+                {secondary.uiImage &&
+                  (secondary.uiImage.image ? (
+                    <BrowserFrame
+                      src={secondary.uiImage.image}
+                      alt={secondary.uiImage.caption}
+                      path="trends.studio/back"
+                    />
+                  ) : (
+                    <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#111111]">
+                      <div className="flex items-center gap-2 border-b border-white/10 bg-[#1E1E1E] px-4 py-2.5">
+                        <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
+                        <span className="ml-3 rounded-md bg-white/5 px-3 py-1 font-mono text-xs text-white/50">
+                          trends.studio/back
+                        </span>
+                      </div>
+                      <div
+                        aria-hidden
+                        className="flex aspect-[3/2] w-full items-center justify-center px-4 text-center text-xs uppercase tracking-wide text-white/40"
+                      >
+                        IMAGE: {secondary.uiImage.caption}
+                      </div>
+                    </div>
+                  ))}
+                {work.architecture && (
+                  <ol className="grid grid-cols-1 gap-2 text-sm leading-relaxed text-dark/70 sm:grid-cols-2">
+                    {work.architecture.steps.map((step, i) => (
+                      <li key={step}>
+                        <span className="mr-1.5 font-bold text-accent">{i + 1}.</span>
+                        {step}
+                      </li>
+                    ))}
+                  </ol>
+                )}
+              </div>
+              {secondary.labelPreview && (
+                <LabelPreviewBox
+                  image={secondary.labelPreview.image}
+                  caption={secondary.labelPreview.caption}
+                />
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* 7. Section 04: Engineering Features — 4-card bento grid, closing */}
         <div>
           <p className="mb-4 text-2xl font-bold tracking-tight">04 / Engineering Features</p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

@@ -43,10 +43,16 @@ export const trends: WorkContent = {
       caption: "Front Stock — fields auto-filled from the live menu match, label ready to print",
     },
   ],
-  labelPreview: {
-    image: "/images/trends/label-preview.png",
-    caption:
-      "A real Front Stock shelf-tag preview — strain, class, potency, and price, filled straight from the live menu match.",
+  secondarySolution: {
+    heading: "Back Stock — camera-assisted, or by hand",
+    narrative:
+      "Back Stock is a different problem: a brand-new shipment isn't on the live menu yet, so there's no API record for the API to pull from. The question wasn't how to automate all of it — it was how to stay fast when only some of it can be. Staff get a real choice: snap a photo and let a QR/AI camera pick up the details in real time, or just type them in by hand. Either way, the label prints just as fast.",
+    uiImage: {
+      caption: "Back Stock — camera capture screen (QR-first, AI-vision fallback)",
+    },
+    labelPreview: {
+      caption: "A real Back Stock label preview, with Lot #/Exp/Metrc Tag",
+    },
   },
   mechanicsHeading: "Features",
   mechanics: [

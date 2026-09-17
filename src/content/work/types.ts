@@ -29,8 +29,6 @@ export type WorkContent = {
   videoEmbed?: { url: string; heading: string; subtext: string };
   /** Real product screenshots — omit image to render the standard honest placeholder */
   gallery?: { image?: string; caption: string }[];
-  /** A single close-up product artifact shot (e.g. a printed label preview) */
-  labelPreview?: { image?: string; caption: string };
   /** A "before" legacy-context image for The Challenge — omit image for the standard honest placeholder */
   legacyContext?: { image?: string; caption: string };
   /** 01 / The Problem */
@@ -39,6 +37,13 @@ export type WorkContent = {
   insight: { text: string; attribution?: string };
   /** 03 / Technical Architecture (or Design Process, for design-only projects) */
   architecture?: ArchitectureBlock;
+  /** A second, parallel solution narrative (e.g. a different flow within the same product) */
+  secondarySolution?: {
+    heading: string;
+    narrative: string;
+    uiImage?: { image?: string; caption: string };
+    labelPreview?: { image?: string; caption: string };
+  };
   /** 04 / Design System Tokens — omitted when the project has no documented product design system */
   designSystem?: { name: string; tokens: DesignToken[]; typography?: string };
   /** Key Mechanics & Impact, 3-up grid (wraps to additional rows past 3) */

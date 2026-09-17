@@ -109,50 +109,76 @@ Stack/Links metadata — used by both templates below.
 renders `TrendsCaseStudy.tsx`, not `CaseStudyBento` (branched in
 `src/app/work/[slug]/page.tsx` on `work.slug === "trends"`) — a
 Clay.global-high-craft treatment richer than the other 4 case studies
-get. **Section order (locked 2026-09-17, 2nd pass):** header →
+get. **Section order (locked 2026-09-17, 3rd pass):** header →
 full-bleed hero (macOS-style `BrowserFrame` — traffic-light dots +
 mock URL bar `trends.studio`, purely decorative chrome, not a real
 domain — wrapping `work.gallery[0]`) → 3-stat impact banner →
 **01/The Challenge** (problem text + `legacyContext` side card,
 currently an honest placeholder — no real photo of the old backroom
 laptop setup exists yet) → **02/The Insight** (high-contrast
-`#111111` card, accent quote marks) → **03/The Solution** (2-column:
-left = `BrowserFrame` around `work.gallery[1]` + the architecture
-steps as a compact 2-up list beneath it; right = `work.labelPreview`,
-a real cropped close-up of the printed label, dark-framed) →
-**04/Engineering Features** (2-up grid, numbered icon kickers +
-a small status badge per card — "200 OK," "Fallback Enabled," "Batch
+`#111111` card, accent quote marks) → **03/The Solution, told as two
+separate flows** (confirmed correct by the user 2026-09-17, since
+Front Stock and Back Stock solve genuinely different problems — Front
+Stock has a live API to pull from, Back Stock doesn't because a
+brand-new shipment isn't in the menu yet): **Front Stock** first
+(`work.gallery[1]` search screen + `work.gallery[2]` full auto-filled
+label screen, side by side, both `BrowserFrame`d — no crop, the full
+screenshot, per explicit user correction below), then **Back Stock**
+(`work.secondarySolution` — narrative text, a `BrowserFrame`d camera
+UI shot, the `architecture.steps` QR-first/AI-vision-fallback list,
+and a small dark `LabelPreviewBox` — both images still honest
+placeholders, no real Back Stock screenshots exist yet) → **04/Engineering
+Features** (2-up grid, closing the page — numbered icon kickers + a
+small status badge per card: "200 OK," "Fallback Enabled," "Batch
 Locked," "~600ms" — styling flourishes echoing the real app's own
 "Mobile Sync Ready" badge, not literal telemetry claims).
 
-**Correction, same batch**: the image saved as `back-stock-label.png`
-in the prior pass was mislabeled — its fields
+**Correction (2026-09-16→17 pass)**: the image saved as
+`back-stock-label.png` was mislabeled — its fields
 (Category/Brand/Size-Type/Strain/Class/Potency/Price, no Lot#/Exp/
-Metrc Tag) and its "← back to search" link back to the Front Stock
-search screen confirm it's actually the **Front Stock** label editor
-(reached by selecting a live-menu search result), not Back Stock
-(the camera/QR+AI-vision intake flow, which — per the real repo docs
-— *would* show Lot#/Exp/Metrc). Renamed to
-`public/images/trends/front-stock-label.png` and all copy/captions
-corrected. **Because of this, the brief's requested "Metrc compliance
-badge" and "batch LOT/EXP" on the label preview were NOT added** —
-they're real fields on a *different* label type (Back Stock intake)
-that no screenshot of currently exists in this repo; adding them to
-this Front Stock shelf-tag preview would have been fabricated. The
-`work.labelPreview` field instead shows an honest close-up crop
-(`label-preview.png`, cropped from the real screenshot via Python
-Pillow, not fabricated) of what's actually in the image: brand,
-product, strain, class, potency, price. Get a real Back Stock
-intake-label screenshot if that specific compliance-badge visual is
-wanted later.
+Metrc Tag) and its "← back to search" link confirm it's actually the
+**Front Stock** label editor, not Back Stock. Renamed to
+`front-stock-label.png`. A tight crop of it
+(`public/images/trends/label-preview.png`, made via Python Pillow) was
+briefly used as a small "label preview" box, but the user asked
+2026-09-17 to revert Front Stock's solution visual back to the full
+screenshot instead (**"that was good you could keep it just change
+the name because that technically wasn't back stock still front
+stock"**) — so `label-preview.png` is unused for now (file stays on
+disk; don't reuse it under a "Back Stock" caption, since it's visibly
+a Front Stock label and doing so would recreate the exact mislabeling
+this correction fixed).
 
-**Correction, carried over**: the brief's stat banner again asked for
-"100% Typing Error Reduction," which has no basis — no error-rate
-measurement exists, before or after. Kept the same substitution from
-the prior pass: **"7 / Fields Auto-Filled from Live API,"** an exact,
-verifiable count read directly off the real screenshot. The other two
-stats ("12m → <1m" intake speed, "Real-Time" API sync) are the same
-firsthand figures already established.
+**Real product clarification from the user, 2026-09-17**: Back Stock
+isn't "QR-first, manual as a last-resort fallback" the way the
+architecture steps alone might imply — it's a **user choice between
+two equally valid paths**, because brand-new shipments aren't in the
+live menu yet, so there's nothing for the API to autofill from. Staff
+either snap a photo and let the QR/AI camera fill fields in real time,
+or type it in by hand — both are first-class, not fallback-vs-ideal.
+`secondarySolution.narrative` in `trends.ts` carries this framing;
+`work.architecture.steps` (QR-first, AI-vision-fallback) is still
+accurate as the *technical* mechanism behind the camera path
+specifically, now correctly scoped to the Back Stock section only
+(it used to sit next to the Front Stock screenshot, which conflated
+the two flows).
+
+**Correction, carried over from the 2nd pass**: the brief's stat
+banner again asked for "100% Typing Error Reduction," which has no
+basis — no error-rate measurement exists, before or after. Kept the
+same substitution: **"7 / Fields Auto-Filled from Live API,"** an
+exact, verifiable count read directly off the real screenshot. The
+other two stats ("12m → <1m" intake speed, "Real-Time" API sync) are
+the same firsthand figures already established.
+
+**Still waiting on real assets**: the user said they'd added Back
+Stock photos to "the trends folder," but as of this pass nothing new
+was found in `public/images/trends/`, the repo root, Downloads, or
+Desktop — confirm the save location before assuming they're missing
+again. Once real Back Stock (camera-capture screen + a label with
+Lot#/Exp/Metrc) screenshots exist, wire them into
+`trends.ts`'s `secondarySolution.uiImage.image` and
+`secondarySolution.labelPreview.image`.
 
 If more case studies eventually want this richer treatment, promote
 pieces of `TrendsCaseStudy.tsx` into `CaseStudyBento` rather than
@@ -292,7 +318,24 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-17, 2nd pass)
+## Known gaps (as of 2026-09-17, 3rd pass)
+- **Resolved (Trends Front Stock/Back Stock split, 2026-09-17 evening)**:
+  Section 03 now tells Front Stock and Back Stock as two separate
+  solutions instead of one merged section (see "Case-study pages"
+  above for the full breakdown) — correctly reflecting that they solve
+  different problems (one has a live API to pull from, one doesn't).
+  Front Stock's solution visual reverted from a cropped label to the
+  full auto-fill screenshot per explicit user request. New
+  `secondarySolution` field on `WorkContent` (narrative + uiImage +
+  labelPreview) added for this, Trends-only for now.
+  **Not done — waiting on real assets**: the user said Back Stock
+  photos were added to "the trends folder," but none were found on
+  disk anywhere checked (`public/images/trends/`, repo root,
+  Downloads, Desktop). Both Back Stock visuals (camera-capture screen,
+  and a label preview showing Lot#/Exp/Metrc) are still honest
+  placeholders. Confirm save location with the user next session
+  before assuming they're missing.
+
 - **Resolved (Trends visual hierarchy pass, 2026-09-17 pm)**: reordered
   into the requested 7-part flow (Header → Hero → Stat banner →
   01/Challenge → 02/Insight → 03/Solution → 04/Features — see
