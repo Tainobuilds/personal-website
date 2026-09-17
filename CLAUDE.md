@@ -82,14 +82,23 @@ story, inspired by clay.global):
 3. Services ("what I offer" — tagline + accordion list)
 4. Selected work — now 3 pillars instead of a flat grid:
    - **High-Craft Visual Design & Prototyping**: Kippo, Aligned
-   - **AI Workflows & Interactive Systems**: Spruce, Ticket Triage — MVP
-   - **Data-Driven MVPs & Product Engineering**: Trends (label-printing
-     workflow tool) — **replaced 311 Insights here 2026-09-14**, per
-     explicit user decision. 311 Insights' content file
-     (`src/content/work/insights-311.ts`) is NOT deleted, just removed
-     from `workIndex.ts` — it's real, verified work, just not on the
-     current homepage roster. Restore it (add back to `workIndex.ts`)
-     if asked, rather than rewriting it from scratch.
+   - **AI Workflows & Interactive Systems**: Spruce — **Ticket Triage
+     — MVP removed here 2026-09-17**, per explicit user decision.
+     Its content file (`src/content/work/ticket-triage.ts`) is NOT
+     deleted, just removed from `workIndex.ts` — it's real, verified
+     work, just not on the current homepage roster. Restore it (add
+     back to `workIndex.ts`) if asked, rather than rewriting it from
+     scratch. Pillar 2's homepage description also had its "and
+     automated triage" clause trimmed off (`src/app/page.tsx`) since
+     it no longer applies with Ticket Triage gone.
+   - **Retail Automation & Workflow Engineering** (renamed from
+     "Data-Driven MVPs & Product Engineering" on 2026-09-15): Trends
+     (label-printing workflow tool) — **replaced 311 Insights here
+     2026-09-14**, per explicit user decision. 311 Insights' content
+     file (`src/content/work/insights-311.ts`) is NOT deleted, just
+     removed from `workIndex.ts` — it's real, verified work, just not
+     on the current homepage roster. Restore it (add back to
+     `workIndex.ts`) if asked, rather than rewriting it from scratch.
 5. Testimonial
 6. About (with a lightweight "Currently" tag strip near the top)
 7. FAQ
@@ -213,8 +222,10 @@ for it so far.
 
 Live at `/work/[slug]`, one reusable Bento Grid template
 (`src/components/CaseStudyBento.tsx`) driven by typed content files in
-`src/content/work/*.ts` — **used by Kippo, Aligned, Spruce, Ticket
-Triage, and 311 Insights; Trends has its own template, see above.**
+`src/content/work/*.ts` — **used by Kippo, Aligned, Spruce, and 311
+Insights (the latter off the homepage roster); Ticket Triage's
+content file still exists but isn't in `workIndex.ts` either as of
+2026-09-17; Trends has its own template, see above.**
 Structure: editorial header, then an
 asymmetrical 3-column grid — full-bleed hero media, an optional video
 embed (Spruce's Loom walkthrough) or Before/After operational grid
@@ -248,11 +259,14 @@ or mixed external-link CTAs; external links (Figma prototype, live
 app) now live inside the case-study page itself via each project's
 `links` field.
 
-All 5 case studies (Kippo, Aligned, Spruce, Ticket Triage, 311
-Insights) ship with real content sourced from "Case study evidence"
-below — 311 Insights is the one still marked lighter/in-progress since
-its full write-up isn't built yet, same honest-placeholder principle
-used everywhere else on this site.
+All 6 case-study content files (Kippo, Aligned, Spruce, Ticket Triage,
+311 Insights, Trends) ship with real content sourced from "Case study
+evidence" below, though only 4 are on the current homepage roster
+(Kippo, Aligned, Spruce, Trends) — Ticket Triage and 311 Insights both
+still exist on disk, just not in `workIndex.ts`. 311 Insights is the
+one still marked lighter/in-progress since its full write-up isn't
+built yet, same honest-placeholder principle used everywhere else on
+this site.
 
 ### Trust strip copy (locked 2026-08-06)
 Text-based placeholder wordmarks (not real logo assets — avoids
@@ -344,7 +358,17 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-17, 6th pass)
+## Known gaps (as of 2026-09-17, 7th pass)
+- **Resolved (Ticket Triage removed, 2026-09-17)**: at the user's
+  request, Ticket Triage — MVP is off the homepage roster — removed
+  from `workIndex.ts` (same pattern as 311 Insights: content file
+  `src/content/work/ticket-triage.ts` stays on disk untouched, restore
+  it by adding it back to `workIndex.ts` if asked, rather than
+  rewriting it). `/work/ticket-triage` now correctly 404s (confirmed).
+  Pillar 2's homepage description (`src/app/page.tsx`) had its "and
+  automated triage" clause removed since Spruce alone doesn't cover
+  that claim — it only describes natural-language matching now.
+
 - **Resolved (Trends homepage card image, superseded same night)**:
   first tried the real Trends logo (`Trends Logo pic.png`, found in
   `~/trends-label-studio` — same lesson as before, "the trends
