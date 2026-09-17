@@ -344,21 +344,27 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-17, 5th pass)
-- **Resolved (Trends homepage card image, 2026-09-17 night)**: the
-  real Trends dispensary logo (`Trends Logo pic.png`, found in
-  `~/trends-label-studio` again — same lesson as before, "the trends
-  folder" means that repo, not `public/images/trends/`) is now
-  `trends.ts`'s `bannerImage`, so the "Selected work" homepage card no
-  longer shows the bordered "IMAGE: Trends" placeholder. The raw
-  logo's white background was keyed to transparent and composited
-  (via Python Pillow) onto a canvas in the site's own Sand color
-  (`#EDE8DF`), sized to `WorkCard`'s `aspect-[4/5]` — pasting the raw
-  file directly would have let `object-cover` crop into the wordmark,
-  since the source logo is roughly square, not portrait. Saved as
-  `public/images/trends/logo-mockup.jpg`. Only affects the homepage
-  card — `TrendsCaseStudy.tsx` never reads `bannerImage`, it builds
-  its own hero from `gallery[0]`, so the case-study page is unchanged.
+## Known gaps (as of 2026-09-17, 6th pass)
+- **Resolved (Trends homepage card image, superseded same night)**:
+  first tried the real Trends logo (`Trends Logo pic.png`, found in
+  `~/trends-label-studio` — same lesson as before, "the trends
+  folder" means that repo, not `public/images/trends/`) composited
+  onto a Sand-colored `aspect-[4/5]` canvas (`logo-mockup.jpg`, since
+  the raw square logo would've been cropped badly by `object-cover`).
+  **The user then asked for something more credibility-building**:
+  swapped to a real storefront photo instead — `Trends Store Front.jpeg`
+  (found directly in `~/`, not a repo this time), showing the actual
+  shop signage and address ("TRENDS, 27-25 44th Dr, Long Island City")
+  with a "New York Locals" badge overlay. At 399×501px it already
+  near-matches the card's 4:5 aspect, so no compositing was needed —
+  copied straight to `public/images/trends/storefront.jpg` and set as
+  `bannerImage`. `logo-mockup.jpg` removed from the repo (fully
+  superseded, no remaining reference — unlike other one-off derived
+  assets like `label-preview.png` which are kept since they could
+  still be reused). Only affects the homepage card —
+  `TrendsCaseStudy.tsx` never reads `bannerImage`, it builds its own
+  hero from `gallery[0]`, so the case-study page itself is unaffected
+  by either choice.
 
 - **Resolved (real Back Stock photos, 2026-09-17 late evening)**: all
   of Trends' remaining honest placeholders are now real photos — see
