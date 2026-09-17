@@ -14,7 +14,7 @@ export const trends: WorkContent = {
   problem:
     "Trends LIC runs fast — staff are already stretched across the floor and the back room, and new shipments land constantly. Every one of those shipments needs labels made right away: strain, size, THC%, price, all read off the product and typed in by hand before anything can go on the shelf. It's not just tedious, it's a real time sink in a job that doesn't have spare minutes to give it.",
   insight: {
-    text: "The dispensary's own live menu already has the right answer for every product — the fix isn't a faster typist, it's never typing it at all.",
+    text: "The dispensary's live menu already has the right answer for every product — the fix isn't a faster typist, it's never typing at all.",
     attribution: "Product direction",
   },
   architecture: {

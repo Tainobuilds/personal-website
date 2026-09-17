@@ -100,14 +100,41 @@ mobile (<768px) uses a hamburger that opens a full-screen drawer
 (`src/components/MobileDrawer.tsx`) — this replaced the earlier
 "no mobile hamburger menu" rule during the migration.
 
-### Case-study pages (added 2026-09-02, headers/architecture revised 2026-09-15)
+### Case-study pages (added 2026-09-02, headers/architecture revised 2026-09-15, Trends split off its own template 2026-09-17)
+`CaseStudyHeader.tsx` (extracted 2026-09-17) is the shared editorial
+header — tag pills, serif title, 4-column Role/Timeline/Tech
+Stack/Links metadata — used by both templates below.
+
+**Trends is a one-off, not the shared template.** `/work/trends`
+renders `TrendsCaseStudy.tsx`, not `CaseStudyBento` (branched in
+`src/app/work/[slug]/page.tsx` on `work.slug === "trends"`) — a
+Clay.global-high-craft treatment richer than the other 4 case studies
+get: full-bleed hero media in a dark rounded frame (reuses
+`work.gallery[0]`, no separate hero image file needed), a 3-stat
+impact banner, two feature spotlights in dark device-chrome frames
+(`work.gallery[1]`/`[2]`), a high-contrast `#111111` Insight card, a
+horizontal 4-step Solution timeline instead of a vertical list, and a
+2-up Features grid with numbered icon kickers. **Correction**: the
+brief's stat banner asked for "100% Typing Error Reduction," which
+has no basis — no error-rate measurement exists, before or after.
+Substituted **"7 / Fields Auto-Filled from Live API"** instead, an
+exact, verifiable count read directly off the real Back Stock
+screenshot (Category/Brand/Size-Type/Strain/Class/Potency/Price, each
+tagged "auto"). The other two stats ("12m → <1m" intake speed,
+"Real-Time" API sync) are the same firsthand figures already
+established. If more case studies eventually want this richer
+treatment, promote pieces of `TrendsCaseStudy.tsx` into `CaseStudyBento`
+rather than one-off-ing a 3rd template — not done yet since only
+Trends has asked for it so far.
+
 Live at `/work/[slug]`, one reusable Bento Grid template
 (`src/components/CaseStudyBento.tsx`) driven by typed content files in
-`src/content/work/*.ts`. Structure: editorial header (tag pills, serif
-title, 4-column Role/Timeline/Tech Stack/Links metadata), then an
+`src/content/work/*.ts` — **used by Kippo, Aligned, Spruce, Ticket
+Triage, and 311 Insights; Trends has its own template, see above.**
+Structure: editorial header, then an
 asymmetrical 3-column grid — full-bleed hero media, an optional video
 embed (Spruce's Loom walkthrough) or Before/After operational grid
-(Trends) right below the header, **The Challenge** (was "01/The
+right below the header, **The Challenge** (was "01/The
 Problem"), **The Insight** (was "02/Human Insight", dark accent card),
 **The Solution** (was "03/Technical Architecture or Design Process"),
 **Design System** (was "04/Design System Tokens" — only rendered when
@@ -115,11 +142,15 @@ a project has its own documented design system: Aligned and Spruce do,
 Kippo and Ticket Triage don't, so the card is simply omitted for
 them), and an **Impact** 3-up mechanics row (was "Key Mechanics &
 Impact") — the heading is overridable per project via
-`mechanicsHeading` (Trends uses "Features"; everything else keeps the
-"Impact" default). An optional `gallery` field (array of
+`mechanicsHeading` (currently unused by any of the 5 projects still on
+this template, since Trends — the one that set it to "Features" — has
+its own template now; the field stays on `WorkContent` for whichever
+project needs it next). An optional `gallery` field (array of
 `{ image?, caption }`) renders a 3-up grid of real product screenshots
 right after The Challenge card — same honest-placeholder pattern as
-everywhere else when `image` is omitted. **2026-09-15: raw code snippets removed sitewide** — the
+everywhere else when `image` is omitted (also currently unused here
+for the same reason — Trends' `gallery` data now feeds
+`TrendsCaseStudy.tsx` instead). **2026-09-15: raw code snippets removed sitewide** — the
 brief's rationale was keeping the portfolio focused on product
 design/user impact/high-level engineering rather than literal code;
 `ArchitectureBlock` (`src/content/work/types.ts`) is now just
@@ -229,7 +260,23 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-16)
+## Known gaps (as of 2026-09-17)
+- **Resolved (Trends Clay-level UI polish, 2026-09-17)**: Trends now
+  has its own richer case-study template (`TrendsCaseStudy.tsx`, see
+  "Case-study pages" above) — full-bleed hero, 3-stat banner, two
+  dark-framed feature spotlights, high-contrast Insight card,
+  horizontal Solution timeline, and a polished 2-up Features grid with
+  numbered icon kickers. Reused the 3 real screenshots already saved
+  at `public/images/trends/` — no new image files were needed despite
+  the brief naming `trends-hero-full.png` and `trends-label-preview.png`.
+  **Correction**: excluded the brief's "100% Typing Error Reduction"
+  stat (no error-rate measurement exists) and substituted a verifiable
+  one instead — "7 / Fields Auto-Filled from Live API," counted
+  directly off the real auto-fill screenshot. The other 4 case studies
+  (Kippo, Aligned, Spruce, Ticket Triage) are untouched, still on the
+  shared `CaseStudyBento` template — confirmed via a build and a
+  manual check of `/work/spruce` after the change.
+
 - **Resolved (Trends narrative rewrite, 2026-09-16)**: at the user's
   request, Trends' Before/After grid is gone entirely (`beforeAfter`
   field removed from `trends.ts` — the `beforeAfter` type/rendering
