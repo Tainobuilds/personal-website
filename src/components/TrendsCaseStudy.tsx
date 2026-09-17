@@ -80,9 +80,30 @@ function LabelPreviewBox({ image, caption }: { image?: string; caption: string }
   );
 }
 
+function PhotoCard({ image, caption }: { image?: string; caption: string }) {
+  return (
+    <div className="overflow-hidden rounded-2xl border border-border bg-sand">
+      {image ? (
+        <div className="relative aspect-[4/3] w-full">
+          <Image src={image} alt={caption} fill className="object-cover" />
+        </div>
+      ) : (
+        <div
+          aria-hidden
+          className="flex aspect-[4/3] w-full items-center justify-center px-4 text-center text-sm uppercase tracking-wide text-muted"
+        >
+          IMAGE: {caption}
+        </div>
+      )}
+      <p className="p-4 text-sm text-dark/70">{caption}</p>
+    </div>
+  );
+}
+
 export function TrendsCaseStudy({ work }: { work: WorkContent }) {
   const [home, frontStockSearch, frontStockLabel] = work.gallery ?? [];
   const secondary = work.secondarySolution;
+  const frontStockPhoto = work.extraPhotos?.[0];
 
   return (
     <>
@@ -113,26 +134,7 @@ export function TrendsCaseStudy({ work }: { work: WorkContent }) {
             <p className="leading-relaxed text-dark/80">{work.problem}</p>
           </div>
           {work.legacyContext && (
-            <div className="overflow-hidden rounded-2xl border border-border bg-sand">
-              {work.legacyContext.image ? (
-                <div className="relative aspect-[4/3] w-full">
-                  <Image
-                    src={work.legacyContext.image}
-                    alt={work.legacyContext.caption}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              ) : (
-                <div
-                  aria-hidden
-                  className="flex aspect-[4/3] w-full items-center justify-center px-4 text-center text-sm uppercase tracking-wide text-muted"
-                >
-                  IMAGE: Legacy backroom setup
-                </div>
-              )}
-              <p className="p-4 text-sm text-dark/70">{work.legacyContext.caption}</p>
-            </div>
+            <PhotoCard image={work.legacyContext.image} caption={work.legacyContext.caption} />
           )}
         </div>
 
@@ -171,6 +173,11 @@ export function TrendsCaseStudy({ work }: { work: WorkContent }) {
               />
             )}
           </div>
+          {frontStockPhoto && (
+            <div className="mt-4">
+              <PhotoCard image={frontStockPhoto.image} caption={frontStockPhoto.caption} />
+            </div>
+          )}
         </div>
 
         {/* 6b. Section 03 continued: The Solution — Back Stock */}
@@ -180,31 +187,36 @@ export function TrendsCaseStudy({ work }: { work: WorkContent }) {
             <p className="mb-6 leading-relaxed text-dark/80">{secondary.narrative}</p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-[3fr_2fr]">
               <div className="flex flex-col gap-4">
-                {secondary.uiImage &&
-                  (secondary.uiImage.image ? (
-                    <BrowserFrame
-                      src={secondary.uiImage.image}
-                      alt={secondary.uiImage.caption}
-                      path="trends.studio/back"
-                    />
-                  ) : (
-                    <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#111111]">
-                      <div className="flex items-center gap-2 border-b border-white/10 bg-[#1E1E1E] px-4 py-2.5">
-                        <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
-                        <span className="ml-3 rounded-md bg-white/5 px-3 py-1 font-mono text-xs text-white/50">
-                          trends.studio/back
-                        </span>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-[3fr_2fr]">
+                  {secondary.uiImage &&
+                    (secondary.uiImage.image ? (
+                      <BrowserFrame
+                        src={secondary.uiImage.image}
+                        alt={secondary.uiImage.caption}
+                        path="trends.studio/back"
+                      />
+                    ) : (
+                      <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#111111]">
+                        <div className="flex items-center gap-2 border-b border-white/10 bg-[#1E1E1E] px-4 py-2.5">
+                          <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+                          <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
+                          <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
+                          <span className="ml-3 rounded-md bg-white/5 px-3 py-1 font-mono text-xs text-white/50">
+                            trends.studio/back
+                          </span>
+                        </div>
+                        <div
+                          aria-hidden
+                          className="flex aspect-[3/2] w-full items-center justify-center px-4 text-center text-xs uppercase tracking-wide text-white/40"
+                        >
+                          IMAGE: {secondary.uiImage.caption}
+                        </div>
                       </div>
-                      <div
-                        aria-hidden
-                        className="flex aspect-[3/2] w-full items-center justify-center px-4 text-center text-xs uppercase tracking-wide text-white/40"
-                      >
-                        IMAGE: {secondary.uiImage.caption}
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  {secondary.productShot && (
+                    <PhotoCard image={secondary.productShot.image} caption={secondary.productShot.caption} />
+                  )}
+                </div>
                 {work.architecture && (
                   <ol className="grid grid-cols-1 gap-2 text-sm leading-relaxed text-dark/70 sm:grid-cols-2">
                     {work.architecture.steps.map((step, i) => (

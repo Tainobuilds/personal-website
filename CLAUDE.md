@@ -171,14 +171,40 @@ exact, verifiable count read directly off the real screenshot. The
 other two stats ("12m → <1m" intake speed, "Real-Time" API sync) are
 the same firsthand figures already established.
 
-**Still waiting on real assets**: the user said they'd added Back
-Stock photos to "the trends folder," but as of this pass nothing new
-was found in `public/images/trends/`, the repo root, Downloads, or
-Desktop — confirm the save location before assuming they're missing
-again. Once real Back Stock (camera-capture screen + a label with
-Lot#/Exp/Metrc) screenshots exist, wire them into
-`trends.ts`'s `secondarySolution.uiImage.image` and
-`secondarySolution.labelPreview.image`.
+**Resolved 2026-09-17, later same evening**: the "trends folder" the
+user meant was `~/trends-label-studio` (their separate, real product
+repo) — not this portfolio's `public/images/trends/`. Found 5 real
+photos there (`IMG_1712.HEIC`, `IMG_2105.JPG`, `IMG_2111.HEIC`,
+`IMG_2311.jpg`, `IMG_2312.HEIC`), converted the HEICs via macOS `sips`
+(`sips -s format jpeg -Z 1600 in.HEIC --out out.jpg`), and copied
+(not moved — originals untouched in `trends-label-studio`) into
+`public/images/trends/` with descriptive names:
+- `legacy-laptop.jpg` (IMG_1712) — the real "LABEL LAPTOP" running
+  ZebraDesigner Essentials next to a physical Zebra GX420d printer,
+  hand-building a label. Now `legacyContext.image`.
+- `front-stock-print-setup.jpg` (IMG_2111) — the live Trends Label
+  Studio web app auto-filling a Front Stock label (Lost Farm gummies)
+  with the physical printer mid-print, real label visible in the
+  tray. New `extraPhotos[0]`, shown under the Front Stock screenshots.
+- `back-stock-camera-scan.jpg` (IMG_2311) — the real "Trends — Sticker
+  Camera" screen, live-scanning a compliance sticker (green targeting
+  box) with LOT/EXP already captured at the bottom. Now
+  `secondarySolution.uiImage.image`.
+- `product-shelf.jpg` (IMG_2105) — a real back-stock product (WYLD
+  gummies) held up in front of the actual red-bin shelving, its
+  compliance sticker and QR code visible. New
+  `secondarySolution.productShot.image`.
+- `back-stock-label-result.jpg` (IMG_2312) — the auto-filled Back
+  Stock result screen (Lot #/Exp date both tagged "auto") plus its
+  print preview. Now `secondarySolution.labelPreview.image`. Its
+  caption deliberately says "Lot # and Exp date," not "Metrc Tag" —
+  this specific screenshot's visible fields are Count/Lot #/Exp
+  date/SKU, no separate Metrc field, so the caption doesn't overclaim
+  beyond what's actually on screen.
+
+New `WorkContent` fields from this pass: `secondarySolution.productShot`
+and top-level `extraPhotos` (both Trends-only for now, same pattern as
+`gallery`/`legacyContext`/`secondarySolution` before them).
 
 If more case studies eventually want this richer treatment, promote
 pieces of `TrendsCaseStudy.tsx` into `CaseStudyBento` rather than
@@ -318,7 +344,23 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-17, 3rd pass)
+## Known gaps (as of 2026-09-17, 4th pass)
+- **Resolved (real Back Stock photos, 2026-09-17 late evening)**: all
+  of Trends' remaining honest placeholders are now real photos — see
+  "Case-study pages" above for the full list of 5. Trends is now
+  fully photo-backed end to end: legacy method, Front Stock (search →
+  auto-fill → physical print), and Back Stock (scan → auto-fill →
+  physical result), no fabricated or placeholder imagery left on this
+  page. **Gotcha worth remembering**: when a user says "I added
+  photos to the trends folder," don't assume they mean this
+  portfolio's `public/images/trends/` — confirm which folder, since
+  in this case they meant a *different*, unrelated real repo
+  (`~/trends-label-studio`) that happens to share the word "trends."
+  Time-based `find -newermt` searches also won't catch it if the
+  photos have older original timestamps (these were dated Aug 28–Sep
+  13, not "just now") — search by folder/filename pattern too, not
+  just recency.
+
 - **Resolved (Trends Front Stock/Back Stock split, 2026-09-17 evening)**:
   Section 03 now tells Front Stock and Back Stock as two separate
   solutions instead of one merged section (see "Case-study pages"

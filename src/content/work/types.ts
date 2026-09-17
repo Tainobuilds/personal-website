@@ -42,8 +42,11 @@ export type WorkContent = {
     heading: string;
     narrative: string;
     uiImage?: { image?: string; caption: string };
+    productShot?: { image?: string; caption: string };
     labelPreview?: { image?: string; caption: string };
   };
+  /** Extra real-world supporting photos for a solution section (e.g. hardware/physical setup) */
+  extraPhotos?: { image?: string; caption: string }[];
   /** 04 / Design System Tokens — omitted when the project has no documented product design system */
   designSystem?: { name: string; tokens: DesignToken[]; typography?: string };
   /** Key Mechanics & Impact, 3-up grid (wraps to additional rows past 3) */

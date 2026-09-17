@@ -14,6 +14,7 @@ export const trends: WorkContent = {
   problem:
     "Trends LIC runs fast — staff are already stretched across the floor and the back room, and new shipments land constantly. Every one of those shipments needs labels made right away: strain, size, THC%, price, all read off the product and typed in by hand before anything can go on the shelf. It's not just tedious, it's a real time sink in a job that doesn't have spare minutes to give it.",
   legacyContext: {
+    image: "/images/trends/legacy-laptop.jpg",
     caption: "The old backroom laptop setup, hand-typing every label into ZebraDesigner Essentials",
   },
   insight: {
@@ -43,15 +44,28 @@ export const trends: WorkContent = {
       caption: "Front Stock — fields auto-filled from the live menu match, label ready to print",
     },
   ],
+  extraPhotos: [
+    {
+      image: "/images/trends/front-stock-print-setup.jpg",
+      caption:
+        "Trends Studio live in the back room — a Front Stock label auto-filled and printing on a real Zebra printer",
+    },
+  ],
   secondarySolution: {
     heading: "Back Stock — camera-assisted, or by hand",
     narrative:
       "Back Stock is a different problem: a brand-new shipment isn't on the live menu yet, so there's no API record for the API to pull from. The question wasn't how to automate all of it — it was how to stay fast when only some of it can be. Staff get a real choice: snap a photo and let a QR/AI camera pick up the details in real time, or just type them in by hand. Either way, the label prints just as fast.",
     uiImage: {
-      caption: "Back Stock — camera capture screen (QR-first, AI-vision fallback)",
+      image: "/images/trends/back-stock-camera-scan.jpg",
+      caption: "Sticker Camera — scanning a compliance sticker, Lot #/Exp captured live",
+    },
+    productShot: {
+      image: "/images/trends/product-shelf.jpg",
+      caption: "A real back-stock product, with its compliance sticker and QR code",
     },
     labelPreview: {
-      caption: "A real Back Stock label preview, with Lot #/Exp/Metrc Tag",
+      image: "/images/trends/back-stock-label-result.jpg",
+      caption: "Back Stock result — Lot # and Exp date auto-filled straight from the scan",
     },
   },
   mechanicsHeading: "Features",
