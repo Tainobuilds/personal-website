@@ -29,6 +29,10 @@ export type WorkContent = {
   videoEmbed?: { url: string; heading: string; subtext: string };
   /** Real product screenshots — omit image to render the standard honest placeholder */
   gallery?: { image?: string; caption: string }[];
+  /** A single close-up product artifact shot (e.g. a printed label preview) */
+  labelPreview?: { image?: string; caption: string };
+  /** A "before" legacy-context image for The Challenge — omit image for the standard honest placeholder */
+  legacyContext?: { image?: string; caption: string };
   /** 01 / The Problem */
   problem: string;
   /** 02 / Human Insight */

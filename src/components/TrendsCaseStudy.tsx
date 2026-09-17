@@ -9,6 +9,7 @@ const STATS = [
 ];
 
 const FEATURE_KICKERS = ["01 / API ENGINE", "02 / FALLBACK VISION", "03 / BATCH LOCK", "04 / SHUTTER SPEED"];
+const FEATURE_BADGES = ["200 OK", "Fallback Enabled", "Batch Locked", "~600ms"];
 
 const FEATURE_ICONS = [
   // API / sync
@@ -43,10 +44,16 @@ function FeatureIcon({ index }: { index: number }) {
   );
 }
 
-function FramedShot({ src, alt }: { src: string; alt: string }) {
+function BrowserFrame({ src, alt, path }: { src: string; alt: string; path: string }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#0D0D0D] p-3">
-      <div className="relative aspect-[3/2] w-full overflow-hidden rounded-xl">
+    <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/20">
+      <div className="flex items-center gap-2 border-b border-white/10 bg-[#1E1E1E] px-4 py-2.5">
+        <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
+        <span className="ml-3 rounded-md bg-white/5 px-3 py-1 font-mono text-xs text-white/50">{path}</span>
+      </div>
+      <div className="relative aspect-[3/2] w-full bg-[#0D0D0D]">
         <Image src={src} alt={alt} fill className="object-cover" />
       </div>
     </div>
@@ -54,23 +61,21 @@ function FramedShot({ src, alt }: { src: string; alt: string }) {
 }
 
 export function TrendsCaseStudy({ work }: { work: WorkContent }) {
-  const [home, frontStock, backStock] = work.gallery ?? [];
+  const [home, frontStockSearch] = work.gallery ?? [];
 
   return (
     <>
       <CaseStudyHeader work={work} />
 
       <div className="mx-auto flex max-w-[1100px] flex-col gap-6 px-8 pb-16">
-        {/* Hero media showcase */}
+        {/* 2. Hero Product Showcase — full-width browser-framed UI mockup */}
         {home?.image && (
-          <div className="overflow-hidden rounded-3xl border border-[#111111]/10 bg-[#111111] p-4 shadow-2xl md:p-8">
-            <div className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl">
-              <Image src={home.image} alt={home.caption} fill className="object-cover" priority />
-            </div>
+          <div className="rounded-3xl border border-[#111111]/10 bg-[#111111] p-4 shadow-2xl md:p-8">
+            <BrowserFrame src={home.image} alt={home.caption} path="trends.studio" />
           </div>
         )}
 
-        {/* Big stat / impact banner */}
+        {/* 3. Impact Metrics Banner */}
         <div className="grid grid-cols-1 gap-6 rounded-2xl border border-border bg-sand p-8 sm:grid-cols-3">
           {STATS.map((stat) => (
             <div key={stat.label}>
@@ -80,43 +85,39 @@ export function TrendsCaseStudy({ work }: { work: WorkContent }) {
           ))}
         </div>
 
-        {/* The Challenge */}
-        <div className="rounded-2xl border border-border bg-sand p-8">
-          <p className="mb-4 text-2xl font-bold tracking-tight">The Challenge</p>
-          <p className="leading-relaxed text-dark/80">{work.problem}</p>
+        {/* 4. Section 01: The Challenge — text + legacy operational context */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-[3fr_2fr]">
+          <div className="rounded-2xl border border-border bg-sand p-8">
+            <p className="mb-4 text-2xl font-bold tracking-tight">01 / The Challenge</p>
+            <p className="leading-relaxed text-dark/80">{work.problem}</p>
+          </div>
+          {work.legacyContext && (
+            <div className="overflow-hidden rounded-2xl border border-border bg-sand">
+              {work.legacyContext.image ? (
+                <div className="relative aspect-[4/3] w-full">
+                  <Image
+                    src={work.legacyContext.image}
+                    alt={work.legacyContext.caption}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ) : (
+                <div
+                  aria-hidden
+                  className="flex aspect-[4/3] w-full items-center justify-center px-4 text-center text-sm uppercase tracking-wide text-muted"
+                >
+                  IMAGE: Legacy backroom setup
+                </div>
+              )}
+              <p className="p-4 text-sm text-dark/70">{work.legacyContext.caption}</p>
+            </div>
+          )}
         </div>
 
-        {/* Feature Spotlight 1 — full width */}
-        {frontStock?.image && (
-          <div className="overflow-hidden rounded-2xl border border-border bg-cream">
-            <FramedShot src={frontStock.image} alt={frontStock.caption} />
-            <div className="p-6">
-              <p className="mb-1 font-semibold">Front Stock — Live Menu Search</p>
-              <p className="text-sm leading-relaxed text-dark/70">{frontStock.caption}</p>
-            </div>
-          </div>
-        )}
-
-        {/* Feature Spotlight 2 — asymmetrical 2-column */}
-        {backStock?.image && (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-[3fr_2fr]">
-            <div className="overflow-hidden rounded-2xl border border-border bg-cream">
-              <FramedShot src={backStock.image} alt={backStock.caption} />
-            </div>
-            <div className="flex flex-col justify-center rounded-2xl border border-border bg-sand p-6">
-              <p className="mb-2 font-semibold">Back Stock Auto-Fill</p>
-              <p className="text-sm leading-relaxed text-dark/70">
-                Category, Brand, Size/Type, Strain, Class, Potency, and Price all fill in on their own
-                once a product is matched — the same panel builds the thermal label preview live, so
-                what prints is exactly what's on screen.
-              </p>
-            </div>
-          </div>
-        )}
-
-        {/* The Insight — high-contrast accent card */}
+        {/* 5. Section 02: The Insight — dark-mode feature callout card */}
         <div className="rounded-2xl bg-[#111111] p-8 text-white">
-          <p className="mb-4 text-2xl font-bold tracking-tight text-accent">The Insight</p>
+          <p className="mb-4 text-2xl font-bold tracking-tight text-accent">02 / The Insight</p>
           <p className="text-xl leading-relaxed">
             <span className="text-accent">&ldquo;</span>
             {work.insight.text}
@@ -127,40 +128,75 @@ export function TrendsCaseStudy({ work }: { work: WorkContent }) {
           )}
         </div>
 
-        {/* The Solution — horizontal timeline */}
-        {work.architecture && (
-          <div className="rounded-2xl border border-border bg-sand p-8">
-            <p className="mb-1 text-2xl font-bold tracking-tight">The Solution</p>
+        {/* 6. Section 03: The Solution — interactive UI screens + label preview */}
+        <div className="rounded-2xl border border-border bg-sand p-8">
+          <p className="mb-1 text-2xl font-bold tracking-tight">03 / The Solution</p>
+          {work.architecture && (
             <p className="mb-6 text-sm text-dark/70">{work.architecture.heading}</p>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
-              {work.architecture.steps.map((step, i) => (
-                <div key={step} className="relative rounded-xl border border-border bg-cream p-5">
-                  <p className="mb-2 text-2xl font-bold text-accent">{String(i + 1).padStart(2, "0")}</p>
-                  <p className="text-sm leading-relaxed text-dark/80">{step}</p>
-                </div>
-              ))}
+          )}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-[3fr_2fr]">
+            <div className="flex flex-col gap-4">
+              {frontStockSearch?.image && (
+                <BrowserFrame src={frontStockSearch.image} alt={frontStockSearch.caption} path="trends.studio/front" />
+              )}
+              {work.architecture && (
+                <ol className="grid grid-cols-1 gap-2 text-sm leading-relaxed text-dark/70 sm:grid-cols-2">
+                  {work.architecture.steps.map((step, i) => (
+                    <li key={step}>
+                      <span className="mr-1.5 font-bold text-accent">{i + 1}.</span>
+                      {step}
+                    </li>
+                  ))}
+                </ol>
+              )}
             </div>
+            {work.labelPreview && (
+              <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#111111] p-3">
+                {work.labelPreview.image ? (
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+                    <Image
+                      src={work.labelPreview.image}
+                      alt={work.labelPreview.caption}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    aria-hidden
+                    className="flex aspect-[4/3] w-full items-center justify-center rounded-xl text-center text-xs uppercase tracking-wide text-white/40"
+                  >
+                    IMAGE: Printed label preview
+                  </div>
+                )}
+                <p className="p-3 text-xs leading-relaxed text-white/60">{work.labelPreview.caption}</p>
+              </div>
+            )}
           </div>
-        )}
+        </div>
 
-        {/* Features grid — polished */}
+        {/* 7. Section 04: Engineering Features — 4-card bento grid */}
         <div>
-          <p className="mb-4 text-2xl font-bold tracking-tight">
-            {work.mechanicsHeading ?? "Features"}
-          </p>
+          <p className="mb-4 text-2xl font-bold tracking-tight">04 / Engineering Features</p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {work.mechanics.map((mechanic, i) => (
               <div
                 key={mechanic.label}
-                className="rounded-2xl border border-border bg-cream p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className="rounded-2xl border border-[#111111]/10 bg-cream p-6 transition-colors hover:border-accent/40"
               >
-                <div className="mb-4 flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-accent/30 text-accent">
-                    <FeatureIcon index={i} />
+                <div className="mb-4 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full border border-accent/30 text-accent">
+                      <FeatureIcon index={i} />
+                    </span>
+                    <p className="text-xs font-bold uppercase tracking-wide text-accent">
+                      {FEATURE_KICKERS[i] ?? `0${i + 1}`}
+                    </p>
+                  </div>
+                  <span className="flex items-center gap-1.5 rounded-full border border-border bg-sand px-2.5 py-1 text-[11px] font-semibold text-dark/70">
+                    {i === 0 && <span className="h-1.5 w-1.5 rounded-full bg-[#4ade80]" />}
+                    {FEATURE_BADGES[i]}
                   </span>
-                  <p className="text-xs font-bold uppercase tracking-wide text-accent">
-                    {FEATURE_KICKERS[i] ?? `0${i + 1}`}
-                  </p>
                 </div>
                 <p className="mb-1 text-xl font-bold">{mechanic.value}</p>
                 <p className="mb-2 text-sm font-semibold">{mechanic.label}</p>

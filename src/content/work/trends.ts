@@ -13,6 +13,9 @@ export const trends: WorkContent = {
   techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel AI SDK", "Redis"],
   problem:
     "Trends LIC runs fast — staff are already stretched across the floor and the back room, and new shipments land constantly. Every one of those shipments needs labels made right away: strain, size, THC%, price, all read off the product and typed in by hand before anything can go on the shelf. It's not just tedious, it's a real time sink in a job that doesn't have spare minutes to give it.",
+  legacyContext: {
+    caption: "The old backroom laptop setup, hand-typing every label into ZebraDesigner Essentials",
+  },
   insight: {
     text: "The dispensary's live menu already has the right answer for every product — the fix isn't a faster typist, it's never typing at all.",
     attribution: "Product direction",
@@ -36,10 +39,15 @@ export const trends: WorkContent = {
       caption: "Front Stock — live menu search, ready to print",
     },
     {
-      image: "/images/trends/back-stock-label.png",
-      caption: "Back Stock — fields auto-filled, label ready to print",
+      image: "/images/trends/front-stock-label.png",
+      caption: "Front Stock — fields auto-filled from the live menu match, label ready to print",
     },
   ],
+  labelPreview: {
+    image: "/images/trends/label-preview.png",
+    caption:
+      "A real Front Stock shelf-tag preview — strain, class, potency, and price, filled straight from the live menu match.",
+  },
   mechanicsHeading: "Features",
   mechanics: [
     {

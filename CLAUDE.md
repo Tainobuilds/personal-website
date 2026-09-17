@@ -109,23 +109,55 @@ Stack/Links metadata — used by both templates below.
 renders `TrendsCaseStudy.tsx`, not `CaseStudyBento` (branched in
 `src/app/work/[slug]/page.tsx` on `work.slug === "trends"`) — a
 Clay.global-high-craft treatment richer than the other 4 case studies
-get: full-bleed hero media in a dark rounded frame (reuses
-`work.gallery[0]`, no separate hero image file needed), a 3-stat
-impact banner, two feature spotlights in dark device-chrome frames
-(`work.gallery[1]`/`[2]`), a high-contrast `#111111` Insight card, a
-horizontal 4-step Solution timeline instead of a vertical list, and a
-2-up Features grid with numbered icon kickers. **Correction**: the
-brief's stat banner asked for "100% Typing Error Reduction," which
-has no basis — no error-rate measurement exists, before or after.
-Substituted **"7 / Fields Auto-Filled from Live API"** instead, an
-exact, verifiable count read directly off the real Back Stock
-screenshot (Category/Brand/Size-Type/Strain/Class/Potency/Price, each
-tagged "auto"). The other two stats ("12m → <1m" intake speed,
-"Real-Time" API sync) are the same firsthand figures already
-established. If more case studies eventually want this richer
-treatment, promote pieces of `TrendsCaseStudy.tsx` into `CaseStudyBento`
-rather than one-off-ing a 3rd template — not done yet since only
-Trends has asked for it so far.
+get. **Section order (locked 2026-09-17, 2nd pass):** header →
+full-bleed hero (macOS-style `BrowserFrame` — traffic-light dots +
+mock URL bar `trends.studio`, purely decorative chrome, not a real
+domain — wrapping `work.gallery[0]`) → 3-stat impact banner →
+**01/The Challenge** (problem text + `legacyContext` side card,
+currently an honest placeholder — no real photo of the old backroom
+laptop setup exists yet) → **02/The Insight** (high-contrast
+`#111111` card, accent quote marks) → **03/The Solution** (2-column:
+left = `BrowserFrame` around `work.gallery[1]` + the architecture
+steps as a compact 2-up list beneath it; right = `work.labelPreview`,
+a real cropped close-up of the printed label, dark-framed) →
+**04/Engineering Features** (2-up grid, numbered icon kickers +
+a small status badge per card — "200 OK," "Fallback Enabled," "Batch
+Locked," "~600ms" — styling flourishes echoing the real app's own
+"Mobile Sync Ready" badge, not literal telemetry claims).
+
+**Correction, same batch**: the image saved as `back-stock-label.png`
+in the prior pass was mislabeled — its fields
+(Category/Brand/Size-Type/Strain/Class/Potency/Price, no Lot#/Exp/
+Metrc Tag) and its "← back to search" link back to the Front Stock
+search screen confirm it's actually the **Front Stock** label editor
+(reached by selecting a live-menu search result), not Back Stock
+(the camera/QR+AI-vision intake flow, which — per the real repo docs
+— *would* show Lot#/Exp/Metrc). Renamed to
+`public/images/trends/front-stock-label.png` and all copy/captions
+corrected. **Because of this, the brief's requested "Metrc compliance
+badge" and "batch LOT/EXP" on the label preview were NOT added** —
+they're real fields on a *different* label type (Back Stock intake)
+that no screenshot of currently exists in this repo; adding them to
+this Front Stock shelf-tag preview would have been fabricated. The
+`work.labelPreview` field instead shows an honest close-up crop
+(`label-preview.png`, cropped from the real screenshot via Python
+Pillow, not fabricated) of what's actually in the image: brand,
+product, strain, class, potency, price. Get a real Back Stock
+intake-label screenshot if that specific compliance-badge visual is
+wanted later.
+
+**Correction, carried over**: the brief's stat banner again asked for
+"100% Typing Error Reduction," which has no basis — no error-rate
+measurement exists, before or after. Kept the same substitution from
+the prior pass: **"7 / Fields Auto-Filled from Live API,"** an exact,
+verifiable count read directly off the real screenshot. The other two
+stats ("12m → <1m" intake speed, "Real-Time" API sync) are the same
+firsthand figures already established.
+
+If more case studies eventually want this richer treatment, promote
+pieces of `TrendsCaseStudy.tsx` into `CaseStudyBento` rather than
+one-off-ing a 3rd template — not done yet since only Trends has asked
+for it so far.
 
 Live at `/work/[slug]`, one reusable Bento Grid template
 (`src/components/CaseStudyBento.tsx`) driven by typed content files in
@@ -260,7 +292,24 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-17)
+## Known gaps (as of 2026-09-17, 2nd pass)
+- **Resolved (Trends visual hierarchy pass, 2026-09-17 pm)**: reordered
+  into the requested 7-part flow (Header → Hero → Stat banner →
+  01/Challenge → 02/Insight → 03/Solution → 04/Features — see
+  "Case-study pages" above), added macOS-style browser-chrome framing
+  for the dark screenshots, and added a dedicated label-preview
+  showcase in Section 03. **Two brief inaccuracies caught and
+  corrected**: (1) a screenshot from the prior pass was mislabeled
+  "Back Stock" when it's actually Front Stock — renamed the file and
+  fixed every caption; (2) skipped the brief's "Metrc compliance
+  badge"/"batch LOT/EXP" on the label preview since those belong to
+  the (different, unphotographed) Back Stock intake-label flow, not
+  the Front Stock shelf tag the real screenshot shows — showing them
+  would have been fabricated. Still no real photo for `legacyContext`
+  (the old backroom laptop) — renders the standard honest placeholder;
+  drop a real photo in and wire it into `trends.ts`'s
+  `legacyContext.image` whenever available.
+
 - **Resolved (Trends Clay-level UI polish, 2026-09-17)**: Trends now
   has its own richer case-study template (`TrendsCaseStudy.tsx`, see
   "Case-study pages" above) — full-bleed hero, 3-stat banner, two
@@ -414,17 +463,25 @@ Concrete proof points to draw on when writing case studies — confirmed 2026-08
     your phone, or build by hand") and "Front Stock" (SALES FLOOR,
     "search the live menu or enter details by hand"). The Front Stock
     search view shows real live-menu results grouped by brand (Dank,
-    Ayrloom, Wyld) with product/category/size. The label editor view
-    shows Category/Brand/Size-Type/Strain/Class/Potency/Price fields
-    each tagged "auto" (visually confirms the API-autofill claim) plus
-    a live label preview and a genuine graceful-degradation banner:
-    "Zebra Browser Print isn't running on this computer — labels will
-    use the system print dialog instead." **Resolved 2026-09-16, same
-    day**: the user saved the 3 screenshots into a `Trends/` folder at
-    the repo root; moved into `public/images/trends/` as `home.png`,
-    `front-stock-search.png`, and `back-stock-label.png`, and wired
-    into `trends.ts`'s `gallery[].image` — gallery now shows the real
-    screenshots, not placeholders. **Gotcha worth remembering**: macOS
+    Ayrloom, Wyld) with product/category/size. The 3rd screenshot (a
+    Front Stock label reached by selecting "Garlic Breath" from that
+    search — confirmed by its "← back to search" link and the absence
+    of any Lot#/Exp/Metrc field, which only Back Stock intake labels
+    carry) shows Category/Brand/Size-Type/Strain/Class/Potency/Price
+    fields each tagged "auto" (visually confirms the API-autofill
+    claim) plus a live label preview and a genuine
+    graceful-degradation banner: "Zebra Browser Print isn't running on
+    this computer — labels will use the system print dialog instead."
+    **Resolved 2026-09-16, same day**: the user saved the 3
+    screenshots into a `Trends/` folder at the repo root; moved into
+    `public/images/trends/` as `home.png`, `front-stock-search.png`,
+    and (originally, mislabeled) `back-stock-label.png`, wired into
+    `trends.ts`'s `gallery[].image`. **Renamed 2026-09-17** to
+    `front-stock-label.png` once the Front-vs-Back-Stock mixup was
+    caught (see "Case-study pages" above); also cropped a tight
+    close-up of just the printed-label portion into
+    `label-preview.png` for the Solution section's dedicated label
+    showcase. **Gotcha worth remembering**: macOS
     screenshot filenames use a narrow no-break space (U+202F, not a
     regular space) before "AM"/"PM" — a typed `mv "...4.58.54 PM.png"`
     silently fails with "No such file or directory" even though `ls`
