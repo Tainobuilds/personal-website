@@ -55,6 +55,8 @@ export type WorkContent = {
   links?: { label: string; href: string }[];
   bannerImage?: string;
   bannerVideo?: string;
+  /** "portrait" = a 9:16 mockup shown as a tall full-width banner (cropped to fit); default is a 16:9 banner */
+  bannerFit?: "wide" | "portrait";
   /** Before/After operational comparison — omit image to render the standard honest placeholder */
   beforeAfter?: {
     metricBadge: string;

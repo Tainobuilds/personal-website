@@ -379,7 +379,35 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-19, 2nd pass)
+## Known gaps (as of 2026-09-19, 3rd pass)
+- **Resolved (Aligned mockup hero, 2026-09-19)**: the Welcome screen is
+  now shown in a 3D device mockup (phone standing against deep-blue
+  velvet), set as Aligned's `bannerImage` (`public/images/aligned/
+  mockup-hero.webp`, 1216×2160, 9:16) and therefore also its homepage
+  card image, where it sits next to Kippo's orange mockup. New generic
+  `bannerFit: "portrait"` on `WorkContent` renders a 9:16 banner as a
+  full-width tall hero (`h-[780px]` on desktop, `aspect-[4/5]` on
+  mobile, `object-cover` centered — the phone lands inside the crop
+  because it sits at the image's vertical center). Made with the same
+  mckp.live editor as Kippo's; the still carried the free-tier
+  **"Made with mckp.live" badge** (large dark pill, bottom center, over
+  near-black velvet), which was reconstructed from the surrounding rows
+  with Pillow (interpolation + matched grain; verified with a 6×
+  brightened before/after). The user was told the watermark-free
+  export is a paid-plan feature and chose to proceed; **a paid export
+  would supersede this.** The user's files: `Aligned/iPhone 17
+  Pro.png` (the still, used) and `Aligned/iPhone 17 Pro (1).mp4`
+  (1216×2160, 6s, 60fps — **not used**: for its first ~3s the badge sits
+  on the phone's own screen while the camera pulls back, over the orange
+  button and text, which can't be reconstructed convincingly; only the
+  last ~2.5s (phone settled, badge over velvet) would be clean-able, and
+  that part is nearly static, so a still serves better). The tool's
+  editor screenshot the user shared also showed an "Embed" option
+  (`<mockup-player mockup-id=…>` web component) — deliberately not
+  used: it's a live third-party script tied to their account.
+  `Aligned/mockup-ready-welcome.png` (1288×2798, fake status bar
+  removed) was the upload image for the editor and is not used on the
+  site.
 - **Resolved (Kippo "From Sketch to Screen", 2026-09-19)**: new generic
   `evolution` section (see "Case-study pages") tells the design process
   through three screens — **Home** (paper sketch → digital wireframe →
@@ -433,8 +461,9 @@ Generative AI" service naming.
   Tailwind "Mobile Device Frame" for Aligned — unnecessary: the phones
   now come pre-shaped from the prototype's own shell, so no second CSS
   frame is needed (it would double-frame them).
-- Aligned's existing hero banner (`work-aligned.jpg`, the splash mockup)
-  is unchanged.
+- Aligned's old hero banner (`work-aligned.jpg`, the splash mockup) was
+  replaced 2026-09-19 (see the next entry); the file stays because the
+  About → Designer tab (`IdentityToggle.tsx`) still uses it.
 - **Resolved (Ticket Triage removed, 2026-09-17)**: at the user's
   request, Ticket Triage — MVP is off the homepage roster — removed
   from `workIndex.ts` (same pattern as 311 Insights: content file

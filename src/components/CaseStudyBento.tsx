@@ -28,8 +28,21 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
               </video>
             ) : (
               work.bannerImage && (
-                <div className="relative aspect-[16/9] w-full">
-                  <Image src={work.bannerImage} alt={work.title} fill className="object-cover" />
+                <div
+                  className={
+                    work.bannerFit === "portrait"
+                      ? "relative aspect-[4/5] w-full sm:aspect-auto sm:h-[780px]"
+                      : "relative aspect-[16/9] w-full"
+                  }
+                >
+                  <Image
+                    src={work.bannerImage}
+                    alt={work.title}
+                    fill
+                    priority
+                    sizes="(max-width: 1100px) 100vw, 1036px"
+                    className="object-cover"
+                  />
                 </div>
               )
             )}

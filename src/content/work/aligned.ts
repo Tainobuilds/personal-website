@@ -11,7 +11,8 @@ export const aligned: WorkContent = {
   role: "Product Designer (UX/UI)",
   timeline: "2026",
   techStack: ["Figma-style tap-through prototype", "Claude Design"],
-  bannerImage: "/images/work-aligned.jpg",
+  bannerImage: "/images/aligned/mockup-hero.webp",
+  bannerFit: "portrait",
   problem:
     "70% of patients drop their home exercise program within the first 4 weeks — the exercises work, adherence doesn't. The target user spends 8+ hours seated daily, building the very tension physical therapy is meant to release, and has typically already downloaded and abandoned 2 other PT apps that feel clinical, dense, and joyless.",
   insight: {
