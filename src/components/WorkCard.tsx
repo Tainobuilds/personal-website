@@ -9,9 +9,14 @@ export function WorkCard({ work }: { work: WorkContent }) {
       className="group block cursor-pointer transition-all duration-300 hover:scale-[1.01]"
     >
       <article>
-        {work.bannerImage ? (
+        {work.cardImage ?? work.bannerImage ? (
           <div className="relative mb-3 aspect-[4/5] w-full overflow-hidden rounded-2xl border border-border bg-sand">
-            <Image src={work.bannerImage} alt={work.title} fill className="object-cover" />
+            <Image
+              src={(work.cardImage ?? work.bannerImage) as string}
+              alt={work.title}
+              fill
+              className="object-cover"
+            />
           </div>
         ) : (
           <div

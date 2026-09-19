@@ -355,7 +355,9 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
               <div key={mechanic.label} className="rounded-2xl border border-border bg-cream p-6">
                 <p className="mb-1 text-2xl font-bold text-accent">{mechanic.value}</p>
                 <p className="mb-2 text-sm font-semibold">{mechanic.label}</p>
-                <p className="text-sm leading-relaxed text-dark/70">{mechanic.description}</p>
+                <p className="text-sm leading-relaxed text-dark/70 [overflow-wrap:anywhere]">
+                  {mechanic.description}
+                </p>
               </div>
             ))}
           </div>

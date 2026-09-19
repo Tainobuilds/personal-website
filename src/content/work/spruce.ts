@@ -11,6 +11,8 @@ export const spruce: WorkContent = {
   role: "Full-Stack Engineer & Product Designer",
   timeline: "In progress · 2026",
   techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe", "Supabase", "Claude API"],
+  bannerImage: "/images/spruce/mockup-hero.webp",
+  cardImage: "/images/spruce/mockup-card.webp",
   problem:
     "Customers had no simple way to discover trusted home-service providers, while providers lacked unified tools to manage bookings and reach new clients. Dual-sided platforms only work when friction is removed for both sides at once.",
   insight: {

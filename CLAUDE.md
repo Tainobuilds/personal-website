@@ -379,7 +379,34 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-19, 3rd pass)
+## Known gaps (as of 2026-09-19, 4th pass)
+- **Resolved (Spruce mockup hero, 2026-09-19)**: Spruce now has a
+  framed-browser mockup as its `bannerImage`
+  (`public/images/spruce/mockup-hero.webp`, 2400×1350, 16:9) — the
+  landing page (headline "Spruce — The Intelligent Local Services
+  Marketplace") behind the "Find a Service" customer workspace, two
+  macOS-style windows with soft shadows on a deep-forest-to-amber
+  background built from Spruce's own tokens (Forest `#0B2B22`, Amber
+  `#D97706`, Sage). **Composed entirely by us with Pillow — no
+  third-party mockup tool, so no watermark/paid-plan concern.** Source:
+  the two 2026-09-19 screenshots in `~/Spruce/` (current Bough logo,
+  clean data — deliberately NOT the older Aug-26 screenshots in the
+  zip, which show Chrome tab chrome, "QA Test Listing"-type test data
+  and the old logo). The landing screenshot's right 16px is a sliver
+  of another window, cropped off. The browser windows' URL bars are
+  left blank (no invented domain). **Correction to remember**: a 16:9
+  banner center-cropped into the homepage card's `aspect-[4/5]` shows
+  only a meaningless middle strip, so `WorkContent` gained an
+  optional **`cardImage`** (4:5) that `WorkCard` prefers over
+  `bannerImage` — Spruce's is `public/images/spruce/mockup-card.webp`
+  (1600×2000, same two windows stacked). Also fixed a latent mobile
+  overflow in `CaseStudyBento`: the Spruce mechanic text
+  "Browse/listings/reviews/bookings" is one unbreakable word, which
+  pushed the page 18px wider than a 650px viewport; mechanic
+  descriptions now use `overflow-wrap:anywhere`. Scripts live in the
+  scratchpad only (`spruce/compose.py`) — re-create with Pillow
+  (window chrome + rounded-corner alpha + gaussian shadow + smooth
+  gaussian-glow background) if the screenshots change.
 - **Resolved (Aligned mockup hero, 2026-09-19)**: the Welcome screen is
   now shown in a 3D device mockup (phone standing against deep-blue
   velvet), set as Aligned's `bannerImage` (`public/images/aligned/
@@ -652,7 +679,7 @@ Generative AI" service naming.
 - **Resolved by the 2026-09-02 migration**: every work card now links to a real `/work/[slug]` case-study page (Kippo, Aligned, Spruce, Ticket Triage all ship real content; 311 Insights is an honest lighter/in-progress stub). No more disabled cards or mixed external-link CTAs.
 - **Resolved (feature brief, 2026-09-02)**: About page now has an Overview + Skills credential timeline (`CredentialTimeline.tsx`) and a Designer/Builder/Fashion identity toggle (`IdentityToggle.tsx`), per `madebytainofeaturebrief.md`. Designer tab reuses existing Aligned/Kippo images (no dedicated designer photos yet — explicit user call, not a placeholder). Real photo assets live in `public/images/identity/`. **Not yet built from that brief**: item 3 (per-project `<InteractiveMockup>` hover component) — still waiting on a screen recording; brief suggests prototyping on Ticket Triage first since it has a live demo. Item 4 (chatbot) is explicitly parked for later.
 - **Known bug worth remembering**: `AnimatePresence` (from the `motion` package) never completed its exit animation in this dev environment — confirmed across a server restart, `.next` cache clear, and fresh tabs, so it wasn't stale HMR state. If a future feature needs an exit-then-enter crossfade, don't assume `AnimatePresence` "just works" here without testing the unmount actually happens; `IdentityToggle` was rewritten to a plain fade-in (no exit tracking) to route around it.
-- Kippo and Ticket Triage work cards still show a bordered placeholder box on the homepage grid (no `bannerImage` set in their content files yet) — Aligned has a real image; Kippo has a real image too via its case-study banner but the *homepage card* itself doesn't reuse it yet; Spruce and 311 Insights have no image at all. Worth wiring `bannerImage` into more of the content files.
+- Kippo and Ticket Triage work cards still show a bordered placeholder box on the homepage grid (no `bannerImage` set in their content files yet) — Aligned has a real image; Kippo has a real image too via its case-study banner but the *homepage card* itself doesn't reuse it yet; 311 Insights has no image at all (Spruce got one 2026-09-19, see Known gaps). Worth wiring `bannerImage` into more of the content files.
 - 311 Insights' case-study page has real problem/mechanics content but no `architecture` or `designSystem` card yet, and no hero image — it's the one project still clearly reading as "in progress."
 - Testimonial section quote is still placeholder copy, not a real testimonial. **The portrait image is real now** (resolved 2026-09-17): `public/images/testimonial-portrait.jpg`, copied from `Picture of me in suit.JPG` at the repo root per explicit user request — a real full-body mirror-selfie portrait, default `object-cover`/center-crop keeps the face and suit in frame. The quote/attribution ("Creative Partner") is still unverified placeholder text — don't treat it as real until the user confirms an actual testimonial to replace it with.
 - Trust strip uses text-only placeholder wordmarks, not real logos — needs real logo assets and confirmed client permission before launch.
