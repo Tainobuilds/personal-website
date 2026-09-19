@@ -17,7 +17,7 @@ export const kippo: WorkContent = {
       href: "https://www.figma.com/design/2Wdy34apAh2BlAgori9ZU2/Kippo-Kids-App?node-id=0-1&t=PiLmJa3aflJzMqAU-1",
     },
   ],
-  bannerImage: "/assets/images/kippo/iphone-17-pro-photo.png",
+  bannerImage: "/assets/images/kippo/iphone-17-pro-photo-clean.png",
   bannerVideo: "/assets/videos/kippo/iphone-17-pro-video.mp4",
   problem:
     "Parents struggle with the rising cost of children's clothing and find current resale options — Facebook Marketplace, Craigslist — disorganized, time-consuming, and unreliable. Research surfaced four concrete pain points: the high cost of kids' clothing, limited income flexibility, a lack of trust in existing resale platforms, and time constraints from busy schedules.",

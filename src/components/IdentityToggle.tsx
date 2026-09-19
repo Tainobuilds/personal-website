@@ -27,7 +27,7 @@ const IDENTITIES: Identity[] = [
         caption: "Aligned — recovery app case study",
       },
       {
-        src: "/assets/images/kippo/iphone-17-pro-photo.png",
+        src: "/assets/images/kippo/iphone-17-pro-photo-clean.png",
         alt: "Kippo app mockup on an iPhone",
         caption: "Kippo — kids resale app mockup",
       },
