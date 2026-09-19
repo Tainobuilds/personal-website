@@ -6,6 +6,19 @@ export type ArchitectureBlock = { heading: string; steps: string[] };
 
 export type Mechanic = { label: string; value: string; description: string };
 
+export type WalkthroughStep = {
+  /** Portrait phone-screen image (transparent rounded corners, ~644x1399) */
+  image: string;
+  /** Prototype section this screen belongs to, e.g. "Onboarding" */
+  group: string;
+  /** Short screen name, e.g. "Welcome" */
+  label: string;
+  title: string;
+  caption: string;
+  /** Design principle this screen is the clearest example of */
+  principle?: string;
+};
+
 export type WorkContent = {
   slug: string;
   pillar: 1 | 2 | 3;
@@ -37,6 +50,16 @@ export type WorkContent = {
   insight: { text: string; attribution?: string };
   /** 03 / Technical Architecture (or Design Process, for design-only projects) */
   architecture?: ArchitectureBlock;
+  /** Step-by-step product story told through phone screens on a dark stage */
+  walkthrough?: {
+    heading: string;
+    intro: string;
+    /** Wide shot of the whole interactive prototype, shown above the steps */
+    overview?: { image: string; caption: string };
+    steps: WalkthroughStep[];
+    /** Optional closing tile that fills the last grid cell */
+    note?: { title: string; body: string };
+  };
   /** A second, parallel solution narrative (e.g. a different flow within the same product) */
   secondarySolution?: {
     heading: string;

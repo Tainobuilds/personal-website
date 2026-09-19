@@ -240,7 +240,16 @@ Impact") — the heading is overridable per project via
 `mechanicsHeading` (currently unused by any of the 5 projects still on
 this template, since Trends — the one that set it to "Features" — has
 its own template now; the field stays on `WorkContent` for whichever
-project needs it next). An optional `gallery` field (array of
+project needs it next). **`walkthrough` (added 2026-09-19, first used
+by Aligned)**: an optional, generic product-story section — a dark
+`#1A1814` stage (Aligned's own documented "Ink" token) with an
+optional wide `overview` image, then a numbered grid of portrait phone
+screens (`steps[]`: image, group, label, title, caption, optional
+`principle` pill) plus an optional closing `note` tile that fills the
+last grid cell. It renders between Design System and Impact so the
+Solution + Design System row stays paired. Phone images are expected
+at ~644×1399 with transparent rounded corners (`.webp`) — Kippo's
+case study could reuse it later. An optional `gallery` field (array of
 `{ image?, caption }`) renders a 3-up grid of real product screenshots
 right after The Challenge card — same honest-placeholder pattern as
 everywhere else when `image` is omitted (also currently unused here
@@ -358,7 +367,26 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-17, 7th pass)
+## Known gaps (as of 2026-09-19)
+- **Resolved (Aligned story from real prototype screens, 2026-09-19)**:
+  the user's repo-root `Aligned/` folder held 7 screenshots of the
+  interactive prototype. Processed with Python Pillow (no numpy on this
+  machine — use `ImageChops`/`getbbox`): detected each phone's bounds
+  (all 644×1399), flood-filled the dark outside to make **transparent
+  rounded corners**, saved as `public/images/aligned/01…07-*.webp`
+  (25–50KB each), plus one wide crop of the whole prototype wrapper
+  (`prototype-stage.jpg`). Wired in through the new generic
+  `walkthrough` field ("The Flow" section): 7 steps in prototype order,
+  each tagged with one of the 3 verified principles ("Soft, not
+  strict" / "15 minutes, no negotiation" / "Show it working" — **the
+  step→principle mapping is a design interpretation, easy to adjust in
+  `aligned.ts`**). The originals stay untouched and untracked in
+  `Aligned/`. This also makes the old 2026-09-15 open item (3) — a
+  Tailwind "Mobile Device Frame" for Aligned — unnecessary: the phones
+  now come pre-shaped from the prototype's own shell, so no second CSS
+  frame is needed (it would double-frame them).
+- Aligned's existing hero banner (`work-aligned.jpg`, the splash mockup)
+  is unchanged.
 - **Resolved (Ticket Triage removed, 2026-09-17)**: at the user's
   request, Ticket Triage — MVP is off the homepage roster — removed
   from `workIndex.ts` (same pattern as 311 Insights: content file
@@ -657,6 +685,31 @@ Concrete proof points to draw on when writing case studies — confirmed 2026-08
   screens to reference for the case-study "Interactive UI Showcase."
   This deck is a strong candidate to export screens/copy from directly,
   same pattern as the Kippo PNG deck.
+  - **Prototype screenshots, confirmed 2026-09-19** (7 screenshots the
+    user saved into the repo-root `Aligned/` folder, 3024×1738 each,
+    all of the prototype's browser wrapper: flow sidebar, toolbar,
+    phone, and a "try this" note). The sidebar lists **10 steps** in 3
+    groups — Onboarding (Welcome 01, Body tension 02, Personalize 03,
+    Notifications 04, You're all set 05), Daily (Home 06), Session
+    (Session intro 07, Pelvic tilt 08, Glute bridge 09, Session
+    complete 10). The screenshots cover 7 of the 10 (**not**
+    Personalize, Pelvic tilt, or Glute bridge). Facts read directly off
+    the screens, safe to cite: onboarding pain check-in set to 7/10
+    with Lower back + Hips selected; one reminder at 7:00 PM ("15
+    minutes for your back?"); Home = "Hey Alex. Your back has been
+    waiting. Today is 15 minutes." with a "Lower back, gently" plan
+    (5 exercises · 15 min · 7:00 PM) and a 3-day streak whose row shows
+    today as a dashed ring ("grace days explicitly — never hidden
+    mechanics," per the prototype's own note); Session intro lists
+    Pelvic tilt 2 min, Glute bridge 3 min, Cat-cow 2 min (+ more) and
+    its video slot is a **placeholder awaiting real footage from the
+    therapist** (the prototype's own note says so — never present it
+    as real footage); Session complete = "You showed up today. Day 4 of
+    your streak," pain 4/10 = "3 points lighter than before," body map
+    "Cooling down." One nuance vs. the deck: the deck describes the
+    body map cooling orange → **green**; the prototype's own note says
+    orange → **amber**. The site copy just says "cooling from orange"
+    to stay true to both.
 - **`~/pursuit-311-insights`**: real open-source live data (NYC 311 Socrata
   API), used to surface actual insights — concrete evidence for Development
   and Generative AI (AI-assisted build process).

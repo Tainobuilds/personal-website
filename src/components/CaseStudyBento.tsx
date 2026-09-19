@@ -180,6 +180,63 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
           </div>
         )}
 
+        {/* Product walkthrough — phone screens on a dark stage, spans 3 */}
+        {work.walkthrough && (
+          <div className="col-span-1 rounded-3xl bg-[#1A1814] p-6 text-cream sm:col-span-3 md:p-10">
+            <p className="mb-2 text-2xl font-bold tracking-tight">{work.walkthrough.heading}</p>
+            <p className="mb-8 max-w-2xl leading-relaxed text-cream/70">{work.walkthrough.intro}</p>
+
+            {work.walkthrough.overview && (
+              <figure className="mb-12">
+                <div className="relative aspect-[1930/1678] overflow-hidden rounded-2xl border border-white/10">
+                  <Image
+                    src={work.walkthrough.overview.image}
+                    alt={work.walkthrough.overview.caption}
+                    fill
+                    sizes="(max-width: 1100px) 100vw, 1000px"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-cream/50">
+                  {work.walkthrough.overview.caption}
+                </figcaption>
+              </figure>
+            )}
+
+            <ol className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+              {work.walkthrough.steps.map((step, i) => (
+                <li key={step.label} className="flex flex-col">
+                  <div className="relative mx-auto mb-5 aspect-[644/1399] w-full max-w-[240px]">
+                    <Image
+                      src={step.image}
+                      alt={`${step.label} screen`}
+                      fill
+                      sizes="240px"
+                      className="object-contain"
+                    />
+                  </div>
+                  <p className="mb-1 text-xs font-bold uppercase tracking-wide text-accent">
+                    {String(i + 1).padStart(2, "0")} / {step.group}
+                  </p>
+                  <p className="mb-2 text-lg font-bold leading-snug">{step.title}</p>
+                  <p className="text-sm leading-relaxed text-cream/70">{step.caption}</p>
+                  {step.principle && (
+                    <p className="mt-3 inline-block self-start rounded-full border border-white/15 px-2.5 py-1 text-[11px] font-semibold text-cream/60">
+                      {step.principle}
+                    </p>
+                  )}
+                </li>
+              ))}
+              {work.walkthrough.note && (
+                <li className="flex flex-col justify-center rounded-2xl border border-white/10 p-6">
+                  <p className="mb-2 text-lg font-bold leading-snug">{work.walkthrough.note.title}</p>
+                  <p className="text-sm leading-relaxed text-cream/70">{work.walkthrough.note.body}</p>
+                </li>
+              )}
+            </ol>
+          </div>
+        )}
+
         {/* Impact / Features — 3-up, spans 3 */}
         <div className="col-span-1 sm:col-span-3">
           <p className="mb-4 text-2xl font-bold tracking-tight">
