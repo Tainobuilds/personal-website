@@ -248,8 +248,20 @@ screens (`steps[]`: image, group, label, title, caption, optional
 `principle` pill) plus an optional closing `note` tile that fills the
 last grid cell. It renders between Design System and Impact so the
 Solution + Design System row stays paired. Phone images are expected
-at ~644×1399 with transparent rounded corners (`.webp`) — Kippo's
-case study could reuse it later. An optional `gallery` field (array of
+at ~644×1399 with transparent rounded corners (`.webp`). **`evolution`
+(added 2026-09-19, first used by Kippo)**: a second optional generic
+section for process stories — rows of "the same screen at each stage"
+(`rows[].stages[]`: label, image, natural `width`/`height`, optional
+`note`, and `final: true` on the last stage, which renders larger with
+an accent label), each row with a `story` paragraph and a "What
+changed" `changes[]` bullet list, plus an optional wide `overview`
+image (Kippo uses the zoomed-out Figma canvas). Tiles are a fixed
+175px (early stages) / 270px (final) so rows stay consistent; each
+strip scrolls sideways on narrow screens instead of overflowing the
+page. Pass real `width`/`height` for every image (the layout reserves
+height from them). It renders after `walkthrough` and before Impact.
+`walkthrough` and `evolution` can coexist on one project (e.g. Aligned
+could later add an `evolution` of its own). An optional `gallery` field (array of
 `{ image?, caption }`) renders a 3-up grid of real product screenshots
 right after The Challenge card — same honest-placeholder pattern as
 everywhere else when `image` is omitted (also currently unused here
@@ -367,7 +379,43 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-19)
+## Known gaps (as of 2026-09-19, 2nd pass)
+- **Resolved (Kippo "From Sketch to Screen", 2026-09-19)**: new generic
+  `evolution` section (see "Case-study pages") tells the design process
+  through three screens — **Home** (paper sketch → digital wireframe →
+  Figma mockup → final), **Shop** (digital wireframe → Figma mockup
+  with the usability-round-1 Boys/Girls/Infants icons → final), and
+  **Product detail** (paper sketch → Figma mockup → final) — plus the
+  zoomed-out Figma canvas. Sources and how to re-extract them are in
+  "Case study evidence → Kippo". Assets: `public/images/kippo/`
+  (11 `.webp`, the 3 final phones cut out with transparent corners via
+  Pillow flood-fill, the rest straight from the PDF). Caption facts
+  were read off the actual images; **interpretations to double-check**:
+  the Home row's "dropped 'Designers' block" (visible in the sketch,
+  absent in the wireframe), and the Product-detail line calling the
+  condition/size/seller row "a direct answer to the trust concern
+  research surfaced" (trust *is* a documented pain point; linking it to
+  this design choice is my reading, not something the deck states).
+- **Resolved (Kippo hero watermark removed, 2026-09-19)**: the hero
+  mockup (still + video, made with mckp.live) had a baked-in "Made with
+  mckp.live" badge; removed, keeping the mockup. **Video**: 250 frames
+  extracted with ffmpeg, badge reconstructed on the 198 frames where it
+  is visible (t = 0.55s → 3.83s, detected per frame so the fade in/out
+  is covered) using smoothed-edge interpolation + matched velvet grain
+  on the sofa, re-encoded with x264 CRF 21 (~437KB, was 266KB) at the
+  same path. **Still**: the badge also hid the phone's bottom corner
+  (the original 4K export has the same badge, so no clean source
+  exists), so the fix raises the cushion crest ~20px so the phone tucks
+  behind it. The cleaned still lives at
+  `public/assets/images/kippo/iphone-17-pro-photo-clean.png` — the
+  **`-clean` rename is deliberate**: Next's image optimizer caches by
+  URL, and the old path kept serving the watermarked version (locally
+  and, on Vercel, potentially across deploys). Used by `kippo.ts`
+  (`bannerImage`) and `IdentityToggle.tsx` (Designer tab); the homepage
+  card uses the same `bannerImage`. Scripts were scratch-only (Pillow +
+  ffmpeg, no numpy on this machine); the originals remain in git
+  history. If the mockup is ever re-exported, prefer a watermark-free
+  export over repeating this reconstruction.
 - **Resolved (Aligned story from real prototype screens, 2026-09-19)**:
   the user's repo-root `Aligned/` folder held 7 screenshots of the
   interactive prototype. Processed with Python Pillow (no numpy on this
@@ -654,6 +702,30 @@ Concrete proof points to draw on when writing case studies — confirmed 2026-08
   users showed navigation hesitation). Figma prototype links are in the deck.
   Also involved actual mobile app development (not just static comps) using
   HTML/CSS/JS.
+  - **Process assets, confirmed 2026-09-19.** The deck slides in the
+    repo-root `Kippo App Case Study PNG/` folder are only 720×405 — too
+    small to reuse. The **originals are inside the PDF**
+    (`~/Documents/Kippo App Case Study.pdf`, 24 pages; also a copy in
+    `~/Desktop/Website Assets/`): extract with poppler —
+    `pdfimages -png -f <page> -l <page> file.pdf prefix` (`pdfimages`
+    and `pdftoppm` are installed). Useful pages: 10 = two notebook
+    photos (2871×2173 Home + Product Detail sketches, 2504×3453 the
+    A–D alternatives), 11 = shop-tabs digital wireframe, 12 = home
+    digital wireframe, 13 = low-fi prototype, 16 = category mockups
+    before (text tabs) / after (icons), 17–18 = the Figma mockups,
+    19 = the full Figma canvas (1890×1680). Deck tab reads "Sale" in
+    the sketch but "Sell" from the wireframe on — don't claim the tab
+    names carried over unchanged, only that a five-tab bar did.
+  - **The "new" full design** = the user's `Kippo Protype Design.png`
+    (a browser screenshot of a design file titled **"Kippo All Screens,
+    5 pages"** — Home, Shop, Product detail visible; the other 2 pages
+    are not in the screenshot), plus 4 clean exports in
+    `~/Downloads/exports/` (Home, Category, Product Detail,
+    **Confirmation** — "Your item is now live" — but each export is
+    cropped at the bottom, so the screenshot was used for the phones).
+    It looks like a Claude Design canvas (`.dc.html`); the site does
+    **not** currently say so (Kippo's techStack is Figma / User
+    Research / HTML/CSS/JS) — ask before crediting a tool.
 - **Aligned** (verified 2026-08-25 via the real deck at
   `~/Desktop/Website Assets/Aligned — A Case Study by Yadan Taino.pdf`,
   15 pages, built in Claude Design): a genuine, detailed design case

@@ -6,6 +6,29 @@ export type ArchitectureBlock = { heading: string; steps: string[] };
 
 export type Mechanic = { label: string; value: string; description: string };
 
+export type EvolutionStage = {
+  /** e.g. "Paper sketch", "Digital wireframe", "Figma mockup", "Final design" */
+  label: string;
+  image: string;
+  /** Natural pixel size of `image`, so the layout can reserve the right height */
+  width: number;
+  height: number;
+  /** Tiny line under the label, e.g. "Icons added after round 1" */
+  note?: string;
+  /** The last stage of a row — drawn larger with an accent label */
+  final?: boolean;
+};
+
+export type EvolutionRow = {
+  /** e.g. "01 / Home" */
+  kicker: string;
+  title: string;
+  story: string;
+  stages: EvolutionStage[];
+  /** Short bullets listing what actually changed between stages */
+  changes?: string[];
+};
+
 export type WalkthroughStep = {
   /** Portrait phone-screen image (transparent rounded corners, ~644x1399) */
   image: string;
@@ -50,6 +73,14 @@ export type WorkContent = {
   insight: { text: string; attribution?: string };
   /** 03 / Technical Architecture (or Design Process, for design-only projects) */
   architecture?: ArchitectureBlock;
+  /** Design-process story: the same screens followed from sketch to final design */
+  evolution?: {
+    heading: string;
+    intro: string;
+    rows: EvolutionRow[];
+    /** Wide zoomed-out shot (e.g. the whole Figma file), shown after the rows */
+    overview?: { image: string; width: number; height: number; heading: string; caption: string };
+  };
   /** Step-by-step product story told through phone screens on a dark stage */
   walkthrough?: {
     heading: string;

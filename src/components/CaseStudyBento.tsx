@@ -237,6 +237,101 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
           </div>
         )}
 
+        {/* Design evolution — sketch → wireframe → mockup → final, one row per screen */}
+        {work.evolution && (
+          <div className="col-span-1 flex flex-col gap-4 sm:col-span-3">
+            <div className="mb-2">
+              <p className="mb-2 text-2xl font-bold tracking-tight">{work.evolution.heading}</p>
+              <p className="max-w-2xl leading-relaxed text-dark/70">{work.evolution.intro}</p>
+            </div>
+
+            {work.evolution.rows.map((row) => (
+              <section key={row.kicker} className="rounded-2xl border border-border bg-sand p-6 md:p-8">
+                <p className="mb-1 text-xs font-bold uppercase tracking-wide text-accent">{row.kicker}</p>
+                <p className="mb-2 text-xl font-bold leading-snug">{row.title}</p>
+                <p className="mb-6 max-w-3xl leading-relaxed text-dark/70">{row.story}</p>
+
+                <div className="overflow-x-auto pb-2">
+                  <ol className="mx-auto flex w-max items-center gap-4">
+                    {row.stages.map((stage, i) => (
+                      <li key={stage.label} className="flex items-center gap-4">
+                        {i > 0 && (
+                          <span aria-hidden className="flex-none text-xl text-muted">
+                            →
+                          </span>
+                        )}
+                        <figure className="flex-none" style={{ width: stage.final ? 270 : 175 }}>
+                          <div
+                            className={
+                              stage.final
+                                ? "drop-shadow-xl"
+                                : "overflow-hidden rounded-xl border border-border bg-white"
+                            }
+                          >
+                            <Image
+                              src={stage.image}
+                              alt={`${row.title} — ${stage.label}`}
+                              width={stage.width}
+                              height={stage.height}
+                              sizes={stage.final ? "270px" : "175px"}
+                              className="h-auto w-full"
+                            />
+                          </div>
+                          <figcaption className="mt-3">
+                            <p
+                              className={`text-xs font-bold uppercase tracking-wide ${
+                                stage.final ? "text-accent" : "text-muted"
+                              }`}
+                            >
+                              {stage.label}
+                            </p>
+                            {stage.note && <p className="mt-0.5 text-xs text-dark/60">{stage.note}</p>}
+                          </figcaption>
+                        </figure>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+
+                {row.changes && row.changes.length > 0 && (
+                  <div className="mt-6 border-t border-border pt-5">
+                    <p className="mb-2 text-xs font-bold uppercase tracking-wide text-muted">What changed</p>
+                    <ul className="grid gap-x-8 gap-y-2 text-sm leading-relaxed text-dark/70 md:grid-cols-2">
+                      {row.changes.map((change) => (
+                        <li key={change} className="flex gap-2">
+                          <span aria-hidden className="text-accent">
+                            •
+                          </span>
+                          <span>{change}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </section>
+            ))}
+
+            {work.evolution.overview && (
+              <figure className="overflow-hidden rounded-2xl border border-border bg-cream">
+                <div className="p-6 pb-4 md:p-8 md:pb-4">
+                  <p className="mb-1 text-xl font-bold leading-snug">{work.evolution.overview.heading}</p>
+                  <p className="max-w-3xl text-sm leading-relaxed text-dark/70">
+                    {work.evolution.overview.caption}
+                  </p>
+                </div>
+                <Image
+                  src={work.evolution.overview.image}
+                  alt={work.evolution.overview.heading}
+                  width={work.evolution.overview.width}
+                  height={work.evolution.overview.height}
+                  sizes="(max-width: 1100px) 100vw, 1036px"
+                  className="h-auto w-full"
+                />
+              </figure>
+            )}
+          </div>
+        )}
+
         {/* Impact / Features — 3-up, spans 3 */}
         <div className="col-span-1 sm:col-span-3">
           <p className="mb-4 text-2xl font-bold tracking-tight">
