@@ -22,8 +22,9 @@ export function Hero() {
         </h1>
         <p className="mb-8 max-w-lg text-xl leading-relaxed text-white/80">
           Bridging front-end engineering and product design. I build clean
-          design systems and leverage AI tools to create frictionless
-          workflows that solve everyday problems.
+          design systems, create useful apps and sites, and leverage AI
+          tools to make workflows easier and frictionless — solving
+          everyday problems.
         </p>
         <Link
           href="/#contact"

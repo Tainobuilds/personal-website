@@ -13,7 +13,7 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "Yadan Taino | Front-End Developer & Product Designer — NYC",
   description:
-    "Yadan Taino is a Front-End Developer & Product Designer in New York City building clean design systems and leveraging AI tools to create frictionless workflows for health & wellness, lifestyle, and tech brands.",
+    "Yadan Taino is a Front-End Developer & Product Designer in New York City building clean design systems, creating useful apps and sites, and leveraging AI tools to make workflows easier and frictionless for health & wellness, lifestyle, and tech brands.",
   keywords: [
     "front-end developer",
     "product designer",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "Made by Taino",
     title: "Yadan Taino | Front-End Developer & Product Designer",
     description:
-      "Bridging front-end engineering and product design. I build clean design systems and leverage AI tools to create frictionless workflows that solve everyday problems.",
+      "Bridging front-end engineering and product design. I build clean design systems, create useful apps and sites, and leverage AI tools to make workflows easier and frictionless — solving everyday problems.",
     url: "https://yadan-taino-personal-website.vercel.app",
     images: ["/images/hero-portrait.jpg"],
     locale: "en_US",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Yadan Taino | Front-End Developer & Product Designer",
     description:
-      "Bridging front-end engineering and product design. I build clean design systems and leverage AI tools to create frictionless workflows that solve everyday problems.",
+      "Bridging front-end engineering and product design. I build clean design systems, create useful apps and sites, and leverage AI tools to make workflows easier and frictionless — solving everyday problems.",
     images: ["/images/hero-portrait.jpg"],
   },
   icons: { icon: "/favicon.svg" },

@@ -16,9 +16,20 @@ Personal portfolio site for Yadan Taino (Made by Taino), a Creative Director & P
   reversal to "Developer" wording, then this 2026-08-24 reorder/rename.
   Don't revert to either earlier version.
 - **Title (locked 2026-08-24): "Front-End Developer & Product Designer."**
-- **Hero tagline (locked 2026-08-24):** "Bridging front-end engineering
-  and product design. I build clean design systems and leverage AI
-  tools to create frictionless workflows that solve everyday problems."
+- **SUPERSEDED 2026-09-22:** hero tagline changed from "Bridging
+  front-end engineering and product design. I build clean design
+  systems and leverage AI tools to create frictionless workflows that
+  solve everyday problems." (locked 2026-08-24) to add a "create
+  useful apps and sites" clause, per explicit user request.
+- **Hero tagline (locked 2026-09-22):** "Bridging front-end engineering
+  and product design. I build clean design systems, create useful apps
+  and sites, and leverage AI tools to make workflows easier and
+  frictionless — solving everyday problems." Also mirrored into
+  `layout.tsx`'s three SEO description fields (top-level `description`,
+  written in the third person to match its own style, plus the
+  matching `openGraph`/`twitter` descriptions, which are first-person
+  like the hero) so search/social previews stay consistent with the
+  visible copy.
 - **AI positioning guardrail (locked 2026-08-24):** AI is framed
   strictly as an assistive tool and workflow accelerator that enhances
   human judgment — never as a replacement for core design/engineering
