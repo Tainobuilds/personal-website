@@ -917,7 +917,26 @@ Generative AI" service naming.
   support anywhere in the Trends repo, so it was excluded rather than
   published unverified.
 - **Resolved by the 2026-09-02 migration**: every work card now links to a real `/work/[slug]` case-study page (Kippo, Aligned, Spruce, Ticket Triage all ship real content; 311 Insights is an honest lighter/in-progress stub). No more disabled cards or mixed external-link CTAs.
-- **Resolved (feature brief, 2026-09-02)**: About page now has an Overview + Skills credential timeline (`CredentialTimeline.tsx`) and a Designer/Builder/Fashion identity toggle (`IdentityToggle.tsx`), per `madebytainofeaturebrief.md`. Designer tab reuses existing Aligned/Kippo images (no dedicated designer photos yet — explicit user call, not a placeholder). Real photo assets live in `public/images/identity/`. **Not yet built from that brief**: item 3 (per-project `<InteractiveMockup>` hover component) — still waiting on a screen recording; brief suggests prototyping on Ticket Triage first since it has a live demo. Item 4 (chatbot) is explicitly parked for later.
+- **Resolved (feature brief, 2026-09-02)**: About page now has an Overview + Skills credential timeline (`CredentialTimeline.tsx`) and an identity toggle (`IdentityToggle.tsx`), per `madebytainofeaturebrief.md`. Real photo assets live in `public/images/identity/`. **Not yet built from that brief**: item 3 (per-project `<InteractiveMockup>` hover component) — still waiting on a screen recording; brief suggests prototyping on Ticket Triage first since it has a live demo. Item 4 (chatbot) is explicitly parked for later.
+- **Resolved (Designer + Builder merged, mockups dropped, 2026-09-22)**:
+  was a 3-way Designer/Builder/Fashion toggle; per explicit user
+  request, Designer and Builder are now one tab, **"Designer /
+  Builder"** (`key: "designer-builder"`), and its two Aligned/Kippo
+  project-mockup photos are gone — it now shows only the real Pursuit
+  cohort/classroom photos that used to live under Builder alone (the
+  ones the user asked for: "photos of me and classmates and teacher").
+  Kept that tab's badge ("Pursuit Software Development AI Program —
+  Building & Shipping in Public") and wrote a combined tagline
+  ("Designing systems, not just screens — learning in public, shipping
+  in public.") folding both original taglines into one. **Fashion tab
+  is untouched**, per explicit instruction to "keep the fashion one
+  the way that it is" — same 3 photos, same tagline, same 3-column
+  layout. Net effect: toggle is now 2 tabs instead of 3.
+  `public/images/work-aligned.jpg` is now fully unused sitewide (it
+  was already superseded as Aligned's own case-study hero by
+  `mockup-hero.webp`, and this was its last remaining consumer) — file
+  stays on disk, same "don't delete, just stop referencing" pattern
+  used for other superseded one-off assets in this doc.
 - **Known bug worth remembering**: `AnimatePresence` (from the `motion` package) never completed its exit animation in this dev environment — confirmed across a server restart, `.next` cache clear, and fresh tabs, so it wasn't stale HMR state. If a future feature needs an exit-then-enter crossfade, don't assume `AnimatePresence` "just works" here without testing the unmount actually happens; `IdentityToggle` was rewritten to a plain fade-in (no exit tracking) to route around it.
 - Kippo and Ticket Triage work cards still show a bordered placeholder box on the homepage grid (no `bannerImage` set in their content files yet) — Aligned has a real image; Kippo has a real image too via its case-study banner but the *homepage card* itself doesn't reuse it yet; 311 Insights has no image at all (Spruce got one 2026-09-19, see Known gaps). Worth wiring `bannerImage` into more of the content files.
 - 311 Insights' case-study page has real problem/mechanics content but no `architecture` or `designSystem` card yet, and no hero image — it's the one project still clearly reading as "in progress."

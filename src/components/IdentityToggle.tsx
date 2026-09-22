@@ -16,27 +16,9 @@ type Identity = {
 
 const IDENTITIES: Identity[] = [
   {
-    key: "designer",
-    label: "Designer",
-    tagline: "Designing systems, not just screens.",
-    columns: 2,
-    photos: [
-      {
-        src: "/images/work-aligned.jpg",
-        alt: "Aligned app splash screen",
-        caption: "Aligned — recovery app case study",
-      },
-      {
-        src: "/assets/images/kippo/iphone-17-pro-photo-clean.png",
-        alt: "Kippo app mockup on an iPhone",
-        caption: "Kippo — kids resale app mockup",
-      },
-    ],
-  },
-  {
-    key: "builder",
-    label: "Builder",
-    tagline: "Learning in public, shipping in public.",
+    key: "designer-builder",
+    label: "Designer / Builder",
+    tagline: "Designing systems, not just screens — learning in public, shipping in public.",
     columns: 2,
     badge: "Pursuit Software Development AI Program — Building & Shipping in Public",
     photos: [
