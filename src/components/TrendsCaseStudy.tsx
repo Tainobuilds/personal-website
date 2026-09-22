@@ -3,7 +3,7 @@ import type { WorkContent } from "@/content/work/types";
 import { CaseStudyHeader } from "./CaseStudyHeader";
 
 const STATS = [
-  { value: "12m → <1m", label: "Intake-to-Print Speed" },
+  { value: "~90%", label: "Faster Intake-to-Print (8–10m → <1m)" },
   { value: "7", label: "Fields Auto-Filled from Live API" },
   { value: "Real-Time", label: "Dispensary API Menu Sync" },
 ];

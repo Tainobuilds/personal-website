@@ -379,7 +379,26 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-19, 5th pass)
+## Known gaps (as of 2026-09-22)
+- **Resolved (Trends "40% faster" brief, corrected to ~90%, 2026-09-22)**:
+  the user asked to add a stat "in the realm of improved workflow
+  using AI by 40%." Asked where it came from — the answer was their
+  own firsthand account: staff used to spend about 8-10 minutes
+  hand-typing a label, the app now does it in about a minute. The math
+  on that account is actually ~87-90% faster, not 40% (a 40% cut would
+  land around 5-6 minutes, not ~1) — flagged this and the user chose
+  the honest math over the round "40%" figure. **Site-wide update, 3
+  places, all now consistent on the 8-10 minute figure and a `~90%`
+  stat**: the stat banner's first tile (`TrendsCaseStudy.tsx`, was
+  "12m → <1m" / "Intake-to-Print Speed" — now "~90%" / "Faster
+  Intake-to-Print (8–10m → <1m)"), Trends' own tagline (`trends.ts`,
+  "12-minute" → "8-10 minute"), and the homepage Pillar 3 description
+  (`src/app/page.tsx`, "12-minute" → "8-10 minute," plus "roughly 90%
+  faster" added to the sentence). The old "12-minute" figure traced
+  back to a still-earlier "~10-12 min" account (see the 2026-09-15
+  entry below) — this isn't a contradiction, just the user restating
+  their own estimate a bit differently this time; 8-10 min was what
+  they said explicitly in this pass, so that's what's on the page now.
 - **Resolved (Spruce mockup, redone 2026-09-22)**: the flat two-window
   overlap from the first pass (2026-09-19) was replaced with a more
   polished, cascading composition — closer in craft level to Aligned's

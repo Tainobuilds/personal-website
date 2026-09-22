@@ -7,7 +7,7 @@ export const trends: WorkContent = {
   title: "Trends",
   bannerImage: "/images/trends/storefront.jpg",
   tagline:
-    "Automating retail compliance at the point of intake — turning a 12-minute manual typing bottleneck into a single scan.",
+    "Automating retail compliance at the point of intake — turning an 8-10 minute manual typing bottleneck into a single scan.",
   tags: ["Retail Automation", "Real-Time Data", "Workflow UX"],
   role: "Product Designer & Developer",
   timeline: "2026",

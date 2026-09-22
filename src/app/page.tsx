@@ -32,7 +32,7 @@ export default function Home() {
         />
         <Pillar
           title="Retail Automation & Workflow Engineering"
-          description="Replaced manual 12-minute hand-typed dispensary label entry with a real-time API-connected thermal print engine that executes batching in under 60 seconds."
+          description="Replaced manual 8-10 minute hand-typed dispensary label entry with a real-time API-connected thermal print engine — roughly 90% faster, executing batching in under 60 seconds."
           items={getWorkByPillar(3)}
         />
       </section>
