@@ -14,7 +14,7 @@ export function Testimonial() {
           />
         </div>
         <blockquote className="text-2xl italic">
-          &ldquo;Yadan brings rare clarity to complex ideas—shaping brands,
+          &ldquo;Yadan Taino brings rare clarity to complex ideas—shaping brands,
           products, and stories into work that feels both useful and
           culturally alive.&rdquo;
           <cite className="mt-6 block text-base not-italic text-muted">

@@ -399,6 +399,11 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-22)
+- **Resolved (full name in the testimonial quote, 2026-09-22)**:
+  `Testimonial.tsx`'s quote said "Yadan brings rare clarity..." — the
+  only bare "Yadan" (no "Taino") in that section — now "Yadan Taino
+  brings rare clarity...". The photo's alt text already said "Yadan
+  Taino"; only the visible quote text needed the fix.
 - **Resolved (Spruce homepage-card blurb matched to the new tagline,
   2026-09-22)**: the same rewrite that landed on the case-study
   `tagline` this session ("A two-sided marketplace where customers and
