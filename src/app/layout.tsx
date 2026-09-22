@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
+import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
 const fraunces = Fraunces({
@@ -82,6 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <Header />
         {children}
+        <Contact />
         <Footer />
       </body>
     </html>

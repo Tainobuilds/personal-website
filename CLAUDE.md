@@ -399,6 +399,33 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-22)
+- **Resolved (real Contact section with an inquiry form, 2026-09-22)**:
+  the "Contact" section was previously just a bare centered heading +
+  mailto link + social links, living inside `Footer.tsx` (`id="contact"`,
+  no card, no way to leave a message beyond composing your own email).
+  New `Contact.tsx` — a two-column card (`bg-sand`, `border-border`,
+  matches the Testimonial section's `md:grid-cols-[1fr_1.5fr]`-style
+  split): left side keeps the direct email + social links, right side
+  is a real form (Name, Email, "What do you need help with?" — reusing
+  the 5 real Services names as options, plus "Something else" — and a
+  project-description textarea). **No backend, no third-party account**:
+  submitting builds a `mailto:designtaino@gmail.com` link with the
+  form fields folded into the subject/body and hands off to the
+  visitor's own email client (`window.location.href = mailto:...`) —
+  deliberately avoided wiring up a form-backend service (Resend,
+  Formspree, etc.) since that would need an account/API key only the
+  user can create (account creation is off-limits for Claude to do on
+  someone's behalf). A short confirmation line appears after
+  submitting ("Opening your email app..."). `id="contact"` moved from
+  `Footer.tsx` to this new component (still the only `#contact` anchor
+  in the codebase, nav links unaffected); `Footer.tsx` is now just the
+  copyright line. Both `Contact` and `Footer` render globally from
+  `layout.tsx` (same place `Footer` always did), so the form now
+  appears at the bottom of every case-study page too, not just the
+  homepage. Verified: two-column at desktop width (≥768px, confirmed
+  at 1200px), stacks on mobile (375px, no horizontal overflow), and a
+  scripted form-fill + submit confirmed the mailto-link handler and
+  confirmation message both fire correctly.
 - **Resolved (full name in the testimonial quote, 2026-09-22)**:
   `Testimonial.tsx`'s quote said "Yadan brings rare clarity..." — the
   only bare "Yadan" (no "Taino") in that section — now "Yadan Taino
