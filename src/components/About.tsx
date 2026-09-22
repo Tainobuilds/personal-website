@@ -1,7 +1,7 @@
 import { CredentialTimeline } from "./CredentialTimeline";
 import { IdentityToggle } from "./IdentityToggle";
 
-const CURRENTLY_TAGS = ["Pursuit AI-Native cohort", "Nonexclusive with FFT Models"];
+const CURRENTLY_TAGS = ["Pursuit Software Development AI Program"];
 
 export function About() {
   return (

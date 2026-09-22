@@ -17,9 +17,6 @@ export function Testimonial() {
           &ldquo;Yadan Taino brings rare clarity to complex ideas—shaping brands,
           products, and stories into work that feels both useful and
           culturally alive.&rdquo;
-          <cite className="mt-6 block text-base not-italic text-muted">
-            Creative Partner
-          </cite>
         </blockquote>
       </div>
     </section>

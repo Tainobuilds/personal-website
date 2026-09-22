@@ -38,17 +38,17 @@ const IDENTITIES: Identity[] = [
     label: "Builder",
     tagline: "Learning in public, shipping in public.",
     columns: 2,
-    badge: "Pursuit AI-Native Cohort — Building & Shipping in Public",
+    badge: "Pursuit Software Development AI Program — Building & Shipping in Public",
     photos: [
       {
         src: "/images/identity/builder-cohort.jpg",
-        alt: "Pursuit AI-Native cohort group photo",
-        caption: "Pursuit AI-Native cohort",
+        alt: "Pursuit Software Development AI Program cohort group photo",
+        caption: "Pursuit Software Development AI Program cohort",
       },
       {
         src: "/images/identity/builder-classroom.jpg",
         alt: "Presenting in the Pursuit classroom",
-        caption: "Presenting in the Pursuit AI-Native classroom",
+        caption: "Presenting in the Pursuit Software Development AI Program classroom",
       },
     ],
   },

@@ -307,11 +307,18 @@ Adidas, SoundCloud, Kiehl's, Jose Cuervo, NYFW, Swim Week, Vida Y Moss,
 Trends Dispensary. Understated styling — muted color, low opacity, wraps
 on narrow viewports. Swap in real logos only with actual client permission.
 
-### "Currently" tags (locked 2026-08-06)
-Small pill tags near the top of the About section, not a full section:
-"Pursuit AI-Native cohort" and "Nonexclusive with FFT Models." Update
-these as circumstances change — they're meant to stay current, unlike
-the rest of the locked copy in this file.
+### "Currently" tags (locked 2026-08-06, updated 2026-09-22)
+Small pill tags near the top of the About section, not a full section.
+Update these as circumstances change — they're meant to stay current,
+unlike the rest of the locked copy in this file. **2026-09-22**: down
+to a single tag, **"Pursuit Software Development AI Program"** — the
+"Nonexclusive with FFT Models" modeling tag was dropped per explicit
+user request (no longer circumstances worth surfacing here), and the
+Pursuit program's display name changed from "Pursuit AI-Native cohort"
+everywhere it appeared site-wide (the tag itself, `CredentialTimeline`,
+and `IdentityToggle`'s Builder badge/alt text/captions) — same
+"AI-Native" → plainer-wording pattern as the 2026-08-24 title change
+(see Positioning above), not a program-name error to correct back.
 
 ### FAQ copy (locked 2026-08-06)
 1. **How do you use AI in your process?**
@@ -372,17 +379,21 @@ Generative AI" service naming.
   left alone — against a white page they read as a warmer, distinct
   card surface instead of a background that blends in, which is the
   effect that reads as "lux" rather than "pure white and gray."
-- **Accent color (CHANGED 2026-09-15): vibrant orange `#FF5C00`.**
-  Replaces the muted clay/terracotta `#b5652f` that had been locked
-  since 2026-08-06 and explicitly reaffirmed on 2026-09-14. This time
-  the user's brief was unambiguous and gave two options (`#FF5C00` or
-  `#D97706`) — picked `#FF5C00` since `#D97706` is already Spruce's
-  own case-study brand-accent color (see Case study evidence below)
-  and reusing it as the site-wide accent would blur that project's own
-  palette into the portfolio chrome. Single CSS variable
-  (`--color-accent` in `globals.css`), so every `text-accent`/
-  `border-accent`/etc. usage site-wide updated automatically — no
-  further "revisit if asked" caveat; this one is settled.
+- **Accent color (CHANGED 2026-09-22): petrol teal `#106B6B`.**
+  Replaces the vibrant orange `#FF5C00` locked 2026-09-15 — user said
+  they weren't a fan of the orange and asked for "cool unique" options
+  to elevate the site. Offered 3 directions (deep cobalt `#2E3F8E`,
+  oxblood `#7A2333`, petrol teal `#106B6B`); user was torn between
+  cobalt and teal, so both were previewed live (homepage Services
+  numbers + Trends' stat banner) before deciding. **Flagged and
+  accepted knowingly**: teal sits close to Trends Studio's own
+  in-product teal/green wordmark and stat colors in its screenshots —
+  the same "don't blur a project's own palette into site chrome"
+  concern that ruled out `#D97706` for Spruce back on 2026-09-15 — but
+  the user picked teal anyway once shown the comparison, so this one's
+  an informed choice, not an oversight to revisit. Single CSS variable
+  (`--color-accent` in `globals.css`), same site-wide propagation
+  pattern as every accent change before it.
 - **Typography (added 2026-08-24, serif chosen 2026-09-02)**: editorial
   serif for case-study headlines/titles, clean sans-serif for body
   copy — a pairing, not the single system-sans stack used elsewhere on
@@ -399,6 +410,12 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-22)
+- **Resolved (testimonial attribution removed, 2026-09-22)**:
+  `Testimonial.tsx`'s quote had a `<cite>` line reading "Creative
+  Partner" — flagged as unverified placeholder attribution back on
+  2026-09-17 and never replaced with a real one. Removed it outright
+  per explicit user request rather than leaving a placeholder; the
+  quote itself stays (still unverified — see the open item below).
 - **Resolved (real Contact section with an inquiry form, 2026-09-22)**:
   the "Contact" section was previously just a bare centered heading +
   mailto link + social links, living inside `Footer.tsx` (`id="contact"`,
@@ -904,7 +921,7 @@ Generative AI" service naming.
 - **Known bug worth remembering**: `AnimatePresence` (from the `motion` package) never completed its exit animation in this dev environment — confirmed across a server restart, `.next` cache clear, and fresh tabs, so it wasn't stale HMR state. If a future feature needs an exit-then-enter crossfade, don't assume `AnimatePresence` "just works" here without testing the unmount actually happens; `IdentityToggle` was rewritten to a plain fade-in (no exit tracking) to route around it.
 - Kippo and Ticket Triage work cards still show a bordered placeholder box on the homepage grid (no `bannerImage` set in their content files yet) — Aligned has a real image; Kippo has a real image too via its case-study banner but the *homepage card* itself doesn't reuse it yet; 311 Insights has no image at all (Spruce got one 2026-09-19, see Known gaps). Worth wiring `bannerImage` into more of the content files.
 - 311 Insights' case-study page has real problem/mechanics content but no `architecture` or `designSystem` card yet, and no hero image — it's the one project still clearly reading as "in progress."
-- Testimonial section quote is still placeholder copy, not a real testimonial. **The portrait image is real now** (resolved 2026-09-17): `public/images/testimonial-portrait.jpg`, copied from `Picture of me in suit.JPG` at the repo root per explicit user request — a real full-body mirror-selfie portrait, default `object-cover`/center-crop keeps the face and suit in frame. The quote/attribution ("Creative Partner") is still unverified placeholder text — don't treat it as real until the user confirms an actual testimonial to replace it with.
+- Testimonial section quote is still placeholder copy, not a real testimonial. **The portrait image is real now** (resolved 2026-09-17): `public/images/testimonial-portrait.jpg`, copied from `Picture of me in suit.JPG` at the repo root per explicit user request — a real full-body mirror-selfie portrait, default `object-cover`/center-crop keeps the face and suit in frame. **The "Creative Partner" attribution is gone (resolved 2026-09-22)**, removed outright rather than left as a placeholder — the quote text itself is still unverified/placeholder, don't treat it as real until the user confirms an actual testimonial to replace it with.
 - Trust strip uses text-only placeholder wordmarks, not real logos — needs real logo assets and confirmed client permission before launch.
 - **Vercel is NOT serving the Next.js app — verified 2026-09-19 with `curl` against `https://yadan-taino-personal-website.vercel.app`** (the URL in `layout.tsx` metadata): static files from `public/` resolve (`/images/hero-portrait.jpg`, `/assets/videos/kippo/…mp4`, `/robots.txt` → 200, and the new `-clean` Kippo still is live while the deleted old one 404s, so deploys *are* running on each push), but `/`, `/work/kippo`, `/index.html`, `/favicon.ico` and `/_next/static/…` all return Vercel `NOT_FOUND`. That pattern means the project is publishing `public/` as a static site — most likely **Framework Preset = "Other"** and/or **Output Directory = `public`** left over from the pre-migration plain-HTML site — instead of building Next.js. Fix is in the Vercel dashboard (Project → Settings → Build & Development: Framework Preset **Next.js**, clear the Output Directory override, then redeploy); Claude has no Vercel access here (CLI not installed, Vercel MCP unauthenticated). Until fixed, the public site shows no pages at all, regardless of what's changed in the code. Also possible: the real production URL differs from the metadata URL — worth confirming.
 - The `Kippo App Case Study PNG/` deck and the 4 enhanced Kippo screens zip (`~/Downloads/Kippo Mobile App Enhancement.zip`) have now been drawn from for the Kippo case-study content, but individual slide images themselves aren't embedded in the page — only the synthesized text/mechanics and the existing hero photo/video.

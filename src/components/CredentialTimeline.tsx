@@ -1,5 +1,5 @@
 const CREDENTIALS = [
-  { role: "Pursuit AI-Native Program", year: "2026" },
+  { role: "Pursuit Software Development AI Program", year: "2026" },
   { role: "Google UX Design Certification", year: undefined },
   { role: "Graphic Designer — COOP Tech", year: "2023–2024" },
 ];
