@@ -379,7 +379,39 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-19, 4th pass)
+## Known gaps (as of 2026-09-19, 5th pass)
+- **Resolved (Spruce mockup, redone 2026-09-22)**: the flat two-window
+  overlap from the first pass (2026-09-19) was replaced with a more
+  polished, cascading composition — closer in craft level to Aligned's
+  and Kippo's device mockups. Same two source screenshots (no new
+  images exist in `~/Spruce/` — confirmed, only the same two 2026-09-19
+  files are there), same brand-token background, but now: each
+  browser window is gently rotated (a few degrees, opposite
+  directions) instead of sitting flat/square; the front window ("Find
+  a Service," the live product) gets a soft amber glow and a stronger,
+  closer shadow; the back window ("Landing") is slightly Gaussian-
+  blurred and desaturated to read as a shallow depth-of-field step
+  behind it — the cascading z-order itself (marketing page behind,
+  live app in front) *is* the flow, marketing site leading into
+  product. **Tried and reverted**: an explicit curved arrow connecting
+  the two windows, plus numbered "01 Landing / 02 Find a Service"
+  badges — both looked cluttered next to the tilt/glow/depth treatment
+  and risked overlapping real screenshot text, so neither shipped;
+  Aligned/Kippo's own mockups also carry no text overlays, so this
+  keeps Spruce consistent with them. Landing screenshot is now cropped
+  to end right above its dark "Ready to explore?" CTA band (the band's
+  two buttons are cut off mid-button in the raw screenshot, which
+  looked unfinished). Same file paths, same `bannerImage`/`cardImage`
+  wiring (`public/images/spruce/mockup-hero.webp` 2400×1350,
+  `mockup-card.webp` 1600×2000) — no `spruce.ts` changes needed, only
+  the two image files. Script: scratchpad-only
+  (`spruce/compose2.py`, superseding the first pass's `compose.py`) —
+  rotation is done with `Image.rotate(angle, expand=True)`, and a
+  small helper maps a point in the *pre*-rotation image to its
+  on-canvas position after rotation (needed to place the glow/shadow
+  precisely) — re-derive rather than trust fractions of the rotated
+  image's own padded width/height, which include the rotation's
+  expand-margin and don't line up with the visible card.
 - **Resolved (Spruce mockup hero, 2026-09-19)**: Spruce now has a
   framed-browser mockup as its `bannerImage`
   (`public/images/spruce/mockup-hero.webp`, 2400×1350, 16:9) — the
