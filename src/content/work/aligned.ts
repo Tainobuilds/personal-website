@@ -92,6 +92,7 @@ export const aligned: WorkContent = {
         caption:
           "“Hey Alex. Your back has been waiting. Today is 15 minutes.” One dark card holds the whole plan — 5 exercises, 15 minutes, 7:00 PM — behind a single Start session button. Below it, the streak shows its grace days openly instead of hiding the mechanics.",
         principle: "15 minutes, no negotiation",
+        featured: true,
       },
       {
         image: "/images/aligned/06-session-intro.webp",

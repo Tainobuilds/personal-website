@@ -380,6 +380,32 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-22)
+- **Resolved (Aligned's "The Flow" — dropped the first number, made
+  Home stand out, 2026-09-22)**: two related changes to the shared
+  `walkthrough` renderer in `CaseStudyBento.tsx` (so both apply to any
+  future project using this field, not just Aligned):
+  1. The first tile no longer shows a number — confirmed with the
+     user this was about the walkthrough step tags specifically
+     ("01 / ONBOARDING" on Welcome, "02 / ONBOARDING" on Body
+     tension, etc.). Now the first tile is bare "ONBOARDING" and
+     numbering starts at "1" on the second tile ("1 / ONBOARDING" on
+     Body tension, …, "6 / SESSION" on the last one) — i.e. label is
+     `i === 0 ? step.group : \`${i} / ${step.group}\`` instead of the
+     old zero-padded `i + 1`.
+  2. New optional `featured?: boolean` on `WalkthroughStep`
+     (`types.ts`) — set `true` on Aligned's Home step (what the user
+     calls "screen 5," the daily-use screen with the streak and
+     Start-session button) per their explicit ask to make "one of our
+     most important screens" get noticed fast. A featured tile gets
+     `sm:col-span-2` (full-width at the 2-col breakpoint, half-width
+     at 4-col), an accent-tinted bordered card background, a larger
+     phone image (280px vs 240px), and a small amber "★ Most-used
+     screen" pill above the image. The 7-step + 1-note grid still
+     packs cleanly into full rows with the one 2-wide tile in the
+     mix (checked: row 1 = the 4 remaining single-width Onboarding
+     tiles, row 2 = Home(2-wide) + Session intro + Session complete,
+     row 3 = the closing note tile alone) — confirmed on the live
+     page, no gaps or overflow.
 - **Resolved (Solution/Design System widths swapped, 2026-09-22)**:
   on the shared `CaseStudyBento` template, when a project has both an
   architecture card and a `designSystem`, The Solution used to be the

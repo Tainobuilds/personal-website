@@ -218,18 +218,34 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
 
             <ol className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
               {work.walkthrough.steps.map((step, i) => (
-                <li key={step.label} className="flex flex-col">
-                  <div className="relative mx-auto mb-5 aspect-[644/1399] w-full max-w-[240px]">
+                <li
+                  key={step.label}
+                  className={`flex flex-col ${
+                    step.featured
+                      ? "rounded-2xl border border-accent/40 bg-accent/[0.07] p-5 sm:col-span-2"
+                      : ""
+                  }`}
+                >
+                  {step.featured && (
+                    <p className="mb-3 inline-flex w-fit items-center gap-1.5 self-start rounded-full bg-accent px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-cream">
+                      ★ Most-used screen
+                    </p>
+                  )}
+                  <div
+                    className={`relative mx-auto mb-5 aspect-[644/1399] w-full ${
+                      step.featured ? "max-w-[280px]" : "max-w-[240px]"
+                    }`}
+                  >
                     <Image
                       src={step.image}
                       alt={`${step.label} screen`}
                       fill
-                      sizes="240px"
+                      sizes="280px"
                       className="object-contain"
                     />
                   </div>
                   <p className="mb-1 text-xs font-bold uppercase tracking-wide text-accent">
-                    {String(i + 1).padStart(2, "0")} / {step.group}
+                    {i === 0 ? step.group : `${i} / ${step.group}`}
                   </p>
                   <p className="mb-2 text-lg font-bold leading-snug">{step.title}</p>
                   <p className="text-sm leading-relaxed text-cream/70">{step.caption}</p>

@@ -40,6 +40,9 @@ export type WalkthroughStep = {
   caption: string;
   /** Design principle this screen is the clearest example of */
   principle?: string;
+  /** Draws extra visual emphasis (a wider, accent-bordered tile) — for the
+   *  one screen that matters most to a reader skimming quickly */
+  featured?: boolean;
 };
 
 export type WorkContent = {
