@@ -6,7 +6,7 @@ export const aligned: WorkContent = {
   status: "full",
   title: "Aligned",
   tagline:
-    "A mobile companion that turns a doctor's prescription into a daily ritual you actually want to keep.",
+    "A physical therapy companion app that turns a doctor's prescription into a daily ritual you actually want to keep.",
   tags: ["UX/UI Design", "Product Design", "Health Tech"],
   role: "Product Designer (UX/UI)",
   timeline: "2026",

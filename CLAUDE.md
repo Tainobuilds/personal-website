@@ -380,6 +380,16 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-22)
+- **Resolved (Aligned tagline names "physical therapy" explicitly,
+  2026-09-22)**: the case-study header's subtitle (`aligned.ts`
+  `tagline`, the sentence directly under the title on `/work/aligned`)
+  used to just say "a mobile companion" — never stated the app is
+  physical therapy up front. Now: "A physical therapy companion app
+  that turns a doctor's prescription into a daily ritual you actually
+  want to keep." Not part of the locked-copy list, so free to edit.
+  The homepage card's own subtitle (`outcomeSummary`, a separate field
+  — WorkCard reads that, not `tagline`) already said "a physical
+  therapist's clinical expertise," so it needed no change.
 - **Resolved (Trends "40% faster" brief, corrected to ~90%, 2026-09-22)**:
   the user asked to add a stat "in the realm of improved workflow
   using AI by 40%." Asked where it came from — the answer was their
