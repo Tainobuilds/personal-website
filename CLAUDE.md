@@ -399,6 +399,21 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-22)
+- **Resolved (Spruce case-study tagline rewritten, 2026-09-22)**:
+  replaced the one-sentence tagline ("A two-sided home-services
+  marketplace — customers find trusted providers, providers manage
+  bookings and get paid.") with a two-sentence version per the user's
+  own framing: sentence 1 covers the two-sided marketplace plus real
+  filtering (service type, price, availability — all genuinely visible
+  in the app's own UI, see the mockup screenshots); sentence 2 covers
+  the AI matching chat, framed as the user described it — describe
+  what you need in plain language instead of searching, and it
+  surfaces the right provider. Not overclaiming beyond the verified
+  architecture (Case study evidence → Spruce, intent/match
+  separation): the AI extracts search terms, a deterministic module
+  does the actual matching. `tagline` only — this is the case-study
+  header subtitle; the homepage card's own subtitle
+  (`outcomeSummary`) is a separate field and wasn't touched.
 - **Resolved (page background white, hero head-crop fixed, 2026-09-22)**:
   two site-wide visual fixes from the same request. (1) `--color-cream`
   changed from beige `#F5F0E8` to pure white `#FFFFFF` — see the

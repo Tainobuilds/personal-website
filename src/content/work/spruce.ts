@@ -6,7 +6,7 @@ export const spruce: WorkContent = {
   status: "full",
   title: "Spruce",
   tagline:
-    "A two-sided home-services marketplace — customers find trusted providers, providers manage bookings and get paid.",
+    "A two-sided marketplace where customers and providers find each other — real filters for service type, price, and availability narrow things down fast. Or skip the search: describe what you need in plain language, and Spruce's AI matching surfaces the right provider for you.",
   tags: ["Full-Stack Engineering", "AI Workflows", "Product Design"],
   role: "Full-Stack Engineer & Product Designer",
   timeline: "In progress · 2026",
