@@ -86,5 +86,5 @@ export const spruce: WorkContent = {
     },
   ],
   outcomeSummary:
-    "Architected an AI-assisted marketplace where the model can propose but never invent — a real Stripe checkout and dual-sided dashboards on top.",
+    "A two-sided marketplace where customers and providers find each other — filter fast, or just describe what you need and let AI find the right match.",
 };

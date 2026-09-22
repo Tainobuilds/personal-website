@@ -399,6 +399,22 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-22)
+- **Resolved (Spruce homepage-card blurb matched to the new tagline,
+  2026-09-22)**: the same rewrite that landed on the case-study
+  `tagline` this session ("A two-sided marketplace where customers and
+  providers find each other...") hadn't propagated to the homepage
+  card, which reads a separate field (`outcomeSummary`) and still said
+  the older "Architected an AI-assisted marketplace where the model
+  can propose but never invent..." line. Condensed the same two-sided
+  + filter + AI-matching framing into one shorter sentence for the
+  card: "A two-sided marketplace where customers and providers find
+  each other — filter fast, or just describe what you need and let AI
+  find the right match." Now the card (before the click) and the
+  case-study header (after) tell the same story. Reminder for next
+  time a project's positioning changes: `tagline` and `outcomeSummary`
+  are two separate fields on `WorkContent` — `CaseStudyHeader` reads
+  `tagline`, `WorkCard` reads `outcomeSummary` — so a copy change
+  meant to apply "everywhere" needs both touched explicitly.
 - **Resolved (Spruce case-study tagline rewritten, 2026-09-22)**:
   replaced the one-sentence tagline ("A two-sided home-services
   marketplace — customers find trusted providers, providers manage
