@@ -380,6 +380,30 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-22)
+- **Resolved (Trends "01/The Challenge" rewritten as a fuller story,
+  2026-09-22)**: replaced the short, logistics-only paragraph
+  ("Trends LIC runs fast...") with a longer narrative dictated by the
+  user, cleaned up into portfolio prose but keeping their actual
+  points and order: inventory management is messy for any retailer,
+  not just customer-facing but the backend system underneath it;
+  cannabis makes that sharper — strict protocols and New York's Office
+  of Cannabis Management (OCM) compliance rules add oversight most
+  retail doesn't carry; at Trends LIC specifically, that pressure hit
+  hardest when the store got busy and staff were split between
+  helping customers up front and getting shipments labeled in the
+  back at the same time; the paragraph then names **Trends Studio**
+  directly as the system built to close that gap (Front Stock +
+  Back Stock, one place); closes on the user's own framing that the
+  same problem — and the system's usefulness — generalizes to other
+  dispensaries and retail operations, worded as design intent
+  ("designed with that kind of reuse in mind"), not a deployment
+  claim, since it's not actually in use anywhere but Trends LIC.
+  OCM/Metrc are referenced as real regulatory context, consistent
+  with the Metrc Tag field already verified in "Case study evidence"
+  below. Only `trends.ts`'s `problem` field changed — the hero
+  screenshot, stat banner, and legacy-laptop photo alongside it are
+  unchanged and still render fine next to the longer text (checked at
+  desktop and 375px mobile, no overflow).
 - **Resolved (Aligned's "The Flow" — dropped the first number, made
   Home stand out, 2026-09-22)**: two related changes to the shared
   `walkthrough` renderer in `CaseStudyBento.tsx` (so both apply to any
