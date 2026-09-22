@@ -9,7 +9,7 @@ export function Hero() {
         alt="Yadan Taino"
         fill
         priority
-        className="object-cover"
+        className="object-cover object-top"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
       <div className="relative z-10 max-w-2xl">

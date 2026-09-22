@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #f5f0e8;
+  --color-cream: #ffffff;
   --color-sand: #ede8df;
   --color-dark: #2c2a24;
   --color-muted: #7a7468;

@@ -346,13 +346,21 @@ Generative AI" service naming.
   dark massive bold headline, no photo at all — "Full Clay-style
   redesign: drop the photo, light bg + dark text," per explicit user
   decision at the time. Lasted about one day too.
-- **Palette (refined 2026-08-24)**: warm neutral, named tokens —
-  Cream `#F5F0E8` (page background, replaces the earlier `#f2f1ed`),
-  Sand `#EDE8DF` (secondary surface), Dark `#2C2A24` (headline/body
-  text, replaces pure `#111111`), Muted `#7A7468` (secondary text,
-  replaces `#a39d8c`), Border `#E8E3DA` (replaces `#ddd4bf`). Still
-  warm-light, not stark white; still black-feeling but warmer than
-  pure black.
+- **Palette (refined 2026-08-24, Cream → white 2026-09-22)**: warm
+  neutral, named tokens — Sand `#EDE8DF` (secondary surface), Dark
+  `#2C2A24` (headline/body text, replaces pure `#111111`), Muted
+  `#7A7468` (secondary text, replaces `#a39d8c`), Border `#E8E3DA`
+  (replaces `#ddd4bf`). Still black-feeling but warmer than pure
+  black. **Cream is now pure white `#FFFFFF`** (was `#F5F0E8`, itself
+  a replacement for the earlier `#f2f1ed`) — the user asked to drop
+  the beige page background for "more of a lux feeling." Single CSS
+  variable (`--color-cream` in `globals.css`, name kept as-is —
+  renaming it sitewide wasn't worth the diff), so every `bg-cream`/
+  `text-cream` usage updated automatically, same pattern as the
+  2026-09-15 accent-color change. Sand/Border/Muted were deliberately
+  left alone — against a white page they read as a warmer, distinct
+  card surface instead of a background that blends in, which is the
+  effect that reads as "lux" rather than "pure white and gray."
 - **Accent color (CHANGED 2026-09-15): vibrant orange `#FF5C00`.**
   Replaces the muted clay/terracotta `#b5652f` that had been locked
   since 2026-08-06 and explicitly reaffirmed on 2026-09-14. This time
@@ -380,6 +388,24 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-22)
+- **Resolved (page background white, hero head-crop fixed, 2026-09-22)**:
+  two site-wide visual fixes from the same request. (1) `--color-cream`
+  changed from beige `#F5F0E8` to pure white `#FFFFFF` — see the
+  updated Palette entry in Visual design direction above for the full
+  reasoning. (2) The Hero photo's top of head was getting cropped off
+  on wide/short viewports — `min-h-screen` + `object-cover` with the
+  browser's default center object-position crops symmetrically
+  top-and-bottom, and on a wide desktop window that box is short
+  enough relative to the (tall, portrait-orientation) source photo
+  that the crop line lands above the hairline. Confirmed by screenshot
+  at both mobile (375px, head fully visible, "so it looked fine there)
+  and desktop width (≈800px tall box, top of head visibly clipped).
+  Fix: added `object-top` to the image's className in `Hero.tsx` —
+  anchors the image's top edge to the box's top edge, so cropping only
+  ever removes from the bottom (more of the jacket/body on short
+  boxes) and the head is guaranteed in frame at any viewport height,
+  not just the ones tested. Confirmed at both mobile and desktop after
+  the fix.
 - **Resolved (Trends "01/The Challenge" rewritten as a fuller story,
   2026-09-22)**: replaced the short, logistics-only paragraph
   ("Trends LIC runs fast...") with a longer narrative dictated by the
