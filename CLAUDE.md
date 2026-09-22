@@ -380,6 +380,18 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-22)
+- **Resolved (Solution/Design System widths swapped, 2026-09-22)**:
+  on the shared `CaseStudyBento` template, when a project has both an
+  architecture card and a `designSystem`, The Solution used to be the
+  narrow `sm:col-span-1` box and Design System the wide
+  `sm:col-span-2` one — now reversed (Solution `sm:col-span-2`, Design
+  System plain `col-span-1`), so the process narrative gets the wider
+  box and the token swatches sit in the smaller one. Affects every
+  project on this template that ships a `designSystem` — currently
+  Aligned and Spruce (Kippo has no `designSystem`, so its Solution
+  card still gets the full `sm:col-span-3` it always had when
+  `hasDesignSystem` is false). Checked both on the real page: Spruce's
+  6 tokens still wrap cleanly in the narrower box.
 - **Resolved (Aligned tagline names "physical therapy" explicitly,
   2026-09-22)**: the case-study header's subtitle (`aligned.ts`
   `tagline`, the sentence directly under the title on `/work/aligned`)

@@ -152,7 +152,7 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
         {hasArchitecture && work.architecture && (
           <div
             className={`col-span-1 rounded-2xl bg-[#1a1814] p-8 text-cream ${
-              hasDesignSystem ? "" : "sm:col-span-3"
+              hasDesignSystem ? "sm:col-span-2" : "sm:col-span-3"
             }`}
           >
             <p className="mb-4 text-2xl font-bold tracking-tight text-[#4ade80]">The Solution</p>
@@ -170,7 +170,7 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
 
         {/* Design System — spans 2 */}
         {hasDesignSystem && work.designSystem && (
-          <div className="col-span-1 rounded-2xl border border-border bg-sand p-8 sm:col-span-2">
+          <div className="col-span-1 rounded-2xl border border-border bg-sand p-8">
             <p className="mb-4 text-2xl font-bold tracking-tight">Design System</p>
             <p className="mb-4 text-sm text-dark/80">{work.designSystem.name}</p>
             <div className="mb-4 flex flex-wrap gap-3">
