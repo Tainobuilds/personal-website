@@ -21,10 +21,13 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
                 loop
                 muted
                 playsInline
-                poster={work.bannerImage}
+                poster={work.bannerPoster ?? work.bannerImage}
                 className={
+                  // "portrait" videos (a phone mockup on a dark backdrop) are exported
+                  // ~4:3, so the box takes the video's own shape at every width —
+                  // nothing gets cropped and the whole phone always fits the screen.
                   work.bannerFit === "portrait"
-                    ? "block aspect-[4/5] w-full object-cover sm:aspect-auto sm:h-[780px]"
+                    ? "block aspect-[4/3] w-full object-cover"
                     : "block max-h-[560px] w-full object-cover"
                 }
               >

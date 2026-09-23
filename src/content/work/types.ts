@@ -58,6 +58,8 @@ export type WorkContent = {
   links?: { label: string; href: string }[];
   bannerImage?: string;
   bannerVideo?: string;
+  /** Still frame shown while `bannerVideo` loads — should match the video's own aspect ratio (falls back to `bannerImage`) */
+  bannerPoster?: string;
   /** 4:5 image for the homepage card, when the wide banner would crop badly there */
   cardImage?: string;
   /** "portrait" = a 9:16 mockup shown as a tall full-width banner (cropped to fit); default is a 16:9 banner */

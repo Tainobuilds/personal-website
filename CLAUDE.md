@@ -418,6 +418,62 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-23)
+- **Resolved (Aligned hero video shaking + not fitting the screen,
+  2026-09-23, later)**: the user reported the full-clip video "started
+  shaking intensely and [was] not fit to the screen." Two separate
+  causes, both fixed:
+  1. **Shake = per-frame detection noise.** The 360-frame render
+     detected the pink card independently on every frame, then
+     extrapolated it ~2.5× to the whole screen. Detection was only
+     accurate to ±8–20px (downsampled ×4 + rounded card corners), and
+     extrapolation multiplied that, so the screen content vibrated
+     against the phone. Measured it before fixing: raw corner
+     trajectories had second-differences up to **48px** (median 4px,
+     p90 16px) with a handful of outright outliers. Fix: per corner
+     coordinate, a **median-based outlier rejection** (replace any
+     sample >30px from its ±4-frame median) followed by a
+     **Gaussian-weighted local quadratic regression** over ±12 frames
+     (σ=4) — smooths without lagging behind real motion, unlike a
+     plain moving average. After: median second-difference **0.15px**,
+     max 2.3px. Then re-rendered all 360 frames from the smoothed
+     quads. Measured result on the on-screen slider position across
+     the settled frames: 2nd-difference mean **0.8px** in the new render
+     vs **0.35px** in the untouched source video (i.e. essentially as
+     steady as the real footage; the first render was in the hundreds).
+  2. **"Not fit to the screen" = wrong box shape.** The video is
+     1440×1080 (4:3) but `bannerFit: "portrait"` gave it a box that was
+     `aspect-[4/5]` on phones (tall, crops the sides) and a fixed
+     `h-[780px]` from `sm:` up (≈1.3:1 at 1036px wide only — anything
+     else cropped or letterboxed). The `portrait` branch of the video
+     element in `CaseStudyBento.tsx` is now simply `aspect-[4/3] w-full`
+     — the box takes the video's own shape at every width. Verified on
+     screen: box 311×233 at 375px and 960×720 at desktop, both exactly
+     1.333, no horizontal overflow. (The *image* `portrait` branch is
+     unchanged — that one is still for a 9:16 still.) Added an optional
+     `bannerPoster` field on `WorkContent` (falls back to
+     `bannerImage`) so the placeholder shown before playback is also
+     4:3 instead of the 9:16 homepage still —
+     `public/assets/videos/aligned/mockup-bodytension-poster.webp`,
+     cut from a settled frame of the final encode.
+  **Tried and abandoned in this pass (worth knowing)**: I also tried to
+  correct a residual ~1–3% vertical drift of content far below the
+  card (measured on clean frames: Continue button off by 6–14px of
+  1080 in the smoothed render) by recalibrating the source card
+  corners and cropping/padding the source's blank bottom strip. Every
+  variant I tried made landmark alignment *worse*, not better, because
+  the card-to-screen extrapolation isn't a perfect single homography
+  for this renderer — so I kept the smoothed render as-is. Residual
+  error is under 1% of frame height and invisible at display size; not
+  worth more engineering. If it's ever revisited: calibrate on more
+  reference points than the 4 card corners (e.g. also the slider and
+  Continue button, but those are covered by the badge for ~3s).
+  **Detection lesson**: the source-card reference corners must be
+  computed with the *same extremal-point method* used on the frames
+  (`(52,404),(591,405),(591,870),(53,868)`), not the rectangle bbox
+  `(46,394)-(597,880)` — the rounded-corner bias otherwise shows up as
+  a ~5% scale error. (The smoothed render uses the extremal reference.)
+  Scripts: scratchpad-only (`alignedvid/detect_all.py`,
+  `smooth.py`, `pipeline2.py`).
 - **Resolved (Aligned's hero video is now the FULL ~6s clip, watermark
   removed throughout — including the hard part, 2026-09-23)**: the
   first pass (below) deliberately trimmed the clip to the last ~2.2s,

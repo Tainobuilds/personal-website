@@ -13,6 +13,7 @@ export const aligned: WorkContent = {
   techStack: ["Figma-style tap-through prototype", "Claude Design"],
   bannerImage: "/images/aligned/mockup-hero-bodytension.webp",
   bannerVideo: "/assets/videos/aligned/mockup-bodytension-video.mp4",
+  bannerPoster: "/assets/videos/aligned/mockup-bodytension-poster.webp",
   bannerFit: "portrait",
   problem:
     "According to Juny — the licensed physical therapist Aligned was built alongside — 70% of patients drop their home exercise program within the first 4 weeks. The exercises work, adherence doesn't. The target user spends 8+ hours seated daily, building the very tension physical therapy is meant to release, and has typically already downloaded and abandoned 2 other PT apps that feel clinical, dense, and joyless.",
