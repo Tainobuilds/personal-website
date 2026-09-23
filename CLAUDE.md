@@ -418,6 +418,38 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-23)
+- **Resolved (Trends' homepage copy rewritten to lead with the real-
+  business angle, 2026-09-23)**: two fields, same reasoning as the
+  Kippo homepage-blurb fix just above — the old copy was accurate but
+  read as a technical changelog ("Replaced manual 8-10 minute hand-
+  typed dispensary label entry with a real-time API-connected thermal
+  print engine — roughly 90% faster..."), not something that hooks a
+  visitor. The user's brief used "store studio program" — corrected to
+  the actual verified product name **Trends Studio** rather than
+  invented wording, same pattern as every other Trends correction in
+  this doc. Both rewrites lead with **it's AI-assisted and it's live
+  in a real dispensary right now**, per the user's explicit ask to
+  highlight that this is a real business being helped in real time,
+  not a class-project demo:
+  - Pillar 3 description (`src/app/page.tsx`): "Built Trends Studio —
+    an AI-assisted system for in-store organization and labeling, live
+    in a real dispensary today and saving real time on a busy sales
+    floor."
+  - Trends' own homepage-card `outcomeSummary` (`trends.ts`): "An
+    AI-assisted labeling system running in a real dispensary right
+    now — cutting label entry from minutes to seconds and freeing up
+    staff for the floor."
+  Worded them differently from each other on purpose since they sit
+  right next to each other on the homepage (pillar description, then
+  the one card in that pillar) — same "real dispensary, right now"
+  core claim, different sentence shape, so it doesn't read as literally
+  repeated. Nice coincidence: the storefront photo directly below the
+  card blurb (`storefront.jpg`, showing the real "TRENDS, 27-25 44th
+  Dr, Long Island City" signage) already visually reinforces the "real
+  business" claim — didn't need a new asset for this pass. `tagline`
+  and `problem` (the case-study page itself) weren't touched — this
+  was scoped to the homepage/"outside" teaser copy only, same scope as
+  the Kippo fix.
 - **Resolved (Kippo's homepage-card blurb rewritten, 2026-09-23)**:
   `outcomeSummary` (the homepage card's one-liner, before the click —
   same field/pattern as the Spruce blurb fix earlier this session)

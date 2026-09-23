@@ -30,7 +30,7 @@ export default function Home() {
         />
         <Pillar
           title="Retail Automation & Workflow Engineering"
-          description="Replaced manual 8-10 minute hand-typed dispensary label entry with a real-time API-connected thermal print engine — roughly 90% faster, executing batching in under 60 seconds."
+          description="Built Trends Studio — an AI-assisted system for in-store organization and labeling, live in a real dispensary today and saving real time on a busy sales floor."
           items={getWorkByPillar(3)}
         />
       </section>

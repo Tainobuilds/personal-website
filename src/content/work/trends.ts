@@ -97,5 +97,5 @@ export const trends: WorkContent = {
     },
   ],
   outcomeSummary:
-    "Replaced hand-typed dispensary labels with a live-menu-connected print workflow, plus a phone-camera flow for back-stock that reads a sticker instead of retyping it.",
+    "An AI-assisted labeling system running in a real dispensary right now — cutting label entry from minutes to seconds and freeing up staff for the floor.",
 };
