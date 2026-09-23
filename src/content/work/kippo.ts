@@ -11,12 +11,6 @@ export const kippo: WorkContent = {
   role: "UX Designer / Researcher",
   timeline: "5 months",
   techStack: ["Figma", "User Research", "HTML/CSS/JS"],
-  links: [
-    {
-      label: "View Figma prototype",
-      href: "https://www.figma.com/design/2Wdy34apAh2BlAgori9ZU2/Kippo-Kids-App?node-id=0-1&t=PiLmJa3aflJzMqAU-1",
-    },
-  ],
   bannerImage: "/assets/images/kippo/iphone-17-pro-photo-clean.png",
   bannerVideo: "/assets/videos/kippo/iphone-17-pro-video.mp4",
   problem:

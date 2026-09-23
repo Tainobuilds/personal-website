@@ -1,5 +1,4 @@
 import { Hero } from "@/components/Hero";
-import { TrustStrip } from "@/components/TrustStrip";
 import { Services } from "@/components/Services";
 import { Pillar } from "@/components/Pillar";
 import { Testimonial } from "@/components/Testimonial";
@@ -11,7 +10,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <TrustStrip />
       <Services />
       <section id="projects" className="px-8 py-16">
         <h2 className="mb-2 text-4xl font-extrabold md:text-5xl">Selected work</h2>

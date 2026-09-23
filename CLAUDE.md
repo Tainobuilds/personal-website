@@ -89,9 +89,10 @@ README.md. Homepage order unchanged from the pre-migration site
 (updated 2026-08-06 — leads with capabilities before the personal
 story, inspired by clay.global):
 1. Hero (headline, subline, availability badge, scroll hint)
-2. Trust strip (placeholder brand wordmarks)
-3. Services ("what I offer" — tagline + accordion list)
-4. Selected work — now 3 pillars instead of a flat grid:
+2. Services ("what I offer" — tagline + accordion list) — **Trust
+   strip removed 2026-09-23** (see below), so Hero flows straight into
+   Services now.
+3. Selected work — now 3 pillars instead of a flat grid:
    - **High-Craft Visual Design & Prototyping**: Kippo, Aligned
    - **AI Workflows & Interactive Systems**: Spruce — **Ticket Triage
      — MVP removed here 2026-09-17**, per explicit user decision.
@@ -110,10 +111,10 @@ story, inspired by clay.global):
      removed from `workIndex.ts` — it's real, verified work, just not
      on the current homepage roster. Restore it (add back to
      `workIndex.ts`) if asked, rather than rewriting it from scratch.
-5. Testimonial
-6. About (with a lightweight "Currently" tag strip near the top)
-7. FAQ
-8. Contact
+4. Testimonial
+5. About (with a lightweight "Currently" tag strip near the top)
+6. FAQ
+7. Contact
 
 Nav labels: About, Projects, Contact — desktop nav always visible;
 mobile (<768px) uses a hamburger that opens a full-screen drawer
@@ -300,12 +301,19 @@ one still marked lighter/in-progress since its full write-up isn't
 built yet, same honest-placeholder principle used everywhere else on
 this site.
 
-### Trust strip copy (locked 2026-08-06)
-Text-based placeholder wordmarks (not real logo assets — avoids
-trademark/copyright issues until real client permission/assets exist):
-Adidas, SoundCloud, Kiehl's, Jose Cuervo, NYFW, Swim Week, Vida Y Moss,
-Trends Dispensary. Understated styling — muted color, low opacity, wraps
-on narrow viewports. Swap in real logos only with actual client permission.
+### Trust strip — REMOVED 2026-09-23
+Was: text-based placeholder wordmarks (Adidas, SoundCloud, Kiehl's,
+Jose Cuervo, NYFW, Swim Week, Vida Y Moss, Trends Dispensary) in a
+strip between Hero and Services, locked 2026-08-06. **Removed
+entirely** per explicit user request — those brands are from Yadan's
+modeling/campaign work, not design/dev client work, and having them
+right under the "Front-End Developer & Product Designer" hero read as
+distracting and potentially misrepresenting (implying design/dev
+client relationships that don't exist). `TrustStrip.tsx` deleted,
+import + usage removed from `page.tsx`. Homepage now goes straight
+from Hero into Services. If brand-credibility proof is wanted here
+again later, it should be real client logos with actual permission —
+not this list.
 
 ### "Currently" tags (locked 2026-08-06, updated 2026-09-22)
 Small pill tags near the top of the About section, not a full section.
@@ -409,7 +417,24 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-22)
+## Known gaps (as of 2026-09-23)
+- **Resolved (Trust strip removed, 2026-09-23)**: per explicit user
+  request — those brand wordmarks were from modeling/campaign work,
+  not design/dev clients, and sitting right under the "Front-End
+  Developer & Product Designer" hero read as misrepresenting client
+  relationships that don't exist. `TrustStrip.tsx` deleted; `page.tsx`
+  no longer imports or renders it. See the superseded "Trust strip"
+  entry under Visual design direction above for the full note.
+- **Resolved (Kippo's top Figma link removed, 2026-09-23)**: per
+  explicit user request, dropped `kippo.ts`'s `links` field (the
+  "View Figma prototype" link that showed in the case-study header's
+  Links column). The header now shows "Private / not yet public" for
+  Kippo, same fallback every other project on the shared template uses
+  when it has no `links` — consistent with Aligned, Spruce, and
+  Trends. The Figma file itself wasn't touched, only the header link;
+  if the user wants it referenced elsewhere on the page later (e.g. in
+  the Solution or Design process section body text) that's a separate,
+  smaller ask.
 - **Resolved (testimonial attribution removed, 2026-09-22)**:
   `Testimonial.tsx`'s quote had a `<cite>` line reading "Creative
   Partner" — flagged as unverified placeholder attribution back on
