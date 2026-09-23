@@ -418,6 +418,21 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-23)
+- **Resolved (Hero's "Available for select projects" badge hidden on
+  mobile, 2026-09-23)**: the user shared a real phone screenshot
+  (Safari, iPhone) — on real mobile Safari (not just the dev viewport
+  emulator), the badge sat directly over their face. The `object-top`
+  fix from earlier this session (see the 2026-09-22 entry) fixed the
+  crop cutting off the *top* of the head, but didn't address this
+  separate issue: the badge is positioned in the text flow above the
+  headline, and at narrow widths the headline wraps to 4 lines,
+  pushing that whole text block down far enough that the badge lands
+  over the face rather than the dark sky/building area above it. Fix:
+  `hidden md:inline-flex` on the badge — gone below the 768px
+  breakpoint, unchanged on desktop (confirmed still visible at
+  1200px). Simpler and lower-risk than trying to reposition it per
+  breakpoint; the badge is a "nice to have" pill, not load-bearing
+  copy, so dropping it on mobile costs nothing.
 - **Resolved (Aligned hero/card mockup swapped to Body tension,
   2026-09-23)**: per explicit user request, the 3D velvet-phone mockup
   (`bannerImage`, drives both the case-study hero and — since Aligned

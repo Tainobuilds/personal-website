@@ -13,7 +13,7 @@ export function Hero() {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
       <div className="relative z-10 max-w-2xl">
-        <p className="mb-8 inline-flex w-fit items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm text-white backdrop-blur-sm">
+        <p className="mb-8 hidden w-fit items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm text-white backdrop-blur-sm md:inline-flex">
           <span className="h-1.5 w-1.5 rounded-full bg-[#4ade80]" />
           Available for select projects
         </p>
