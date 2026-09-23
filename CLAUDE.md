@@ -418,6 +418,23 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-23)
+- **Resolved (Kippo's homepage-card blurb rewritten, 2026-09-23)**:
+  `outcomeSummary` (the homepage card's one-liner, before the click —
+  same field/pattern as the Spruce blurb fix earlier this session)
+  said "Resolved a navigation-hesitation problem parents hit in
+  testing, validated across two rounds of usability studies." — per
+  the user, too dry/research-jargon-y to hook someone landing on the
+  site who doesn't know what Kippo is yet. Now: "Helps parents buy and
+  resell kids' clothing fast — saving real time and money, without the
+  chaos of disorganized marketplaces." Grounded in the same verified
+  problem statement already on the page (rising cost of kids'
+  clothing, existing resale options being disorganized/time-consuming/
+  unreliable) — not a new claim, just leads with the real-world payoff
+  instead of the UX-research process. The old navigation-hesitation
+  detail isn't lost, it's still the actual `mechanics[0]` entry on the
+  case-study page itself — this only changed the *outside* teaser.
+  `tagline` (the case-study header subtitle) already mentioned
+  parents/buy/resell/safely, so it wasn't touched.
 - **Resolved (Hero's "Available for select projects" badge hidden on
   mobile, 2026-09-23)**: the user shared a real phone screenshot
   (Safari, iPhone) — on real mobile Safari (not just the dev viewport

@@ -144,5 +144,5 @@ export const kippo: WorkContent = {
     },
   ],
   outcomeSummary:
-    "Resolved a navigation-hesitation problem parents hit in testing, validated across two rounds of usability studies.",
+    "Helps parents buy and resell kids' clothing fast — saving real time and money, without the chaos of disorganized marketplaces.",
 };
