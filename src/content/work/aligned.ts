@@ -15,7 +15,7 @@ export const aligned: WorkContent = {
   bannerVideo: "/assets/videos/aligned/mockup-bodytension-video.mp4",
   bannerFit: "portrait",
   problem:
-    "70% of patients drop their home exercise program within the first 4 weeks — the exercises work, adherence doesn't. The target user spends 8+ hours seated daily, building the very tension physical therapy is meant to release, and has typically already downloaded and abandoned 2 other PT apps that feel clinical, dense, and joyless.",
+    "According to Juny — the licensed physical therapist Aligned was built alongside — 70% of patients drop their home exercise program within the first 4 weeks. The exercises work, adherence doesn't. The target user spends 8+ hours seated daily, building the very tension physical therapy is meant to release, and has typically already downloaded and abandoned 2 other PT apps that feel clinical, dense, and joyless.",
   insight: {
     text: "“I know I should do my exercises. I just never feel like it after a long day — and then I feel guilty, which makes it worse.”",
     attribution: "Alex Rivera, 34 — Marketing Manager, NYC, primary persona",

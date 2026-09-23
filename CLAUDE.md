@@ -418,6 +418,21 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-23)
+- **Resolved (Aligned's "70%" stat now attributed to Juny, 2026-09-23)**:
+  `problem` used to open with the 70%-adherence-drop figure as a bare,
+  unsourced statistic. Per the user (who confirmed this is the real
+  source — they interviewed Juny, the same licensed physical
+  therapist already credited elsewhere in this case study as Aligned's
+  clinical collaborator, and this is her number), now opens: "According
+  to Juny — the licensed physical therapist Aligned was built
+  alongside — 70% of patients drop their home exercise program within
+  the first 4 weeks." Ties an already-established real person to a
+  number that previously read as generic/uncredited — same
+  "attribute real claims to their real source" principle applied
+  throughout this doc, just applied to the problem paragraph instead
+  of a pull-quote this time (the existing `insight.attribution` field
+  is for the *Alex Rivera* quote specifically, a different persona —
+  didn't touch that).
 - **Resolved (Trends pillar moved above Spruce, 2026-09-23)**: per
   explicit user request ("my top 3 case study" — reading as their
   favorite/strongest one, not a literal ranking position), swapped the
