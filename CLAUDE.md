@@ -418,6 +418,65 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-23)
+- **Resolved (Aligned's hero video is now the FULL ~6s clip, watermark
+  removed throughout — including the hard part, 2026-09-23)**: the
+  first pass (below) deliberately trimmed the clip to the last ~2.2s,
+  skipping the opening zoom transition because the badge crosses real
+  moving screen content there. The user asked directly if the full
+  clip was possible without the watermark, so this pass builds the
+  harder version: **every one of the 360 frames (60fps × 5.983s) now
+  gets its on-screen content fully re-rendered from the real source**,
+  not just healed — which sidesteps badge-detection entirely (badge or
+  no badge, the true screen content wins) and is accurate at every
+  zoom level, not just the settled one.
+  **How the per-frame tracking actually works** (the homography
+  approach from the still-image pass broke down for video — see the
+  superseded entry below for why): calibrate on the **pink "tap the
+  areas" card**, not the phone's outer screen edges. The edges get
+  clipped by the frame boundary during the early, heavily-zoomed part
+  of the clip (phone bigger than the canvas), and using a clipped
+  point as if it were a true corner throws off the whole warp — the
+  card is fully inside the screen and visible at every zoom level in
+  this clip, plus it's easy to isolate by color (`r-g > 5`, `r>190` on
+  a downsampled copy for speed, then flood-fill to the largest
+  connected blob, then the usual extremal-point corner method).
+  Per frame: detect the card's quad in the frame → solve a homography
+  from the *known source-image* card corners `(46,394)-(597,880)` to
+  that quad → use that same homography (planar, so valid for any point
+  on the screen, not just the card) to forward-project the source
+  screen's own corners `(0,0)-(644,1399)` into frame space → warp the
+  full flat source into that projected quad and alpha-composite it
+  over the frame, replacing the screen wholesale. Validated each
+  detection before trusting it (reject if any corner lands within 3px
+  of the frame edge, or if opposite side lengths differ by >35% —
+  catches clipping and false positives) and fell back to the last
+  good frame's quad on failure — in practice **zero of the 360 frames
+  failed detection**, the card-based approach turned out to be robust
+  end to end. The badge itself was never detected or targeted at
+  all — it's simply not part of what gets drawn anymore.
+  **The tail (badge-over-velvet) still needed the earlier clone-stamp
+  fix** on top of this, since that portion of the badge sits outside
+  the screen (below the phone) where the screen-replacement doesn't
+  reach — applied from frame 210 onward (past the point the badge
+  fully clears the phone), same fixed bbox and technique as the first
+  pass.
+  Re-encoded at 1440×1080 (was source 2878×2160), CRF 22, ~2.5MB for
+  the full 6s (was ~500KB for the 2.2s cut) — same
+  `public/assets/videos/aligned/mockup-bodytension-video.mp4` path, so
+  no `aligned.ts` change was needed this time, just the file swap.
+  Verified `<video>.duration` reads 6 (confirms the new file is
+  actually being served, not a stale one — video files aren't run
+  through Next's image optimizer cache the way stills are, so no
+  rename-to-bust-cache was needed here), spot-checked frames across
+  the full range including mid-transition (zoomed in, card and
+  checkboxes only) and settled (full phone) — all clean, no visible
+  seam or badge — and re-verified from the *final compressed* output
+  specifically, not just the pre-encode PNGs. Confirmed at desktop and
+  375px mobile, no overflow; `tsc` and build both pass. Scripts:
+  scratchpad-only (`alignedvid/pipeline.py` — homography solver +
+  card-quad detector + forward-projection + warp/composite + the
+  reused clone-stamp healer, run per-frame over all 360 frames as one
+  batch).
 - **Resolved (Aligned's "70%" stat now attributed to Juny, 2026-09-23)**:
   `problem` used to open with the 70%-adherence-drop figure as a bare,
   unsourced statistic. Per the user (who confirmed this is the real
@@ -443,6 +502,17 @@ Generative AI" service naming.
   `pillar: 3` values on `WorkContent` in `spruce.ts`/`trends.ts` were
   NOT changed (still their original categorization), and neither
   project's own case-study page or content changed at all.
+- **Superseded 2026-09-23, later same day** — see the newer entry
+  above ("full video, watermark removed throughout"): the ~2.2s
+  trimmed clip described below was a deliberate scope cut (badge-over-
+  screen-content frames were judged not worth the engineering for a
+  decorative hero video). The user then asked directly whether the
+  *full* ~6s clip could be done with the watermark still off — it
+  could, using a different technique (see above). This entry's
+  background (source video facts, why the badge is hard here, the
+  clone-stamp velvet fix, the `bannerFit` video support added to
+  `CaseStudyBento.tsx`) is all still accurate, just describes the
+  first, shorter pass.
 - **Resolved (Aligned's hero now has motion — a Body tension video
   mockup, 2026-09-23)**: the user re-exported a NEW mckp.live video —
   `Aligned/iPhone 17 Pro (1).mp4` was overwritten (same filename, new
