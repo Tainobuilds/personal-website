@@ -1009,7 +1009,39 @@ Generative AI" service naming.
 - 311 Insights' case-study page has real problem/mechanics content but no `architecture` or `designSystem` card yet, and no hero image — it's the one project still clearly reading as "in progress."
 - Testimonial section quote is still placeholder copy, not a real testimonial. **The portrait image is real now** (resolved 2026-09-17): `public/images/testimonial-portrait.jpg`, copied from `Picture of me in suit.JPG` at the repo root per explicit user request — a real full-body mirror-selfie portrait, default `object-cover`/center-crop keeps the face and suit in frame. **The "Creative Partner" attribution is gone (resolved 2026-09-22)**, removed outright rather than left as a placeholder — the quote text itself is still unverified/placeholder, don't treat it as real until the user confirms an actual testimonial to replace it with.
 - Trust strip uses text-only placeholder wordmarks, not real logos — needs real logo assets and confirmed client permission before launch.
-- **Vercel is NOT serving the Next.js app — verified 2026-09-19 with `curl` against `https://yadan-taino-personal-website.vercel.app`** (the URL in `layout.tsx` metadata): static files from `public/` resolve (`/images/hero-portrait.jpg`, `/assets/videos/kippo/…mp4`, `/robots.txt` → 200, and the new `-clean` Kippo still is live while the deleted old one 404s, so deploys *are* running on each push), but `/`, `/work/kippo`, `/index.html`, `/favicon.ico` and `/_next/static/…` all return Vercel `NOT_FOUND`. That pattern means the project is publishing `public/` as a static site — most likely **Framework Preset = "Other"** and/or **Output Directory = `public`** left over from the pre-migration plain-HTML site — instead of building Next.js. Fix is in the Vercel dashboard (Project → Settings → Build & Development: Framework Preset **Next.js**, clear the Output Directory override, then redeploy); Claude has no Vercel access here (CLI not installed, Vercel MCP unauthenticated). Until fixed, the public site shows no pages at all, regardless of what's changed in the code. Also possible: the real production URL differs from the metadata URL — worth confirming.
+- **Resolved (Vercel now serving the real Next.js app, 2026-09-23)**:
+  root cause matched the 2026-09-19 diagnosis below — the Vercel
+  **project** (name: `personal-website`, under the `yadan-taino`
+  team/scope — findable at `vercel.com/yadan-taino/personal-website`;
+  don't confuse with the *Claude Code session* also nicknamed "Yadan
+  Taino portfolio site" in an unrelated sidebar) had **Framework
+  Preset = "Other"** left over from the pre-migration plain-HTML site.
+  User fixed it themselves in the dashboard (Project → Settings →
+  Build and Deployment → Framework Preset → **Next.js**, left Build/
+  Output/Install Command overrides off so Vercel uses Next.js
+  defaults) walked through step by step over several screenshots
+  since Vercel's nested Team-Settings-vs-Project-Settings-vs-General-
+  Settings-vs-Build-and-Deployment navigation is genuinely confusing
+  from screenshots alone — then triggered **Deployments → (latest) →
+  ⋯ → Redeploy** to rebuild the existing commit under the corrected
+  settings. **Verified with `curl` after the redeploy finished**
+  (2026-09-23): `/`, `/work/kippo`, `/work/aligned` all return `200`
+  (previously all `NOT_FOUND`); response HTML now contains real
+  `_next/static/...` JS/CSS chunk references and the correct `<title>`
+  tag; spot-checked that it's serving *today's* build specifically,
+  not a stale cached one, by confirming the Trust strip is absent, the
+  Contact form ("Send inquiry") is present, Kippo's Figma link is
+  absent, and Aligned's hero references
+  `mockup-hero-bodytension.webp` — all same-day changes. Confirmed
+  canonical production domain is indeed
+  `yadan-taino-personal-website.vercel.app` (matches what's already
+  hardcoded in `layout.tsx`'s metadata) — the other domain Vercel
+  showed during this process,
+  `personal-website-9id8rzrd0-yadan-taino.vercel.app`, is just that
+  one deployment's own auto-generated alias, not something to
+  reference anywhere. **No further action needed** on this — every
+  future `git push` to `main` should now deploy correctly without
+  repeating this fix.
 - The `Kippo App Case Study PNG/` deck and the 4 enhanced Kippo screens zip (`~/Downloads/Kippo Mobile App Enhancement.zip`) have now been drawn from for the Kippo case-study content, but individual slide images themselves aren't embedded in the page — only the synthesized text/mechanics and the existing hero photo/video.
 
 ## Case study evidence (for Development / Generative AI / UI-UX case studies)
