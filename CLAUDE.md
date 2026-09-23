@@ -418,6 +418,42 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-23)
+- **Resolved (Aligned hero/card mockup swapped to Body tension,
+  2026-09-23)**: per explicit user request, the 3D velvet-phone mockup
+  (`bannerImage`, drives both the case-study hero and — since Aligned
+  has no separate `cardImage` — the homepage card too) now shows the
+  **Body tension** screen ("Where is your body holding tension
+  today?") instead of Welcome. **No new mckp.live export existed** for
+  this screen (checked `Aligned/` — only the same Welcome-screen
+  `iPhone 17 Pro.png`/`.mp4` from the 2026-09-19 pass are there), so
+  instead of asking the user to make one, the swap was done entirely
+  with Pillow: detected the phone screen's real quad corners in the
+  existing mockup photo by thresholding for the screen's bright warm-
+  cream background (had to tighten the threshold once — the first pass
+  also picked up a bright velvet highlight on the sofa as a false
+  corner), then warped the already-isolated `02-body-tension.webp`
+  (the flat, transparent-rounded-corner cutout from the walkthrough,
+  same source used in "The Flow") into that quad with a real
+  perspective homography (not just a rotation — this mockup has
+  genuine 3D perspective skew) and alpha-pasted it over the original
+  Welcome content. **Pure-Python homography, no numpy**: wrote a small
+  Gaussian-elimination linear solver for the 8-coefficient system PIL's
+  `Image.PERSPECTIVE` needs; the standard "find_coeffs" recipes floating
+  around online are inconsistently documented about which points are
+  pa vs. pb — got it backwards on the first attempt (content rendered
+  wildly oversized, spilling past the bezel) before fixing the
+  row-construction to put the *output/destination* quad coordinates
+  first. Checked all 4 edges zoomed in after the fix — bezel curvature,
+  the dynamic-island cutout, and the home-indicator bar all line up
+  cleanly with no old-content bleed. **Same cache-busting rename as
+  Kippo's fix**: overwriting `mockup-hero.webp` in place kept serving
+  the old Welcome image (Next's image optimizer caches by URL) even
+  after a reload, so the file is now
+  `public/images/aligned/mockup-hero-bodytension.webp` and
+  `aligned.ts`'s `bannerImage` points at the new name. Script is
+  scratchpad-only (`aligned2/` — corner-detection + homography-solve +
+  warp-and-composite, three short passes to get right); re-run it
+  against a fresh screenshot if this mockup ever needs to change again.
 - **Resolved (Trust strip removed, 2026-09-23)**: per explicit user
   request — those brand wordmarks were from modeling/campaign work,
   not design/dev clients, and sitting right under the "Front-End
@@ -672,6 +708,12 @@ Generative AI" service naming.
   scratchpad only (`spruce/compose.py`) — re-create with Pillow
   (window chrome + rounded-corner alpha + gaussian shadow + smooth
   gaussian-glow background) if the screenshots change.
+- **Superseded 2026-09-23** — see the newer entry above: the phone's
+  on-screen content changed from Welcome to Body tension, filename
+  renamed to `mockup-hero-bodytension.webp`. Everything below about
+  the velvet-mockup scene, the badge removal, and the unused
+  video/embed options is still accurate background, just describes
+  the Welcome-screen version of the same photo.
 - **Resolved (Aligned mockup hero, 2026-09-19)**: the Welcome screen is
   now shown in a 3D device mockup (phone standing against deep-blue
   velvet), set as Aligned's `bannerImage` (`public/images/aligned/
