@@ -418,6 +418,74 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-23)
+- **Resolved (Aligned's hero now has motion — a Body tension video
+  mockup, 2026-09-23)**: the user re-exported a NEW mckp.live video —
+  `Aligned/iPhone 17 Pro (1).mp4` was overwritten (same filename, new
+  content: 2878×2160, 60fps, ~6s, dated 2026-09-23) with a camera
+  pull-back animation of the **Body tension** screen (the same one
+  the 2026-09-23 still swap uses), replacing the old Welcome-screen
+  video from 2026-09-19 that was never used. Now Aligned's
+  `bannerVideo` (`public/assets/videos/aligned/
+  mockup-bodytension-video.mp4`, 1440×~1080, ~500KB), with
+  `bannerImage` (the still) as its `poster`.
+  **Badge removal was a real project this time** — the "Made with
+  mckp.live" badge in this export sits *inside the phone's screen
+  content* (over "Skip for now") for the first ~3.4s while the camera
+  is still zooming, and only settles into the simpler "below the
+  phone, over velvet" position for the rest of the clip. Reconstructing
+  a translucent badge sliding across moving, perspective-shifting
+  screen content frame-by-frame was going to need real per-frame quad
+  tracking (tried it — a homography approach broke down because the
+  animation has genuine changing 3D perspective, not just 2D pan/zoom,
+  so a naive "detect 2 clean points, infer the rest" shortcut produced
+  60-120px errors) — **not worth building for a decorative hero video**
+  when a much cheaper fix was available: the clip was **trimmed to
+  start at t=3.8s**, after the badge has fully cleared the phone and
+  settled at a fixed screen-space position (confirmed pixel-identical
+  bbox `(1074,1836)-(1803,1931)` across many sampled frames — it's a
+  UI overlay in screen coordinates, not part of the 3D scene) over
+  velvet only. Result is a ~2.2s, 132-frame clip. **Also discovered
+  the badge fades out on its own** near the clip's original end
+  (visible fading across frames ~110→130 of the trimmed clip) — didn't
+  change the fix, just meant later frames needed the same reconstruction
+  even though the badge was already faint/gone there (harmless to
+  reconstruct over already-clean velvet).
+  **Fix technique — clone-stamp, not interpolation**: the
+  border-interpolation approach used for Kippo's video and the
+  Aligned still (blend top row → bottom row + random per-pixel noise)
+  produced a flat, textureless rectangle here — velvet's diagonal
+  fold pattern is low-frequency and directional, not something
+  row-interpolation + white noise can reproduce. Switched to a
+  **clone-stamp**: crop a same-size patch of real velvet from just
+  below the badge region (still within frame bounds — the first
+  attempt cloned from 40px further down and wrapped into the phone
+  bezel because the true clean space is tighter than it looks, only
+  ~189px available below the badge for a 175px-tall patch, so use a
+  3px gap, not 40), then alpha-composite it back over the badge
+  region through a cosine-feathered mask (soft ~20px falloff on all
+  sides, then a light Gaussian blur on the mask itself) so there's no
+  hard rectangular seam. Applied identically to all 132 frames (same
+  fixed bbox, since the badge doesn't move once settled), re-encoded
+  with ffmpeg (scaled to 1440px wide, CRF 23, faststart). Verified
+  by extracting frames from the *final compressed output* (not just
+  the pre-encode PNGs) to confirm compression didn't reintroduce
+  visible seams.
+  **New template capability**: the video branch in `CaseStudyBento.tsx`
+  didn't respect `bannerFit` at all (always a fixed
+  `max-h-[560px] w-full` box) — with this video's native ~4:3-ish
+  aspect in that wide/short box, `object-cover` cropped the top of
+  the phone off. Extended the video branch to honor
+  `bannerFit: "portrait"` the same way the image branch already does
+  (`aspect-[4/5]` mobile, `h-[780px]` desktop) — now applies to any
+  future project that pairs a portrait video with a portrait still.
+  Homepage card is unaffected either way (`WorkCard` never reads
+  `bannerVideo`, only `cardImage ?? bannerImage`, so it still shows
+  the still). Verified at desktop and 375px mobile, no overflow either
+  width; `tsc` and build both pass. Scripts are scratchpad-only
+  (`alignedvid/` — trim, per-frame clone-stamp heal, re-encode); the
+  original unhealed `Aligned/iPhone 17 Pro (1).mp4` stays untouched on
+  disk if this ever needs redoing with a different trim point or
+  technique.
 - **Resolved (Trends' homepage copy rewritten to lead with the real-
   business angle, 2026-09-23)**: two fields, same reasoning as the
   Kippo homepage-blurb fix just above — the old copy was accurate but

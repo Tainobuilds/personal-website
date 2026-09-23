@@ -22,7 +22,11 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
                 muted
                 playsInline
                 poster={work.bannerImage}
-                className="block max-h-[560px] w-full object-cover"
+                className={
+                  work.bannerFit === "portrait"
+                    ? "block aspect-[4/5] w-full object-cover sm:aspect-auto sm:h-[780px]"
+                    : "block max-h-[560px] w-full object-cover"
+                }
               >
                 <source src={work.bannerVideo} type="video/mp4" />
               </video>
