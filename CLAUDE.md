@@ -418,6 +418,16 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-23)
+- **Resolved (Trends pillar moved above Spruce, 2026-09-23)**: per
+  explicit user request ("my top 3 case study" — reading as their
+  favorite/strongest one, not a literal ranking position), swapped the
+  render order of Pillar 2 (Spruce, "AI Workflows & Interactive
+  Systems") and Pillar 3 (Trends, "Retail Automation & Workflow
+  Engineering") in `src/app/page.tsx`. Homepage order is now Kippo/
+  Aligned → Trends → Spruce. Purely a JSX reorder — the `pillar: 2`/
+  `pillar: 3` values on `WorkContent` in `spruce.ts`/`trends.ts` were
+  NOT changed (still their original categorization), and neither
+  project's own case-study page or content changed at all.
 - **Resolved (Aligned's hero now has motion — a Body tension video
   mockup, 2026-09-23)**: the user re-exported a NEW mckp.live video —
   `Aligned/iPhone 17 Pro (1).mp4` was overwritten (same filename, new

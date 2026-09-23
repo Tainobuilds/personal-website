@@ -24,14 +24,14 @@ export default function Home() {
           items={getWorkByPillar(1)}
         />
         <Pillar
-          title="AI Workflows & Interactive Systems"
-          description="AI as an assistive layer, not a black box — natural-language matching that keeps a human decision in the loop."
-          items={getWorkByPillar(2)}
-        />
-        <Pillar
           title="Retail Automation & Workflow Engineering"
           description="Built Trends Studio — an AI-assisted system for in-store organization and labeling, live in a real dispensary today and saving real time on a busy sales floor."
           items={getWorkByPillar(3)}
+        />
+        <Pillar
+          title="AI Workflows & Interactive Systems"
+          description="AI as an assistive layer, not a black box — natural-language matching that keeps a human decision in the loop."
+          items={getWorkByPillar(2)}
         />
       </section>
       <Testimonial />
