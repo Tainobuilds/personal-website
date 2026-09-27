@@ -14,11 +14,10 @@ export const annaMuseo: WorkContent = {
   slug: "anna-museo",
   pillar: 1,
   status: "full",
-  eyebrow: "Branding · Product Design · AI Feature",
   title: "Annà Museo",
   tagline:
-    "My family's ancestral skincare line — made-to-order botanical serums rooted in Taíno wisdom. I rebuilt the storefront and designed Find Your Ritual, a personalized consultation paced like the ritual itself.",
-  tags: ["Branding", "Product Design", "AI Feature"],
+    "My family's ancestral skincare line — handcrafted, made-to-order serums rooted in Taíno wisdom. I rebuilt the storefront and designed Find Your Ritual, a personalized consultation paced like the ritual itself.",
+  tags: ["Skincare Line", "Web Design", "AI Features"],
   role: "Storefront rebuild, product design & front-end (solo)",
   timeline: "September 2026",
   projectStatus: "Working prototype, designed for Shopify integration",
@@ -86,7 +85,7 @@ export const annaMuseo: WorkContent = {
   },
   mechanicsHeading: "Outcome",
   mechanicsIntro:
-    "A rebuilt storefront and a working consultation that turns a static form into a ritual. Next: family review and formulator sign-off on the botanical library, then Shopify integration — passing answers into the existing order flow — and email capture.",
+    "A rebuilt storefront and a working consultation that turns a static form into a ritual. Answers now travel into the Shopify cart under the store's own intake questions, so the formulator sees everything. Next: a live test of that handoff, family review and formulator sign-off on the ingredient list, and email capture.",
   mechanics: [
     {
       label: "Consultation",
@@ -97,7 +96,7 @@ export const annaMuseo: WorkContent = {
       label: "Languages",
       value: "EN / ES",
       description:
-        "Questions, review, and results switch to Spanish. The botanical descriptions on the label are still English — next on the list.",
+        "The whole consultation — questions, review, results, and the apothecary label — switches to Spanish.",
     },
     {
       label: "Answer combinations tested",

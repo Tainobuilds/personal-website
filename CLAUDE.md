@@ -419,6 +419,14 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-27)
+- **Annà Museo wording (2026-09-27, latest)**: per the user, no
+  "botanical" in the card/header/subtitle — it reads as confusing up
+  front. Fine deeper in the page's descriptive text. Tags are now
+  **Skincare Line · Web Design · AI Features** (supersedes Branding ·
+  Product Design · AI Feature below); the eyebrow line was removed
+  since it just repeated the tags. Outcome copy updated: the Spanish
+  label is done, and quiz answers now go into the Shopify cart
+  (built in ~/anna-museo, not yet tested against the live store).
 - **Reframed (Annà Museo case study, 2026-09-27, later)** — supersedes
   the title/slug/framing in the entry just below. Per explicit user
   request: title is now **"Annà Museo"** ("Ancestral Botanical Matcher"
