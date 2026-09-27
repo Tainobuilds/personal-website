@@ -2,6 +2,7 @@ import { kippo } from "./work/kippo";
 import { aligned } from "./work/aligned";
 import { spruce } from "./work/spruce";
 import { trends } from "./work/trends";
+import { annaMuseo } from "./work/anna-museo";
 import type { WorkContent } from "./work/types";
 
 // Note: ./work/insights-311.ts still exists on disk (real, verified content)
@@ -12,4 +13,4 @@ import type { WorkContent } from "./work/types";
 // ./work/ticket-triage.ts also still exists on disk (real, verified
 // content) but was removed from this index on 2026-09-17 per explicit
 // user decision. Add it back here if asked to restore it.
-export const WORK_INDEX: WorkContent[] = [kippo, aligned, spruce, trends];
+export const WORK_INDEX: WorkContent[] = [kippo, aligned, spruce, annaMuseo, trends];

@@ -94,7 +94,8 @@ story, inspired by clay.global):
    Services now.
 3. Selected work — now 3 pillars instead of a flat grid:
    - **High-Craft Visual Design & Prototyping**: Kippo, Aligned
-   - **AI Workflows & Interactive Systems**: Spruce — **Ticket Triage
+   - **AI Workflows & Interactive Systems**: Spruce, **Ancestral Botanical
+     Matcher (Annà Museo, added 2026-09-27)** — **Ticket Triage
      — MVP removed here 2026-09-17**, per explicit user decision.
      Its content file (`src/content/work/ticket-triage.ts`) is NOT
      deleted, just removed from `workIndex.ts` — it's real, verified
@@ -417,7 +418,48 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-23)
+## Known gaps (as of 2026-09-27)
+- **Added (Annà Museo case study, 2026-09-27)**: `/work/anna-museo-ritual-consultation`
+  ("Ancestral Botanical Matcher"), Pillar 2 next to Spruce. Content in
+  `src/content/work/anna-museo.ts`; source project is the separate
+  `~/anna-museo` repo (Next.js sandbox of the brand's Shopify store,
+  annamuseo.com). **Annà Museo is Yadan's family's brand** — confirmed by
+  the user 2026-09-27, keep "my family's skincare line."
+  **Brief corrected before building, per the user's choice**: the
+  user's pasted copy described features that didn't exist yet. Built for
+  real first (in `~/anna-museo`): the "first, take a breath" intro, the
+  "here's what you told us" review with edit-back, and named rituals
+  (calming/restoring/clarifying/luminous/grounding). **NOT built, so
+  listed only as "Next" on the page**: email capture (needs an
+  email-service account only the user can create) and pre-filling the
+  Shopify order flow. Also corrected: the hard rule is "scent
+  sensitivity or rosacea → no aromatic botanicals" (not "sensitivity →
+  no essential oils"), and the botanical descriptions on the label are
+  still English-only. The botanical library itself is a **draft** —
+  every entry `confirmed: false` until the family's formulator signs off.
+  **Media**: 8 real Playwright screenshots of the prototype
+  (`public/images/work/anna-museo/ritual-{welcome,question,review,results}-{mobile,desktop}.png`,
+  390×844 / 1440×900, Next dev badge hidden and mouse parked so no hover
+  state is captured) plus `card.webp` (4:5, composed with Pillow on the
+  Sand token). The results shots show the template note (no API key on
+  this machine), and the page says so. The brand's own Shopify CDN
+  photography is NOT hotlinked or copied — only a "View the live brand
+  site" link card — though the brand's logo and bottle cutouts do appear
+  *inside* the prototype screenshots, which the scope note credits.
+  **Template additions (all optional, generic, unused by other
+  projects)**: `eyebrow`, `projectStatus` (adds a Status column),
+  `scopeNote`, `context` (+ link card), `screens` (desktop in
+  `BrowserFrame` + mobile phone frame, honest placeholders if a file is
+  missing), `mechanicsIntro`, `reflection` (serif pull quote).
+  `BrowserFrame` was promoted out of `TrendsCaseStudy.tsx` into
+  `src/components/BrowserFrame.tsx` with an `aspect` prop (Trends keeps
+  its 3:2 default). The "warm-light clay/terracotta" direction in the
+  brief didn't match the site (white + petrol teal) — matched the real
+  site instead.
+  **Pre-existing, not fixed**: `CaseStudyHeader.tsx`'s "← Back to
+  Selected work" uses `<a>` instead of `<Link>` (eslint error; `npm run
+  build` still passes), and `WorkCard` images lack a `sizes` prop
+  (console perf warning on every card).
 - **Resolved (Aligned hero video shaking + not fitting the screen,
   2026-09-23, later)**: the user reported the full-clip video "started
   shaking intensely and [was] not fit to the screen." Two separate

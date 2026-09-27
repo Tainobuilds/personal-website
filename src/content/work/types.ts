@@ -118,4 +118,31 @@ export type WorkContent = {
   mechanicsHeading?: string;
   /** Homepage WorkCard outcome sentence */
   outcomeSummary: string;
+  /** Small line above the title, e.g. "AI Product Feature · Family Brand" */
+  eyebrow?: string;
+  /** Adds a "Status" column to the header's meta row */
+  projectStatus?: string;
+  /** Small, visible note under the meta row — scope, ownership, credits */
+  scopeNote?: string;
+  /** "Context" card near the top, with an optional outbound link card */
+  context?: {
+    text: string;
+    link?: { label: string; href: string; description: string };
+  };
+  /** Real screenshots of the product, each shown on desktop (browser frame) and mobile (phone frame) */
+  screens?: {
+    heading: string;
+    intro?: string;
+    /** Label shown in the desktop frame's mock address bar — decorative only */
+    framePath: string;
+    items: {
+      caption: string;
+      desktop?: string; // 1440×900 screenshot
+      mobile?: string; // 390×844 screenshot
+    }[];
+  };
+  /** Short paragraph shown above the mechanics grid */
+  mechanicsIntro?: string;
+  /** Closing pull quote */
+  reflection?: string;
 };

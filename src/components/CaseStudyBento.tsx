@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { WorkContent } from "@/content/work/types";
 import { CaseStudyHeader } from "./CaseStudyHeader";
+import { BrowserFrame } from "./BrowserFrame";
 
 export function CaseStudyBento({ work }: { work: WorkContent }) {
   const hasArchitecture = !!work.architecture;
@@ -114,6 +115,29 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
           </div>
         )}
 
+        {/* Context — spans 3, with an optional outbound link card */}
+        {work.context && (
+          <div className="col-span-1 grid gap-4 rounded-2xl border border-border bg-sand p-8 sm:col-span-3 md:grid-cols-[2fr_1fr] md:items-center">
+            <div>
+              <p className="mb-4 text-2xl font-bold tracking-tight">Context</p>
+              <p className="leading-relaxed text-dark/80">{work.context.text}</p>
+            </div>
+            {work.context.link && (
+              <a
+                href={work.context.link.href}
+                target="_blank"
+                rel="noopener"
+                className="group block rounded-2xl border border-border bg-cream p-6 transition-colors hover:border-accent"
+              >
+                <p className="mb-1 font-semibold text-accent group-hover:underline">
+                  {work.context.link.label} &rarr;
+                </p>
+                <p className="text-sm leading-relaxed text-dark/70">{work.context.link.description}</p>
+              </a>
+            )}
+          </div>
+        )}
+
         {/* The Challenge — spans 2 */}
         <div className="col-span-1 rounded-2xl border border-border bg-sand p-8 sm:col-span-2">
           <p className="mb-4 text-2xl font-bold tracking-tight">The Challenge</p>
@@ -154,6 +178,64 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
             <p className="mt-4 text-sm text-cream/60">{work.insight.attribution}</p>
           )}
         </div>
+
+        {/* Screens — each real screenshot shown on desktop and mobile, spans 3 */}
+        {work.screens && (
+          <div className="col-span-1 flex flex-col gap-4 sm:col-span-3">
+            <div className="mb-2 mt-4">
+              <p className="mb-2 text-2xl font-bold tracking-tight">{work.screens.heading}</p>
+              {work.screens.intro && (
+                <p className="max-w-2xl leading-relaxed text-dark/70">{work.screens.intro}</p>
+              )}
+            </div>
+            {work.screens.items.map((item) => (
+              <figure key={item.caption} className="rounded-2xl border border-border bg-sand p-4 md:p-6">
+                <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[3fr_1fr]">
+                  {item.desktop ? (
+                    <div className="hidden md:block">
+                      <BrowserFrame
+                        src={item.desktop}
+                        alt={`${item.caption} — desktop`}
+                        path={work.screens!.framePath}
+                        aspect="aspect-[16/10]"
+                      />
+                    </div>
+                  ) : (
+                    // Missing desktop screenshot — honest placeholder
+                    <div
+                      aria-hidden
+                      className="hidden aspect-[16/10] items-center justify-center rounded-2xl border border-border text-sm uppercase tracking-wide text-muted md:flex"
+                    >
+                      IMAGE: {item.caption} (desktop)
+                    </div>
+                  )}
+                  {item.mobile ? (
+                    <div className="mx-auto w-full max-w-[260px] overflow-hidden rounded-[2rem] border-[6px] border-dark bg-cream shadow-xl">
+                      <div className="relative aspect-[390/844] w-full">
+                        <Image
+                          src={item.mobile}
+                          alt={`${item.caption} — mobile`}
+                          fill
+                          sizes="260px"
+                          className="object-cover"
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    // Missing mobile screenshot — honest placeholder
+                    <div
+                      aria-hidden
+                      className="mx-auto flex aspect-[390/844] w-full max-w-[260px] items-center justify-center rounded-[2rem] border border-border px-4 text-center text-sm uppercase tracking-wide text-muted"
+                    >
+                      IMAGE: {item.caption} (mobile)
+                    </div>
+                  )}
+                </div>
+                <figcaption className="mt-4 text-sm font-semibold text-dark/80">{item.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
 
         {/* The Solution — dark card, process steps only (no raw code) */}
         {hasArchitecture && work.architecture && (
@@ -373,6 +455,9 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
           <p className="mb-4 text-2xl font-bold tracking-tight">
             {work.mechanicsHeading ?? "Impact"}
           </p>
+          {work.mechanicsIntro && (
+            <p className="mb-6 max-w-3xl leading-relaxed text-dark/80">{work.mechanicsIntro}</p>
+          )}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {work.mechanics.map((mechanic) => (
               <div key={mechanic.label} className="rounded-2xl border border-border bg-cream p-6">
@@ -385,6 +470,16 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
             ))}
           </div>
         </div>
+
+        {/* Reflection — closing pull quote, spans 3 */}
+        {work.reflection && (
+          <figure className="col-span-1 mt-8 border-l-4 border-accent py-2 pl-6 sm:col-span-3 md:pl-10">
+            <blockquote className="max-w-3xl font-serif text-3xl italic leading-snug md:text-4xl">
+              &ldquo;{work.reflection}&rdquo;
+            </blockquote>
+            <figcaption className="mt-4 text-sm text-muted">— Reflection</figcaption>
+          </figure>
+        )}
       </div>
     </>
   );

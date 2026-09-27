@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { WorkContent } from "@/content/work/types";
 import { CaseStudyHeader } from "./CaseStudyHeader";
+import { BrowserFrame } from "./BrowserFrame";
 
 const STATS = [
   { value: "~90%", label: "Faster Intake-to-Print (8–10m → <1m)" },
@@ -41,22 +42,6 @@ function FeatureIcon({ index }: { index: number }) {
     >
       {FEATURE_ICONS[index]}
     </svg>
-  );
-}
-
-function BrowserFrame({ src, alt, path }: { src: string; alt: string; path: string }) {
-  return (
-    <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/20">
-      <div className="flex items-center gap-2 border-b border-white/10 bg-[#1E1E1E] px-4 py-2.5">
-        <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
-        <span className="ml-3 rounded-md bg-white/5 px-3 py-1 font-mono text-xs text-white/50">{path}</span>
-      </div>
-      <div className="relative aspect-[3/2] w-full bg-[#0D0D0D]">
-        <Image src={src} alt={alt} fill className="object-cover" />
-      </div>
-    </div>
   );
 }
 
