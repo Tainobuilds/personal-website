@@ -426,7 +426,9 @@ Generative AI" service naming.
   Product Design · AI Feature below); the eyebrow line was removed
   since it just repeated the tags. Outcome copy updated: the Spanish
   label is done, and quiz answers now go into the Shopify cart
-  (built in ~/anna-museo, not yet tested against the live store).
+  (built in ~/anna-museo; **tested live 2026-09-27** with the user's
+  permission — 2 items/$250 landed in the real annamuseo.com cart with
+  every answer shown on the cart page; the test cart was then emptied).
 - **Reframed (Annà Museo case study, 2026-09-27, later)** — supersedes
   the title/slug/framing in the entry just below. Per explicit user
   request: title is now **"Annà Museo"** ("Ancestral Botanical Matcher"

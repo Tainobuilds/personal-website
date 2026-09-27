@@ -85,7 +85,7 @@ export const annaMuseo: WorkContent = {
   },
   mechanicsHeading: "Outcome",
   mechanicsIntro:
-    "A rebuilt storefront and a working consultation that turns a static form into a ritual. Answers now travel into the Shopify cart under the store's own intake questions, so the formulator sees everything. Next: a live test of that handoff, family review and formulator sign-off on the ingredient list, and email capture.",
+    "A rebuilt storefront and a working consultation that turns a static form into a ritual. Answers now travel into the live Shopify cart under the store's own intake questions — tested end to end on annamuseo.com — so the formulator sees everything. Next: family review and formulator sign-off on the ingredient list, and email capture.",
   mechanics: [
     {
       label: "Consultation",
