@@ -93,9 +93,9 @@ story, inspired by clay.global):
    strip removed 2026-09-23** (see below), so Hero flows straight into
    Services now.
 3. Selected work — now 3 pillars instead of a flat grid:
-   - **High-Craft Visual Design & Prototyping**: Kippo, Aligned
-   - **AI Workflows & Interactive Systems**: Spruce, **Ancestral Botanical
-     Matcher (Annà Museo, added 2026-09-27)** — **Ticket Triage
+   - **High-Craft Visual Design & Prototyping**: Kippo, Aligned, **Annà
+     Museo (added 2026-09-27, moved here from Pillar 2 the same day)**
+   - **AI Workflows & Interactive Systems**: Spruce — **Ticket Triage
      — MVP removed here 2026-09-17**, per explicit user decision.
      Its content file (`src/content/work/ticket-triage.ts`) is NOT
      deleted, just removed from `workIndex.ts` — it's real, verified
@@ -419,6 +419,30 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-27)
+- **Reframed (Annà Museo case study, 2026-09-27, later)** — supersedes
+  the title/slug/framing in the entry just below. Per explicit user
+  request: title is now **"Annà Museo"** ("Ancestral Botanical Matcher"
+  dropped — the user disliked it), tagline calls it "my family's
+  ancestral skincare line," eyebrow + tags are **Branding · Product
+  Design · AI Feature**, slug is **`/work/anna-museo`** (old
+  `anna-museo-ritual-consultation` never deployed), and it moved to
+  **Pillar 1** since it's now a website/design showcase. **Removed**:
+  Context, The Challenge, The Insight (`problem`/`insight` are now
+  optional on `WorkContent`; Trends reads them with `?.`). **Added**: a
+  site hero banner (`site-hero-desktop.png`, header + hero only — the
+  full-viewport shot showed a stray strip of the next section), "The
+  Website" (serums + product page, desktop/mobile pairs), "Find Your
+  Ritual" (7 phone screens: breath, question, concerns, Spanish,
+  review, named ritual, apothecary label), and "On Desktop" (results
+  pair). `screens` became `screenSections[]` with `layout: "pairs" |
+  "phones"`. Approach trimmed to 3 steps; Outcome + pull quote kept.
+  **Credit wording is deliberate**: the page says Yadan *rebuilt* the
+  storefront (Next.js, following the brand's existing look) and
+  designed Find Your Ritual — it does NOT claim the original live
+  Shopify site's design; ask before changing that. Product photography
+  now appears in the website screenshots (the user asked to showcase
+  products — reverses the earlier "don't show their imagery" brief);
+  still no hotlinking, and the scope note credits the brand.
 - **Added (Annà Museo case study, 2026-09-27)**: `/work/anna-museo-ritual-consultation`
   ("Ancestral Botanical Matcher"), Pillar 2 next to Spruce. Content in
   `src/content/work/anna-museo.ts`; source project is the separate

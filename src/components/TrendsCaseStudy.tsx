@@ -128,10 +128,10 @@ export function TrendsCaseStudy({ work }: { work: WorkContent }) {
           <p className="mb-4 text-2xl font-bold tracking-tight text-accent">02 / The Insight</p>
           <p className="text-xl leading-relaxed">
             <span className="text-accent">&ldquo;</span>
-            {work.insight.text}
+            {work.insight?.text}
             <span className="text-accent">&rdquo;</span>
           </p>
-          {work.insight.attribution && (
+          {work.insight?.attribution && (
             <p className="mt-4 text-sm text-white/60">{work.insight.attribution}</p>
           )}
         </div>

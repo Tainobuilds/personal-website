@@ -139,10 +139,12 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
         )}
 
         {/* The Challenge — spans 2 */}
-        <div className="col-span-1 rounded-2xl border border-border bg-sand p-8 sm:col-span-2">
-          <p className="mb-4 text-2xl font-bold tracking-tight">The Challenge</p>
-          <p className="leading-relaxed text-dark/80">{work.problem}</p>
-        </div>
+        {work.problem && (
+          <div className="col-span-1 rounded-2xl border border-border bg-sand p-8 sm:col-span-2">
+            <p className="mb-4 text-2xl font-bold tracking-tight">The Challenge</p>
+            <p className="leading-relaxed text-dark/80">{work.problem}</p>
+          </div>
+        )}
 
         {/* Product gallery — real screenshots, spans 3 */}
         {work.gallery && work.gallery.length > 0 && (
@@ -171,71 +173,69 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
         )}
 
         {/* The Insight — dark accent, spans 1 */}
-        <div className="col-span-1 rounded-2xl bg-dark p-8 text-cream">
-          <p className="mb-4 text-2xl font-bold tracking-tight text-[#F9A826]">The Insight</p>
-          <p className="italic leading-relaxed">{work.insight.text}</p>
-          {work.insight.attribution && (
-            <p className="mt-4 text-sm text-cream/60">{work.insight.attribution}</p>
-          )}
-        </div>
-
-        {/* Screens — each real screenshot shown on desktop and mobile, spans 3 */}
-        {work.screens && (
-          <div className="col-span-1 flex flex-col gap-4 sm:col-span-3">
-            <div className="mb-2 mt-4">
-              <p className="mb-2 text-2xl font-bold tracking-tight">{work.screens.heading}</p>
-              {work.screens.intro && (
-                <p className="max-w-2xl leading-relaxed text-dark/70">{work.screens.intro}</p>
-              )}
-            </div>
-            {work.screens.items.map((item) => (
-              <figure key={item.caption} className="rounded-2xl border border-border bg-sand p-4 md:p-6">
-                <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[3fr_1fr]">
-                  {item.desktop ? (
-                    <div className="hidden md:block">
-                      <BrowserFrame
-                        src={item.desktop}
-                        alt={`${item.caption} — desktop`}
-                        path={work.screens!.framePath}
-                        aspect="aspect-[16/10]"
-                      />
-                    </div>
-                  ) : (
-                    // Missing desktop screenshot — honest placeholder
-                    <div
-                      aria-hidden
-                      className="hidden aspect-[16/10] items-center justify-center rounded-2xl border border-border text-sm uppercase tracking-wide text-muted md:flex"
-                    >
-                      IMAGE: {item.caption} (desktop)
-                    </div>
-                  )}
-                  {item.mobile ? (
-                    <div className="mx-auto w-full max-w-[260px] overflow-hidden rounded-[2rem] border-[6px] border-dark bg-cream shadow-xl">
-                      <div className="relative aspect-[390/844] w-full">
-                        <Image
-                          src={item.mobile}
-                          alt={`${item.caption} — mobile`}
-                          fill
-                          sizes="260px"
-                          className="object-cover"
-                        />
-                      </div>
-                    </div>
-                  ) : (
-                    // Missing mobile screenshot — honest placeholder
-                    <div
-                      aria-hidden
-                      className="mx-auto flex aspect-[390/844] w-full max-w-[260px] items-center justify-center rounded-[2rem] border border-border px-4 text-center text-sm uppercase tracking-wide text-muted"
-                    >
-                      IMAGE: {item.caption} (mobile)
-                    </div>
-                  )}
-                </div>
-                <figcaption className="mt-4 text-sm font-semibold text-dark/80">{item.caption}</figcaption>
-              </figure>
-            ))}
+        {work.insight && (
+          <div className="col-span-1 rounded-2xl bg-dark p-8 text-cream">
+            <p className="mb-4 text-2xl font-bold tracking-tight text-[#F9A826]">The Insight</p>
+            <p className="italic leading-relaxed">{work.insight.text}</p>
+            {work.insight.attribution && (
+              <p className="mt-4 text-sm text-cream/60">{work.insight.attribution}</p>
+            )}
           </div>
         )}
+
+        {/* Screen sections — real screenshots, spans 3.
+            "pairs": desktop (browser frame) + mobile (phone frame) per screen.
+            "phones": a grid of phone screens telling a flow step by step. */}
+        {work.screenSections?.map((section) => (
+          <div key={section.heading} className="col-span-1 flex flex-col gap-4 sm:col-span-3">
+            <div className="mb-2 mt-4">
+              <p className="mb-2 text-2xl font-bold tracking-tight">{section.heading}</p>
+              {section.intro && <p className="max-w-2xl leading-relaxed text-dark/70">{section.intro}</p>}
+            </div>
+
+            {section.layout === "pairs" &&
+              section.items.map((item) => (
+                <figure key={item.caption} className="rounded-2xl border border-border bg-sand p-4 md:p-6">
+                  <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[3fr_1fr]">
+                    {item.desktop ? (
+                      <div className="hidden md:block">
+                        <BrowserFrame
+                          src={item.desktop}
+                          alt={`${item.caption} — desktop`}
+                          path={section.framePath ?? ""}
+                          aspect="aspect-[16/10]"
+                        />
+                      </div>
+                    ) : (
+                      // Missing desktop screenshot — honest placeholder
+                      <div
+                        aria-hidden
+                        className="hidden aspect-[16/10] items-center justify-center rounded-2xl border border-border text-sm uppercase tracking-wide text-muted md:flex"
+                      >
+                        IMAGE: {item.caption} (desktop)
+                      </div>
+                    )}
+                    <PhoneShot src={item.mobile} caption={item.caption} />
+                  </div>
+                  <figcaption className="mt-4 text-sm font-semibold text-dark/80">{item.caption}</figcaption>
+                </figure>
+              ))}
+
+            {section.layout === "phones" && (
+              <ol className="grid grid-cols-2 gap-x-4 gap-y-8 rounded-2xl border border-border bg-sand p-4 md:grid-cols-4 md:p-8">
+                {section.items.map((item, i) => (
+                  <li key={item.caption} className="flex flex-col">
+                    <PhoneShot src={item.mobile} caption={item.caption} />
+                    <p className="mt-3 text-xs font-bold uppercase tracking-wide text-accent">
+                      {String(i + 1).padStart(2, "0")}
+                    </p>
+                    <p className="mt-1 text-sm font-semibold leading-snug text-dark/80">{item.caption}</p>
+                  </li>
+                ))}
+              </ol>
+            )}
+          </div>
+        ))}
 
         {/* The Solution — dark card, process steps only (no raw code) */}
         {hasArchitecture && work.architecture && (
@@ -482,5 +482,27 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
         )}
       </div>
     </>
+  );
+}
+
+// A 390×844 phone screenshot in a simple dark phone frame, or an honest
+// placeholder when the file is missing.
+function PhoneShot({ src, caption }: { src?: string; caption: string }) {
+  if (!src) {
+    return (
+      <div
+        aria-hidden
+        className="mx-auto flex aspect-[390/844] w-full max-w-[260px] items-center justify-center rounded-[2rem] border border-border px-4 text-center text-sm uppercase tracking-wide text-muted"
+      >
+        IMAGE: {caption} (mobile)
+      </div>
+    );
+  }
+  return (
+    <div className="mx-auto w-full max-w-[260px] overflow-hidden rounded-[2rem] border-[6px] border-dark bg-cream shadow-xl">
+      <div className="relative aspect-[390/844] w-full">
+        <Image src={src} alt={`${caption} — mobile`} fill sizes="(max-width: 768px) 45vw, 260px" className="object-cover" />
+      </div>
+    </div>
   );
 }

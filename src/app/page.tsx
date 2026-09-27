@@ -30,7 +30,7 @@ export default function Home() {
         />
         <Pillar
           title="AI Workflows & Interactive Systems"
-          description="AI as an assistive layer, not a black box — from natural-language matching to a ritual consultation where fixed rules, not the model, make the decisions."
+          description="AI as an assistive layer, not a black box — natural-language matching that keeps a human decision in the loop."
           items={getWorkByPillar(2)}
         />
       </section>

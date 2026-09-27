@@ -1,93 +1,97 @@
 import type { WorkContent } from "./types";
 
-// Source: the ~/anna-museo repo (Next.js sandbox of annamuseo.com, the
-// Shopify store). Screenshots were captured from that build with
-// Playwright, 2026-09-27. Every Approach/Outcome claim below matches what
-// the prototype actually does — email capture and Shopify pre-fill are
-// NOT built yet, so they're listed as next steps, not features.
+// Source: the ~/anna-museo repo — a Next.js rebuild of annamuseo.com (the
+// family's Shopify store) plus the Find Your Ritual consultation. All
+// screenshots were captured from that build with Playwright, 2026-09-27.
+// Framed as a website/design showcase per the user (2026-09-27): no
+// Context / Challenge / Insight cards. Credit stays honest — Yadan rebuilt
+// the storefront (following the brand's existing look) and designed and
+// built Find Your Ritual; the original live Shopify site isn't claimed.
+// Email capture and Shopify pre-fill are NOT built — "Next" only.
 const IMG = "/images/work/anna-museo";
 
 export const annaMuseo: WorkContent = {
-  slug: "anna-museo-ritual-consultation",
-  pillar: 2,
+  slug: "anna-museo",
+  pillar: 1,
   status: "full",
-  eyebrow: "AI Product Feature · Family Brand",
-  title: "Ancestral Botanical Matcher",
-  tagline: "An AI ritual consultation for Annà Museo — my family's made-to-order skincare line.",
-  tags: ["AI Product Feature", "Product Design", "Bilingual UX"],
-  role: "Product design + AI engineering (solo)",
+  eyebrow: "Branding · Product Design · AI Feature",
+  title: "Annà Museo",
+  tagline:
+    "My family's ancestral skincare line — made-to-order botanical serums rooted in Taíno wisdom. I rebuilt the storefront and designed Find Your Ritual, a personalized consultation paced like the ritual itself.",
+  tags: ["Branding", "Product Design", "AI Feature"],
+  role: "Storefront rebuild, product design & front-end (solo)",
   timeline: "September 2026",
   projectStatus: "Working prototype, designed for Shopify integration",
   techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Claude API", "Vitest"],
   scopeNote:
-    "Concept prototype — the AI consultation layer, designed to integrate with the brand's Shopify site. Brand and products © Annà Museo (annamuseo.com).",
+    "The storefront shown is my Next.js rebuild of annamuseo.com (the live store runs on Shopify); Find Your Ritual is a working prototype. Brand, products, and photography © Annà Museo.",
+  bannerImage: `${IMG}/site-hero-desktop.png`,
   cardImage: `${IMG}/card.webp`,
-  context: {
-    text: "Annà Museo is my family's skincare line — Afro-Latina-owned, Queens-crafted, made-to-order botanical serums rooted in Taíno ancestral wisdom. Every formula is handcrafted for the individual. Their site had a static “curate your serum” intake form. I wanted to turn that form into a consultation.",
-    link: {
-      label: "View the live brand site",
-      href: "https://annamuseo.com",
-      description: "annamuseo.com — the family's Shopify store, where every serum is still ordered today.",
+  links: [{ label: "Live brand site — annamuseo.com", href: "https://annamuseo.com" }],
+  screenSections: [
+    {
+      heading: "The Website",
+      intro:
+        "White gallery walls, all-lowercase type, black-and-white ritual portraits, and El Yunque rainforest footage — a storefront that feels like walking through a small museum. Every page works from phone to desktop.",
+      layout: "pairs",
+      framePath: "annà museo",
+      items: [
+        {
+          caption: "The serums — kachi water by day, kairi oil by night",
+          desktop: `${IMG}/site-serums-desktop.png`,
+          mobile: `${IMG}/site-serums-mobile.png`,
+        },
+        {
+          caption: "Product page — the ritual method and sensory notes for each serum",
+          desktop: `${IMG}/site-product-desktop.png`,
+          mobile: `${IMG}/site-product-mobile.png`,
+        },
+      ],
     },
-  },
-  problem:
-    "Generic skincare AI feels clinical — blood-test energy. That's the opposite of a brand built on ritual, ancestry, and the senses. And a static form can't guide someone to the right ritual; it can only collect answers. The challenge: build AI that feels like the brand, and that a family business can actually trust with custom formulations.",
-  insight: {
-    text: "Personalization doesn't need a diagnosis. The brand already describes every serum in sensory terms — skin feel, aroma, mood — so the consultation can speak that language instead of a clinical one.",
-  },
-  screens: {
-    heading: "The Consultation",
-    intro:
-      "Real screenshots from the working prototype, captured on desktop and mobile. The personal note shown is the built-in template version — the Claude-written note uses the same slot.",
-    framePath: "annà museo · /ritual prototype",
-    items: [
-      {
-        caption: "Welcome — the consultation entry",
-        desktop: `${IMG}/ritual-welcome-desktop.png`,
-        mobile: `${IMG}/ritual-welcome-mobile.png`,
-      },
-      {
-        caption: "One question per screen, unhurried pacing",
-        desktop: `${IMG}/ritual-question-desktop.png`,
-        mobile: `${IMG}/ritual-question-mobile.png`,
-      },
-      {
-        caption: "Here's what you told us — every answer editable before results",
-        desktop: `${IMG}/ritual-review-desktop.png`,
-        mobile: `${IMG}/ritual-review-mobile.png`,
-      },
-      {
-        caption: "Your ritual — results in the brand's voice",
-        desktop: `${IMG}/ritual-results-desktop.png`,
-        mobile: `${IMG}/ritual-results-mobile.png`,
-      },
-    ],
-  },
+    {
+      heading: "Find Your Ritual",
+      intro:
+        "The brand's static “curate your serum” form, reimagined as a consultation — one gentle question at a time, in English or Spanish, ending in a named ritual and an apothecary label. The note shown is the built-in template version; the Claude-written note uses the same slot.",
+      layout: "phones",
+      items: [
+        { caption: "First, take a breath — the consultation opens slowly", mobile: `${IMG}/ritual-welcome-mobile.png` },
+        { caption: "One question per screen, unhurried pacing", mobile: `${IMG}/ritual-question-mobile.png` },
+        { caption: "Concerns chosen with a tap — no typing", mobile: `${IMG}/ritual-concerns-mobile.png` },
+        { caption: "Fully bilingual, from the first question", mobile: `${IMG}/ritual-spanish-mobile.png` },
+        { caption: "Here's what you told us — every answer editable", mobile: `${IMG}/ritual-review-mobile.png` },
+        { caption: "Your ritual — named, in the brand's voice", mobile: `${IMG}/ritual-results-mobile.png` },
+        { caption: "The apothecary label, modeled on the real bottle", mobile: `${IMG}/ritual-label-mobile.png` },
+      ],
+    },
+    {
+      heading: "On Desktop",
+      layout: "pairs",
+      framePath: "annà museo · /ritual",
+      items: [
+        {
+          caption: "Your ritual — results in the brand's voice",
+          desktop: `${IMG}/ritual-results-desktop.png`,
+          mobile: `${IMG}/ritual-results-mobile.png`,
+        },
+      ],
+    },
+  ],
   architecture: {
     heading: "Approach",
     steps: [
-      "Ritual-first UX — a grounding intro (“first, take a breath.”), one question per screen with microcopy explaining why each is asked, and a “here's what you told us” review where any answer can be edited before results. The pace is the ritual.",
-      "Safety by architecture — a deterministic rules engine picks the serums and botanicals from a curated library. Hard rules live in code, not the model: scent sensitivity or rosacea → no aromatic botanicals; acne-prone skin → no pore-clogging oils. Pregnancy is asked directly, never inferred, and routes to the formulator instead of a proposal.",
-      "The LLM does one job — Claude narrates the finished ritual in the brand's voice. The server rebuilds the formula from the answers itself, so the note can only describe botanicals the rules chose; it can never invent botanicals or formulas.",
-      "Personalization through the senses — instead of diagnosing skin, each result is named from the answers (“your restoring ritual,” “your calming ritual”) with a mood line drawn from each serum's own sensorial notes, and the note echoes the customer's own words back when they leave one.",
-      "Bilingual from the start — the whole consultation runs in English or Spanish, because the brand and its community already live in both.",
+      "Ritual-first design — a breathing intro, one question per screen with a line explaining why it's asked, and a review before results. The pace is the ritual.",
+      "Personal, not clinical — each result is named from the customer's answers (“your restoring ritual”) with a mood line drawn from the serums' own sensory notes.",
+      "AI with restraint — fixed rules choose the botanicals and keep safety rules in code; Claude only writes the personal note, so it can never invent an ingredient.",
     ],
   },
   mechanicsHeading: "Outcome",
   mechanicsIntro:
-    "A working Next.js prototype: an 8-question consultation, a review step with edit-back, a named ritual with an apothecary label modeled on the real bottle, and a personal note — built as a standalone page that can sit alongside the brand's Shopify store. Next: family review and formulator sign-off on the botanical library, then Shopify integration — passing answers into the existing order flow — and email capture.",
+    "A rebuilt storefront and a working consultation that turns a static form into a ritual. Next: family review and formulator sign-off on the botanical library, then Shopify integration — passing answers into the existing order flow — and email capture.",
   mechanics: [
     {
-      label: "Botanicals the model can invent",
-      value: "0",
-      description:
-        "Claude never sees the ingredient library. Rules choose; the model only writes the note about what they chose.",
-    },
-    {
-      label: "Answer combinations tested",
-      value: "25,600",
-      description:
-        "Every day + night combination checked in tests: no empty labels, no botanical repeated across serums, every safety exclusion held.",
+      label: "Consultation",
+      value: "8 questions",
+      description: "One per screen, plus an optional note and a review with edit-back before results.",
     },
     {
       label: "Languages",
@@ -95,9 +99,15 @@ export const annaMuseo: WorkContent = {
       description:
         "Questions, review, and results switch to Spanish. The botanical descriptions on the label are still English — next on the list.",
     },
+    {
+      label: "Answer combinations tested",
+      value: "25,600",
+      description:
+        "Every day + night combination checked: no empty labels, no botanical repeated across serums, every safety rule held.",
+    },
   ],
   reflection:
     "AI should respect the brand it's serving. The engineering here isn't the model — it's the restraint around it.",
   outcomeSummary:
-    "An AI ritual consultation for my family's made-to-order skincare line — rules choose the botanicals, and Claude writes the note in the brand's voice.",
+    "My family's ancestral skincare line — a rebuilt storefront and a bilingual, ritual-paced consultation that composes each customer's ritual.",
 };

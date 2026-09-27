@@ -77,9 +77,9 @@ export type WorkContent = {
   /** A "before" legacy-context image for The Challenge — omit image for the standard honest placeholder */
   legacyContext?: { image?: string; caption: string };
   /** 01 / The Problem */
-  problem: string;
+  problem?: string;
   /** 02 / Human Insight */
-  insight: { text: string; attribution?: string };
+  insight?: { text: string; attribution?: string };
   /** 03 / Technical Architecture (or Design Process, for design-only projects) */
   architecture?: ArchitectureBlock;
   /** Design-process story: the same screens followed from sketch to final design */
@@ -129,18 +129,21 @@ export type WorkContent = {
     text: string;
     link?: { label: string; href: string; description: string };
   };
-  /** Real screenshots of the product, each shown on desktop (browser frame) and mobile (phone frame) */
-  screens?: {
+  /** Showcase sections of real screenshots. "pairs" shows each screen on
+   *  desktop (browser frame) + mobile (phone frame); "phones" is a grid of
+   *  phone screens telling a flow step by step. */
+  screenSections?: {
     heading: string;
     intro?: string;
-    /** Label shown in the desktop frame's mock address bar — decorative only */
-    framePath: string;
+    layout: "pairs" | "phones";
+    /** Label in the desktop frame's mock address bar — decorative only */
+    framePath?: string;
     items: {
       caption: string;
       desktop?: string; // 1440×900 screenshot
       mobile?: string; // 390×844 screenshot
     }[];
-  };
+  }[];
   /** Short paragraph shown above the mechanics grid */
   mechanicsIntro?: string;
   /** Closing pull quote */
