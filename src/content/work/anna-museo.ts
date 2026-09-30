@@ -16,7 +16,7 @@ export const annaMuseo: WorkContent = {
   status: "full",
   title: "Annà Museo",
   tagline:
-    "My family's ancestral skincare line — handcrafted, made-to-order serums rooted in Taíno wisdom. I rebuilt the storefront and designed Find Your Ritual, a personalized consultation paced like the ritual itself.",
+    "A family-owned skincare line — I built the web design and UX experience, rebuilding the storefront and designing Find Your Ritual, a personalized consultation paced like the ritual itself.",
   tags: ["Skincare Line", "Web Design", "AI Features"],
   role: "Storefront rebuild, product design & front-end (solo)",
   timeline: "September 2026",
@@ -108,5 +108,5 @@ export const annaMuseo: WorkContent = {
   reflection:
     "AI should respect the brand it's serving. The engineering here isn't the model — it's the restraint around it.",
   outcomeSummary:
-    "My family's ancestral skincare line — a rebuilt storefront and a bilingual, ritual-paced consultation that composes each customer's ritual.",
+    "A family-owned skincare line — I built the web design and UX experience, from the storefront to a bilingual, ritual-paced consultation.",
 };

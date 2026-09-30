@@ -418,7 +418,21 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-27)
+## Known gaps (as of 2026-09-30)
+- **Resolved (Annà Museo tagline/card blurb rephrased, 2026-09-30)**:
+  per explicit user request, both `tagline` (case-study header
+  subtitle) and `outcomeSummary` (homepage card blurb) now lead with
+  "A family-owned skincare line — I built the web design and UX
+  experience..." instead of "My family's ancestral skincare line...".
+  Kept the same underlying facts and the same credit boundary that's
+  been explicit on this project since 2026-09-27 (see below): "built
+  the web design and UX experience" is immediately grounded in
+  *rebuilding the storefront* + *designing Find Your Ritual* — not a
+  claim on the original brand identity or the live Shopify site's own
+  design, consistent with `scopeNote`'s "storefront shown is my
+  Next.js rebuild ... Brand, products, and photography © Annà Museo"
+  (untouched). Verified on both the case-study page and the homepage
+  card; `tsc` and build both pass.
 - **Annà Museo wording (2026-09-27, latest)**: per the user, no
   "botanical" in the card/header/subtitle — it reads as confusing up
   front. Fine deeper in the page's descriptive text. Tags are now
