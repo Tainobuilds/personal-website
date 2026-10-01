@@ -25,7 +25,7 @@ export const annaMuseo: WorkContent = {
   scopeNote:
     "The storefront shown is my Next.js rebuild of annamuseo.com (the live store runs on Shopify); Find Your Ritual is a working prototype. Brand, products, and photography © Annà Museo.",
   bannerImage: `${IMG}/site-hero-desktop.png`,
-  cardImage: `${IMG}/card-kairi.webp`,
+  cardImage: `${IMG}/card-website.webp`,
   links: [{ label: "Live brand site — annamuseo.com", href: "https://annamuseo.com" }],
   screenSections: [
     {
