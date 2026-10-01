@@ -18,7 +18,7 @@ export function Hero() {
           Available for select projects
         </p>
         <h1 className="mb-6 text-5xl font-bold tracking-tight text-white md:text-7xl">
-          Front-End Developer &amp; Product Designer
+          Product Designer &amp; Developer
         </h1>
         <p className="mb-8 max-w-lg text-xl leading-relaxed text-white/80">
           Bridging front-end engineering and product design. I build clean

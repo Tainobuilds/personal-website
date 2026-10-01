@@ -7,7 +7,7 @@ export function Testimonial() {
       <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1fr_1.5fr]">
         <div className="relative aspect-[3/4] overflow-hidden rounded-lg border border-border bg-sand">
           <Image
-            src="/images/testimonial-portrait.jpg"
+            src="/images/about-portrait.jpg"
             alt="Yadan Taino"
             fill
             className="object-cover"

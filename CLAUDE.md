@@ -419,31 +419,43 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-30)
-- **Resolved (About section gets a real portrait, 2026-09-30)**: the
-  About section had no photo of its own — only text, the Designer/
-  Builder/Fashion `IdentityToggle` photo toggle, and the credential
-  timeline. The user sent a new photo of themselves (plain white tee,
-  studio white background, letterboxed top/bottom from how it was
-  exported) and asked for it on the About page. **Scope note**: they
-  first asked for a blazer to be added onto the photo via editing; I
-  flagged that I have no reliable photorealistic clothing-edit tool
-  for this and offered options (use a different existing photo, try a
-  third-party AI virtual try-on site with their explicit OK, or just
-  use the photo as-is for now). They chose to try a third-party site,
-  I'd gotten as far as opening a Hugging Face IDM-VTON space in Chrome
-  (nothing was uploaded, no account created, no changes made anywhere)
-  before the user changed their mind mid-task and said to drop it —
-  "just use the photo of me forget the third party site. the photo
-  itself is fine." So the photo is unedited, exactly as sent. Cropped
-  off the black letterbox bars (Pillow, pure-row-brightness detection
-  since this machine has no numpy — rows 302–2508 of 2532 were real
-  photo) and saved as `public/images/about-portrait.jpg`. Added to
-  `About.tsx`: a `rounded-2xl border border-border` framed portrait
-  (`aspect-[4/5]`, `object-cover`) placed in the grid cell next to the
-  "About" heading — that slot was empty before (the heading alone
-  doesn't fill its grid row at `md:grid-cols-2`). Verified at desktop
-  (sits beside the heading, full portrait in frame) and 375px mobile
-  (stacks below the heading, no overflow); `tsc` and build both pass.
+- **Resolved (Hero title reworded to "Product Designer & Developer",
+  2026-09-30)**: per explicit user request, scoped to the landing
+  page only — `Hero.tsx`'s `<h1>` changed from "Front-End Developer &
+  Product Designer" to **"Product Designer & Developer"** (swapped
+  order, dropped "Front-End"). Deliberately did NOT touch the many
+  other places the old title string appears (`layout.tsx`'s SEO
+  title/description/OG/Twitter/JSON-LD `jobTitle`, `About.tsx`'s bio
+  intro, `Faq.tsx`'s "designer or developer" answer, the case-study
+  page `<title>` template) — the user said "for the landing page,"
+  and every past title change in this doc that was meant to apply
+  everywhere said so explicitly and touched each field one at a time;
+  this one didn't, so it's scoped narrowly for now. **This reopens the
+  locked-title question** (see "Title (locked 2026-08-24)" under
+  Positioning above, which still says "Front-End Developer & Product
+  Designer" and "don't revert to either earlier version") — ask before
+  assuming the new Hero wording should propagate to those other spots
+  or become the new sitewide locked title.
+- **Resolved (About section portrait corrected — moved to the right
+  section, 2026-09-30)**: the previous entry in this file (now
+  replaced by this one) added the user's new white-tee photo as a
+  *new* standalone portrait in the About section. The user then
+  clarified that wasn't the target: **"the photo i wanted you to
+  replace was the one under work that moves culture with that pic of
+  me in the white shirt"** — i.e. `Testimonial.tsx`'s heading "Work
+  that moves culture," which uses `testimonial-portrait.jpg` (the
+  2026-09-17 mirror-selfie-in-a-suit photo, nicknamed "the mirror
+  page" earlier in this same session). Fixed: reverted `About.tsx`
+  back to having no photo of its own (its original state), and
+  `Testimonial.tsx` now points at `/images/about-portrait.jpg` (the
+  white-tee photo) instead of `testimonial-portrait.jpg`. The old
+  mirror-selfie file stays on disk, just unreferenced — same
+  "don't delete, just stop pointing at it" pattern used for every
+  other superseded one-off photo in this doc (e.g. `work-aligned.jpg`).
+  Verified on the live page: the portrait now sits correctly next to
+  the "Work that moves culture" quote, face well-framed in the
+  `aspect-[3/4]` box despite the source photo being taller/narrower;
+  `tsc` and build both pass.
 - **Resolved (Annà Museo homepage card mockup now shows the website,
   not the app, 2026-09-30)**: two passes in the same session. First
   pass swapped `cardImage` from the 2026-09-27 two-phone "home +
@@ -1440,7 +1452,7 @@ Generative AI" service naming.
 - **Known bug worth remembering**: `AnimatePresence` (from the `motion` package) never completed its exit animation in this dev environment — confirmed across a server restart, `.next` cache clear, and fresh tabs, so it wasn't stale HMR state. If a future feature needs an exit-then-enter crossfade, don't assume `AnimatePresence` "just works" here without testing the unmount actually happens; `IdentityToggle` was rewritten to a plain fade-in (no exit tracking) to route around it.
 - Kippo and Ticket Triage work cards still show a bordered placeholder box on the homepage grid (no `bannerImage` set in their content files yet) — Aligned has a real image; Kippo has a real image too via its case-study banner but the *homepage card* itself doesn't reuse it yet; 311 Insights has no image at all (Spruce got one 2026-09-19, see Known gaps). Worth wiring `bannerImage` into more of the content files.
 - 311 Insights' case-study page has real problem/mechanics content but no `architecture` or `designSystem` card yet, and no hero image — it's the one project still clearly reading as "in progress."
-- Testimonial section quote is still placeholder copy, not a real testimonial. **The portrait image is real now** (resolved 2026-09-17): `public/images/testimonial-portrait.jpg`, copied from `Picture of me in suit.JPG` at the repo root per explicit user request — a real full-body mirror-selfie portrait, default `object-cover`/center-crop keeps the face and suit in frame. **The "Creative Partner" attribution is gone (resolved 2026-09-22)**, removed outright rather than left as a placeholder — the quote text itself is still unverified/placeholder, don't treat it as real until the user confirms an actual testimonial to replace it with.
+- Testimonial section quote is still placeholder copy, not a real testimonial. **The portrait image is real** (resolved 2026-09-17, swapped again 2026-09-30 — see "About section portrait corrected" above): now `public/images/about-portrait.jpg` (a plain-white-tee studio photo), replacing the original `testimonial-portrait.jpg` mirror-selfie-in-a-suit (that file is untouched on disk, just unreferenced). Default `object-cover`/center-crop keeps the face in frame. **The "Creative Partner" attribution is gone (resolved 2026-09-22)**, removed outright rather than left as a placeholder — the quote text itself is still unverified/placeholder, don't treat it as real until the user confirms an actual testimonial to replace it with.
 - Trust strip uses text-only placeholder wordmarks, not real logos — needs real logo assets and confirmed client permission before launch.
 - **Resolved (Vercel now serving the real Next.js app, 2026-09-23)**:
   root cause matched the 2026-09-19 diagnosis below — the Vercel
