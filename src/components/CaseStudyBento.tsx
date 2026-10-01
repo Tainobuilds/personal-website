@@ -140,7 +140,7 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
 
         {/* The Challenge — spans 2 */}
         {work.problem && (
-          <div className="col-span-1 rounded-2xl border border-border bg-sand p-8 sm:col-span-2">
+          <div className="col-span-1 border-t border-border pt-8 sm:col-span-2">
             <p className="mb-4 text-2xl font-bold tracking-tight">The Challenge</p>
             <p className="leading-relaxed text-dark/80">{work.problem}</p>
           </div>
@@ -237,19 +237,19 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
           </div>
         ))}
 
-        {/* The Solution — dark card, process steps only (no raw code) */}
+        {/* The Solution — process steps only (no raw code) */}
         {hasArchitecture && work.architecture && (
           <div
-            className={`col-span-1 rounded-2xl bg-[#1a1814] p-8 text-cream ${
+            className={`col-span-1 border-t border-border pt-8 ${
               hasDesignSystem ? "sm:col-span-2" : "sm:col-span-3"
             }`}
           >
-            <p className="mb-4 text-2xl font-bold tracking-tight text-[#4ade80]">The Solution</p>
+            <p className="mb-4 text-2xl font-bold tracking-tight">The Solution</p>
             <p className="mb-4 font-semibold">{work.architecture.heading}</p>
-            <ol className="flex flex-col gap-3 leading-relaxed text-cream/80">
+            <ol className="flex flex-col gap-3 leading-relaxed text-dark/80">
               {work.architecture.steps.map((step, i) => (
                 <li key={i}>
-                  <span className="mr-2 text-[#4ade80]">{i + 1}.</span>
+                  <span className="mr-2 text-accent">{i + 1}.</span>
                   {step}
                 </li>
               ))}

@@ -114,7 +114,7 @@ export function TrendsCaseStudy({ work }: { work: WorkContent }) {
 
         {/* 4. Section 01: The Challenge — text + legacy operational context */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-[3fr_2fr]">
-          <div className="rounded-2xl border border-border bg-sand p-8">
+          <div className="border-t border-border pt-8">
             <p className="mb-4 text-2xl font-bold tracking-tight">01 / The Challenge</p>
             <p className="leading-relaxed text-dark/80">{work.problem}</p>
           </div>
@@ -137,7 +137,7 @@ export function TrendsCaseStudy({ work }: { work: WorkContent }) {
         </div>
 
         {/* 6a. Section 03: The Solution — Front Stock */}
-        <div className="rounded-2xl border border-border bg-sand p-8">
+        <div className="border-t border-border pt-8">
           <p className="mb-1 text-2xl font-bold tracking-tight">03 / The Solution — Front Stock</p>
           <p className="mb-6 text-sm text-dark/70">
             Search the live menu, everything else fills itself in.
@@ -167,7 +167,7 @@ export function TrendsCaseStudy({ work }: { work: WorkContent }) {
 
         {/* 6b. Section 03 continued: The Solution — Back Stock */}
         {secondary && (
-          <div className="rounded-2xl border border-border bg-sand p-8">
+          <div className="border-t border-border pt-8">
             <p className="mb-1 text-2xl font-bold tracking-tight">03 / The Solution — {secondary.heading}</p>
             <p className="mb-6 leading-relaxed text-dark/80">{secondary.narrative}</p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-[3fr_2fr]">

@@ -419,6 +419,30 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-30)
+- **Resolved (Challenge/Solution cards de-boxed entirely — line
+  separators instead, 2026-09-30)**: two-step request, same session.
+  First pass changed "The Solution" from a dark `bg-[#1a1814]` card to
+  the same light `bg-sand` boxed card as "The Challenge"/"Design
+  System." The user then said that wasn't far enough — **no boxes at
+  all** for Challenge or Solution, "a little line to separate it."
+  Final state, on both templates: `rounded-2xl border border-border
+  bg-sand p-8` replaced with plain `border-t border-border pt-8` (a
+  thin top rule, no fill, no corner radius, no side padding) on —
+  - `CaseStudyBento.tsx` (Kippo, Aligned, Spruce, Annà Museo): "The
+    Challenge" and "The Solution."
+  - `TrendsCaseStudy.tsx`: "01/The Challenge," "03/The Solution — Front
+    Stock," and "03/The Solution — Back Stock."
+  The Solution's numbered-list markers now use `text-accent` (petrol
+  teal) instead of the old one-off dark-card green (`#4ade80`).
+  **Scoped to Challenge/Solution only, per the user's own wording** —
+  "The Insight" keeps its dark card (both templates), "Design System"
+  keeps its light `bg-sand` card, gallery/screenshot grids and
+  `PhotoCard`/`BrowserFrame`/`LabelPreviewBox` frames are all
+  untouched — none of those were mentioned, and removing them wasn't
+  asked for. Verified on Aligned (2-up with Design System), Kippo
+  (full-width Solution, no Design System), and Trends (both Solution
+  sections) at desktop, plus Trends at 375px mobile; `tsc` and build
+  both pass.
 - **Resolved (Hero title reworded to "Product Designer & Developer",
   2026-09-30)**: per explicit user request, scoped to the landing
   page only — `Hero.tsx`'s `<h1>` changed from "Front-End Developer &
