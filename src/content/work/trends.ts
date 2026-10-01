@@ -97,5 +97,5 @@ export const trends: WorkContent = {
     },
   ],
   outcomeSummary:
-    "An AI-assisted labeling system running in a real dispensary right now — cutting label entry from minutes to seconds and freeing up staff for the floor.",
+    "An AI-assisted labeling system running in the biggest dispensary in NYC — cutting label entry from minutes to seconds and freeing up staff for the floor.",
 };

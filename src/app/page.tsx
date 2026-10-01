@@ -25,7 +25,7 @@ export default function Home() {
         />
         <Pillar
           title="Retail Automation & Workflow Engineering"
-          description="Built Trends Studio — an AI-assisted system for in-store organization and labeling, live in a real dispensary today and saving real time on a busy sales floor."
+          description="Built Trends Studio — an AI-assisted system for in-store organization and labeling, live in the biggest dispensary in NYC and saving real time on a busy sales floor."
           items={getWorkByPillar(3)}
         />
         <Pillar

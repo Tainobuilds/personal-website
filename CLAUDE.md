@@ -419,6 +419,20 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-30)
+- **Resolved (Trends copy: "real dispensary" → "biggest dispensary in
+  NYC", 2026-09-30)**: per explicit user request, swapped the phrase
+  in the two places it appeared — `src/content/work/trends.ts`'s
+  `outcomeSummary` (homepage card) now reads "...running in the
+  biggest dispensary in NYC..." and `src/app/page.tsx`'s Pillar 3
+  description now reads "...live in the biggest dispensary in NYC...".
+  **Unverified claim, accepted as the user's own firsthand account**:
+  no prior documentation anywhere in this file's "Case study evidence"
+  establishes Trends LIC's size/ranking among NYC dispensaries — same
+  category of claim as the 8-10 minute hand-typing figure (also
+  unverifiable externally, also accepted because it's the user's own
+  on-the-job knowledge from working there). If this is ever
+  challenged, the honest fallback is a softer phrase like "one of the
+  busiest dispensaries in NYC."
 - **Resolved (Annà Museo tagline/card blurb rephrased, 2026-09-30)**:
   per explicit user request, both `tagline` (case-study header
   subtitle) and `outcomeSummary` (homepage card blurb) now lead with
