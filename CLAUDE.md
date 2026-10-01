@@ -419,6 +419,31 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-30)
+- **Resolved (About section gets a real portrait, 2026-09-30)**: the
+  About section had no photo of its own — only text, the Designer/
+  Builder/Fashion `IdentityToggle` photo toggle, and the credential
+  timeline. The user sent a new photo of themselves (plain white tee,
+  studio white background, letterboxed top/bottom from how it was
+  exported) and asked for it on the About page. **Scope note**: they
+  first asked for a blazer to be added onto the photo via editing; I
+  flagged that I have no reliable photorealistic clothing-edit tool
+  for this and offered options (use a different existing photo, try a
+  third-party AI virtual try-on site with their explicit OK, or just
+  use the photo as-is for now). They chose to try a third-party site,
+  I'd gotten as far as opening a Hugging Face IDM-VTON space in Chrome
+  (nothing was uploaded, no account created, no changes made anywhere)
+  before the user changed their mind mid-task and said to drop it —
+  "just use the photo of me forget the third party site. the photo
+  itself is fine." So the photo is unedited, exactly as sent. Cropped
+  off the black letterbox bars (Pillow, pure-row-brightness detection
+  since this machine has no numpy — rows 302–2508 of 2532 were real
+  photo) and saved as `public/images/about-portrait.jpg`. Added to
+  `About.tsx`: a `rounded-2xl border border-border` framed portrait
+  (`aspect-[4/5]`, `object-cover`) placed in the grid cell next to the
+  "About" heading — that slot was empty before (the heading alone
+  doesn't fill its grid row at `md:grid-cols-2`). Verified at desktop
+  (sits beside the heading, full portrait in frame) and 375px mobile
+  (stacks below the heading, no overflow); `tsc` and build both pass.
 - **Resolved (Annà Museo homepage card mockup now shows the website,
   not the app, 2026-09-30)**: two passes in the same session. First
   pass swapped `cardImage` from the 2026-09-27 two-phone "home +

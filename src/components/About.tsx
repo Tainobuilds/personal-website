@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CredentialTimeline } from "./CredentialTimeline";
 import { IdentityToggle } from "./IdentityToggle";
 
@@ -10,6 +11,16 @@ export function About() {
       className="grid grid-cols-1 items-end gap-8 px-8 py-16 md:grid-cols-2"
     >
       <h2 className="text-6xl font-extrabold">About</h2>
+
+      <div className="relative aspect-[4/5] w-full max-w-sm justify-self-end overflow-hidden rounded-2xl border border-border">
+        <Image
+          src="/images/about-portrait.jpg"
+          alt="Yadan Taino"
+          fill
+          sizes="(max-width: 768px) 320px, 400px"
+          className="object-cover"
+        />
+      </div>
 
       <p className="col-span-full flex flex-wrap items-center gap-2.5 text-sm">
         <span className="font-bold uppercase tracking-wide text-muted">Currently</span>
