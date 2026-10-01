@@ -419,6 +419,19 @@ Generative AI" service naming.
   Visual/case-study proof lives in the Selected work cards, not here.
 
 ## Known gaps (as of 2026-09-30)
+- **Resolved (Annà Museo homepage card mockup now shows the kairi oil
+  page, 2026-09-30)**: per explicit user request, `cardImage` no
+  longer uses the two-phone "home + ritual results" composite made on
+  2026-09-27 — it's now a single-phone mockup of `site-product-mobile.png`
+  (the real "kairi oil / night serum" product page), framed with the
+  same black-bezel/rounded-corner/Sand-background treatment as before.
+  New file `public/images/work/anna-museo/card-kairi.webp` (1600×2000,
+  4:5) replaces `card.webp` — renamed rather than overwritten in place,
+  same cache-busting reasoning used for every prior mockup swap on
+  this site (Kippo, Aligned, Spruce — Next's image optimizer caches by
+  URL). `anna-museo.ts`'s `cardImage` updated to match. Script:
+  scratchpad-only (`annacard/compose.py`). Verified on the live
+  homepage card (crops cleanly in the 4:5 frame) and via `tsc`/build.
 - **Resolved (Trends copy: "real dispensary" → "biggest dispensary in
   NYC", 2026-09-30)**: per explicit user request, swapped the phrase
   in the two places it appeared — `src/content/work/trends.ts`'s
