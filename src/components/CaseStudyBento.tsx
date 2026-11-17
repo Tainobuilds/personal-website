@@ -140,7 +140,11 @@ export function CaseStudyBento({ work }: { work: WorkContent }) {
 
         {/* The Challenge — spans 2 */}
         {work.problem && (
-          <div className="col-span-1 border-t border-border pt-8 sm:col-span-2">
+          <div
+            className={`col-span-1 border-t border-border pt-8 ${
+              work.insight ? "sm:col-span-2" : "sm:col-span-3"
+            }`}
+          >
             <p className="mb-4 text-2xl font-bold tracking-tight">The Challenge</p>
             <p className="leading-relaxed text-dark/80">{work.problem}</p>
           </div>

@@ -5,7 +5,7 @@ export function getAllWork(): WorkContent[] {
   return WORK_INDEX;
 }
 
-export function getWorkByPillar(pillar: 1 | 2 | 3): WorkContent[] {
+export function getWorkByPillar(pillar: 1 | 2 | 3 | 4): WorkContent[] {
   return WORK_INDEX.filter((item) => item.pillar === pillar);
 }
 

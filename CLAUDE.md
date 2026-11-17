@@ -112,6 +112,9 @@ story, inspired by clay.global):
      removed from `workIndex.ts` — it's real, verified work, just not
      on the current homepage roster. Restore it (add back to
      `workIndex.ts`) if asked, rather than rewriting it from scratch.
+   - **Client Websites & Booking Automation** (added 2026-11-16,
+     rendered last): **PTA Tutor** — see the Known-gaps entry below.
+     `WorkContent.pillar` is now `1 | 2 | 3 | 4`.
 4. Testimonial
 5. About (with a lightweight "Currently" tag strip near the top)
 6. FAQ
@@ -418,7 +421,47 @@ Generative AI" service naming.
   description), no image box per service — matches clay.global's pattern.
   Visual/case-study proof lives in the Selected work cards, not here.
 
-## Known gaps (as of 2026-09-30)
+## Known gaps (as of 2026-11-16)
+- **Added (PTA Tutor case study, 2026-11-16)**: `/work/pta-tutor`,
+  content in `src/content/work/pta-tutor.ts`, new homepage **Pillar 4
+  "Client Websites & Booking Automation"** (rendered after the other
+  three; reorder in `src/app/page.tsx` if wanted). A real paid
+  freelance rebuild of ptatutor.com (a PTA/NPTE tutoring business)
+  from GoDaddy Website Builder to WordPress, launched 2026-10-27.
+  **Source of truth is `~/PTA Tutor/STATUS.md`** (project notes kept
+  outside this repo — don't rebuild or edit that project from here).
+  **What the page claims, and only this**: rebuilt page-by-page on
+  WordPress (Kadence) matching her layout/brand; Amelia booking (free
+  15-min consult, single session, 4 packages — "6 offers"); Meet links
+  *set up* on paid sessions (not claimed as verified end to end);
+  Stripe + PayPal, each tested with a real $1 payment; branded email
+  templates sent via her Google Workspace address, plus the real
+  logo-in-email bug (host bot shield blocks image proxies); Tidio chat
+  with AI-first and a phone hand-off; MailerLite signup form; launch
+  work (DNS A records only, Google MX kept, SSL, redirects of old
+  GoDaddy URLs); 4 captioned training videos. **Deliberately left
+  out**: engagement price/payments, the client's name and personal
+  details, subscriber counts, her reviews/testimonials, Semrush
+  rankings (client's data, pre-launch baseline only), and any results
+  — as of 2026-11-15 the site had **0 real bookings**, so the Outcome
+  section says "new launch, no performance numbers yet" instead of
+  implying traction. Tidio's AI still had stale info (a removed "Study
+  Plan" offer, an old session price) per the project notes, so the
+  chat is described as a hand-off setup, not a finished AI FAQ.
+  **Client consent**: nothing in the notes records the client OK'ing
+  a portfolio write-up — the page names the business (public site)
+  but not her; confirm with the client if unsure. Screenshots are
+  fresh Playwright captures of the live site (1440×900 / 390×844),
+  chat bubble and footer hidden except the home shot; pairs section
+  "The Site" uses the existing `screenSections` "pairs" layout.
+  `card.webp` is the same Pillow browser-frame-on-Sand composite used
+  for Annà Museo (script scratchpad-only, `ptacard/compose.py`);
+  `site-hero-desktop.png` is a 1440×730 nav+hero crop so the 16:9
+  banner box doesn't clip the nav. **Template tweak**: `The Challenge`
+  in `CaseStudyBento.tsx` now spans all 3 columns when a project has
+  no `insight` (it used to leave an empty right-hand third). No
+  `insight` card on this page — no real quote exists, and none was
+  invented.
 - **Resolved (Challenge/Solution cards de-boxed entirely — line
   separators instead, 2026-09-30)**: two-step request, same session.
   First pass changed "The Solution" from a dark `bg-[#1a1814]` card to

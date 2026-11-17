@@ -47,7 +47,7 @@ export type WalkthroughStep = {
 
 export type WorkContent = {
   slug: string;
-  pillar: 1 | 2 | 3;
+  pillar: 1 | 2 | 3 | 4;
   status: WorkStatus;
   title: string;
   tagline: string;

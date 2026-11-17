@@ -33,6 +33,11 @@ export default function Home() {
           description="AI as an assistive layer, not a black box — natural-language matching that keeps a human decision in the loop."
           items={getWorkByPillar(2)}
         />
+        <Pillar
+          title="Client Websites & Booking Automation"
+          description="A real small-business site, rebuilt and launched — with booking, payments, email, and chat connected so the owner isn't doing it by hand."
+          items={getWorkByPillar(4)}
+        />
       </section>
       <Testimonial />
       <About />
