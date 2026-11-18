@@ -448,9 +448,9 @@ Generative AI" service naming.
   implying traction. Tidio's AI still had stale info (a removed "Study
   Plan" offer, an old session price) per the project notes, so the
   chat is described as a hand-off setup, not a finished AI FAQ.
-  **Client consent**: nothing in the notes records the client OK'ing
-  a portfolio write-up — the page names the business (public site)
-  but not her; confirm with the client if unsure. Screenshots are
+  **Client consent (confirmed by the user 2026-11-18)**: the client
+  agreed to be part of the portfolio. The page still names the
+  business (public site) but not her personally. Screenshots are
   fresh Playwright captures of the live site (1440×900 / 390×844),
   chat bubble and footer hidden except the home shot; pairs section
   "The Site" uses the existing `screenSections` "pairs" layout.
